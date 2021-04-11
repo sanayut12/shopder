@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopder/function/http.dart';
+import 'package:shopder/function/httpRegister.dart';
 import 'package:shopder/loginANDregister/login.dart';
 import 'package:shopder/loginANDregister/register.dart';
 
@@ -37,10 +37,17 @@ class _SubFirstState extends State<SubFirst> {
     this.page = 0;
   }
 
+  Function changeFromRegistered() {
+    setState(() {
+      this.page = 0;
+    });
+    print("hello world");
+  }
+
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -96,7 +103,11 @@ class _SubFirstState extends State<SubFirst> {
             ),
           ],
         ),
-        this.page == 0 ? Login() : Register(),
+        this.page == 0
+            ? Login()
+            : Register(
+                rePage: changeFromRegistered,
+              ),
       ],
     );
   }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopder/loginANDregister/mainScreen.dart';
 
-import 'function/http.dart';
-
 void main() {
   runApp(MyApp());
 }

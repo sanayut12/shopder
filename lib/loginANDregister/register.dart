@@ -1,11 +1,17 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import '../function/http.dart';
+import 'package:shopder/objects/httpObject.dart';
+import '../function/httpRegister.dart';
 
 String name, password, confirmpassword, phone, email;
 
 class Register extends StatefulWidget {
+  final Function rePage;
+
+  Register({this.rePage});
+
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -85,7 +91,7 @@ class _RegisterState extends State<Register> {
           ),
           GestureDetector(
             onTap: () async {
-              otpDialog();
+              await getOTPManagement();
             },
             child: Container(
               child: Text(
@@ -105,25 +111,110 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  Future otpDialog() async {
-    var getotp = await httpGetOTP(phone);
-    print(getotp);
+  Future getOTPManagement() async {
+    GetOTPRequest bufferGetOTPRequest = GetOTPRequest(phone: phone);
+    GetOTPResponse bufferGetOTPResponse = await httpGetOTP(bufferGetOTPRequest);
+    if (bufferGetOTPResponse.status == 1) {
+      otpDialog(bufferGetOTPResponse);
+    } else {
+      alertDialog(bufferGetOTPResponse.message);
+    }
+  }
+
+  Future confirmOTPMangemant(String code) async {
+    ConfirmOTPRequest bufferConfirmOTPRequest =
+        ConfirmOTPRequest(phone: phone, code: code);
+    ConfirmOTPResponse bufferConfirmOTPResponse =
+        await httpConfirmOTP(bufferConfirmOTPRequest);
+    if (bufferConfirmOTPResponse.code == 1) {
+      int res = await confirmOTPAlertdialog(bufferConfirmOTPResponse);
+      RegisterRequest data = RegisterRequest(
+          name: name, phone: phone, email: email, password: password);
+      httpRegister(data);
+      return res;
+    } else {
+      int res = await confirmOTPAlertdialog(bufferConfirmOTPResponse);
+      return res;
+    }
+  }
+
+  Future<int> confirmOTPAlertdialog(
+      ConfirmOTPResponse bufferConfirmOTPResponse) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext builder) {
+          return AlertDialog(
+            title: Text("แจ้งเตือน"),
+            content: Text("${bufferConfirmOTPResponse.message}"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    if (bufferConfirmOTPResponse.code == 1) {
+                      Navigator.of(context).pop(1);
+                    } else {
+                      Navigator.of(context).pop(0);
+                    }
+                  },
+                  child: Text("ยืนยัน"))
+            ],
+          );
+        });
+  }
+
+  Future otpDialog(GetOTPResponse response) async {
+    TextEditingController code = TextEditingController();
+
     return showDialog(
       context: context,
       builder: (BuildContext builder) {
         return AlertDialog(
-          title: Text("ยืนยัน"),
+          title: Text("ยืนยันรหัส OTP ของเบอร์ $phone"),
+          content: Container(
+            height: 100,
+            width: 200,
+            child: Column(
+              children: [
+                Text('รหัสอ้างอิงคือ ${response.key}'),
+                TextField(
+                  controller: code,
+                ),
+              ],
+            ),
+          ),
           actions: [
             TextButton(
                 onPressed: () async {
-                  String re =
-                      await httpJsonRegister(name, password, phone, email);
-                  print(re);
+                  int check = await confirmOTPMangemant(code.text);
+                  if (check == 0) {
+                    Navigator.of(context).pop();
+                    getOTPManagement();
+                  } else if (check == 1) {
+                    Navigator.of(context).pop();
+                    this.widget.rePage();
+                  }
                 },
                 child: Text("ยืนยัน"))
           ],
         );
       },
     );
+  }
+
+  Future alertDialog(String message) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext builder) {
+          return AlertDialog(
+            title: Text("แจ้งเตือน"),
+            content: Text("$message"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("ยืนยัน"))
+            ],
+          );
+        });
   }
 }
