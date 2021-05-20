@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopder/function/httpRegister.dart';
-import 'package:shopder/loginANDregister/login.dart';
-import 'package:shopder/loginANDregister/register.dart';
+import 'package:shopder/FirstScreen/login.dart';
+import 'package:shopder/FirstScreen/register.dart';
 
 class MainScreen extends StatelessWidget {
   @override
@@ -33,7 +32,6 @@ class _SubFirstState extends State<SubFirst> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    initHttp();
     this.page = 0;
   }
 

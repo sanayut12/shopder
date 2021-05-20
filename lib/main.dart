@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopder/loginANDregister/mainScreen.dart';
+import 'package:shopder/FirstScreen/mainFirstScreen.dart';
 
 void main() {
   runApp(MyApp());
