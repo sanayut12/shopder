@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shopder/ClassObjects/httpObjectLogin.dart';
-import 'package:shopder/function/dataManagement/storageFunction.dart';
-import 'package:shopder/function/dataManagement/storageManagement.dart';
+import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+import 'package:shopder/MainScreen/component/bottomBar.dart';
+import 'package:shopder/MainScreen/subScreen/feedScreen.dart';
+import 'package:shopder/MainScreen/subScreen/notificationScreen.dart';
+import 'package:shopder/MainScreen/subScreen/orderScreen.dart';
+import 'package:shopder/MainScreen/subScreen/profileScreen.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -10,22 +13,9 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   String data;
+  int bottomBarIndex = 0;
 
-  // void readDataInStorage() async {
-  //   DataUserInfo data1 = await ReadDataUserInfoInStorage();
-  //   String data2 = await data1.ToString();
-  //   setState(() {
-  //     data = data2;
-  //   });
-  //   print(" sssssssssssss ${data2}");
-  // }
-
-  // void getDataUserInfo() async {
-  //   // DataUserInfo _userInfo = await ReadDataUserInfoInStorage();
-  //   setState(() {
-  //     userInfo = _userInfo;
-  //   });
-  // }
+  ///0-3uj
 
   @override
   void initState() {
@@ -36,11 +26,29 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> ListSwapScreen = [
+      FeedScreen(),
+      OrderScreen(),
+      NotificationScreen(),
+      ProfileScreen()
+    ];
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text("main screen"),
-      ),
-      body: Text("$data"),
-    );
+        appBar: AppBar(
+          leading: Icon(Icons.menu_sharp),
+          leadingWidth: 10,
+          actions: [Text("data")],
+        ),
+        body: ListSwapScreen[bottomBarIndex],
+        bottomNavigationBar: BottomBar(
+          bottombarIndex: bottomBarIndex,
+          changeScreen: ChangeScreen,
+        ));
+  }
+
+  Future<void> ChangeScreen({@required int bottombarindex}) {
+    setState(() {
+      bottomBarIndex = bottombarindex;
+    });
   }
 }

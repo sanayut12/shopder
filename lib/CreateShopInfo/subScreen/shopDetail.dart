@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
-import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -191,7 +189,9 @@ class _ShopDetailState extends State<ShopDetail> {
     final bytes = File(pickedFile.path).readAsBytes();
     String base64 = base64Encode(await bytes);
     Uint8List _binary = base64Decode(base64);
+    // print(bytes);
     // print(base64);
+    // print(_binary);
     setState(() {
       if (pickedFile != null) {
         setState(() {
@@ -208,13 +208,11 @@ class _ShopDetailState extends State<ShopDetail> {
 
   Future checkNext() {
     if (name != null && type != null && image_profile != null) {
-      print("next");
       setState(() {
         color_next = Colors.red;
         check_next = true;
       });
     } else {
-      print("wait");
       setState(() {
         color_next = Colors.white;
         check_next = false;
@@ -223,7 +221,6 @@ class _ShopDetailState extends State<ShopDetail> {
   }
 
   Future UpdateShopDetail() async {
-    print("object");
     DataShopDetail bufferDataShopDetail =
         DataShopDetail(name: name, type: type, image: image_profile);
     this.widget.updateShopDetail(bufferDataShopDetail: bufferDataShopDetail);

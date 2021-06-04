@@ -29,12 +29,12 @@ Future<GetShopInfoResponse> HttpGetShopInfo(
     headers: Header,
   );
   var res = jsonDecode(uriResponse.body);
-  print(res);
+  // print(res);
   ShopInfo shopInfo = ShopInfo(
       shop_id: res['shopInfo']['shop_id'],
       name: res['shopInfo']['name'],
       type: res['shopInfo']['type'],
-      image: res['shopInfo']['type'],
+      image: res['shopInfo']['image'],
       address: res['shopInfo']['address'],
       sub_district: res['shopInfo']['sub_district'],
       district: res['shopInfo']['district'],

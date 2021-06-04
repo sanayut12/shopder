@@ -1,21 +1,23 @@
 import 'dart:convert';
-import 'dart:ffi';
+import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
 import 'package:shopder/CreateShopInfo/mainScreenRegisterShop.dart';
 import 'package:shopder/function/dataManagement/storageFunction.dart';
 
 ShopInfo shopInfo;
+Uint8List image_shop_profile_byte;
 
 class ShopInfoMamagement {
   Future<void> InsertShopInfoToStorage(
       {@required ShopInfo bufferShopInfo}) async {
     shopInfo = bufferShopInfo;
+    image_shop_profile_byte = base64Decode(bufferShopInfo.image);
     Map<String, dynamic> dataJson = {
       'shop_id': bufferShopInfo.shop_id,
       'name': bufferShopInfo.name,
       'image': bufferShopInfo.image,
-      'type': bufferShopInfo..type,
+      'type': bufferShopInfo.type,
       'address': bufferShopInfo.address,
       'sub_district': bufferShopInfo.sub_district,
       'district': bufferShopInfo.district,
@@ -36,7 +38,7 @@ class ShopInfoMamagement {
         name: dataJson['name'],
         type: dataJson['type'],
         image: dataJson['image'],
-        address: dataJson['image'],
+        address: dataJson['address'],
         sub_district: dataJson['sub_district'],
         district: dataJson['district'],
         province: dataJson['province'],
@@ -44,6 +46,14 @@ class ShopInfoMamagement {
         longtitude: dataJson['longtitude'].toDouble());
 
     shopInfo = bufferShopInfo;
+  }
+
+  Uint8List GetImageShop() {
+    return image_shop_profile_byte; //shopInfo.image;
+  }
+
+  String GetShop_id() {
+    return shopInfo.shop_id;
   }
 }
 

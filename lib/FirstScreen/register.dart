@@ -140,9 +140,9 @@ class _RegisterState extends State<Register> {
       ConfirmRegisterResponse bufferConfirmRegisterResponse =
           await ShowAlertdialogConfirmRegister(bufferRegisterResponse);
 
-      print("Confirm register response");
-      print(
-          "${bufferConfirmRegisterResponse.message} ${bufferConfirmRegisterResponse.code} ${bufferConfirmRegisterResponse.key}");
+      // print("Confirm register response");
+      // print(
+      //     "${bufferConfirmRegisterResponse.message} ${bufferConfirmRegisterResponse.code} ${bufferConfirmRegisterResponse.key}");
       if (bufferConfirmRegisterResponse.code == 20200) {
         await ShowAlertdialogRegisterSuccesses();
         resetInput();

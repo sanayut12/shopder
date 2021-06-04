@@ -39,7 +39,7 @@ class _SubFirstState extends State<SubFirst> {
     setState(() {
       this.page = 0;
     });
-    print("hello world");
+    // print("hello world");
   }
 
   @override

@@ -4,6 +4,7 @@ import 'package:shopder/CreateShopInfo/subScreen/shopAddress.dart';
 import 'package:shopder/CreateShopInfo/subScreen/shopDetail.dart';
 import 'package:shopder/CreateShopInfo/subScreen/shopPostion.dart';
 import 'package:shopder/CreateShopInfo/subScreen/successes.dart';
+import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/dataManagement/dataUserInfo.dart';
 import 'package:shopder/function/http/httpCreateShopInfo.dart';
 
@@ -39,9 +40,6 @@ class _MainScreenRegisterShopState extends State<MainScreenRegisterShop> {
   }
 
   Function Finsh() {
-    setState(() {
-      pageIndex += 1;
-    });
     OnShopRegister();
   }
 
@@ -60,7 +58,7 @@ class _MainScreenRegisterShopState extends State<MainScreenRegisterShop> {
       district = bufferDataShopAddress.district;
       sub_district = bufferDataShopAddress.sub_district;
     });
-    print("$address $province $district ");
+    // print("$address $province $district ");
   }
 
   Function UpdateShopPosition({DataShopPosition bufferDataShopPosition}) {
@@ -70,7 +68,7 @@ class _MainScreenRegisterShopState extends State<MainScreenRegisterShop> {
     });
   }
 
-  void OnShopRegister() async {
+  Future<void> OnShopRegister() async {
     ShopInfoCreateRequest bufferShopInfoCreateRequest = ShopInfoCreateRequest(
         user_id: user_id,
         name: name,
@@ -85,11 +83,29 @@ class _MainScreenRegisterShopState extends State<MainScreenRegisterShop> {
     ShopInfoCreateResponse bufferShopInfoCreateResponse =
         await HttpCreateShopInfo(bufferShopInfoCreateRequest);
     // print(bufferShopInfoCreateResponse.code);
-    // if (bufferShopInfoCreateResponse.code == ){
-
-    // }else if(){
-
-    // }
+    if (bufferShopInfoCreateResponse.code == 20200) {
+      ShopInfo bufferShopInfo = await ShopInfo(
+        shop_id:
+            bufferShopInfoCreateResponse.shopInfoCreateDataResponse.shop_id,
+        name: name,
+        type: type,
+        image: image,
+        address: address,
+        sub_district: sub_district,
+        district: district,
+        province: province,
+        latitude: latitude,
+        longtitude: longtitude,
+      );
+      ShopInfoMamagement shopInfoMamagement = ShopInfoMamagement();
+      await shopInfoMamagement.InsertShopInfoToStorage(
+          bufferShopInfo: bufferShopInfo);
+      await setState(() {
+        pageIndex += 1;
+      });
+    } else {
+      AlertLoginFail();
+    }
   }
 
   // Future<>
@@ -118,5 +134,23 @@ class _MainScreenRegisterShopState extends State<MainScreenRegisterShop> {
       resizeToAvoidBottomInset: false,
       body: pageBuffer[pageIndex],
     );
+  }
+
+  Future<void> AlertLoginFail() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext builder) {
+          return AlertDialog(
+            title: Text('แจ้งเตือน'),
+            content: Text("เกิดข้อผิดพลาด"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("ยืนยัน"))
+            ],
+          );
+        });
   }
 }

@@ -23,23 +23,6 @@ class ShopInfoCreateRequest {
       this.type,
       this.latitude,
       this.longtitude});
-
-  Future<Map<String, dynamic>> JsonFormat() async {
-    Map<String, dynamic> jsonData = {
-      'user_id': user_id,
-      'name': name,
-      'image': image,
-      'type': type,
-      'address': address,
-      'sub_district': sub_district,
-      'district': district,
-      'province': province,
-      'latitude': latitude,
-      'longtitude': longtitude
-    };
-
-    return jsonData;
-  }
 }
 
 class ShopInfoCreateResponse {

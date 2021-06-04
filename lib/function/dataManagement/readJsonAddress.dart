@@ -29,7 +29,7 @@ class AddressThailand {
     datajson[provinceKey]['amphoes'].forEach((key, value) {
       data.add(key);
     });
-    print(data);
+    // print(data);
     return data;
   }
 
@@ -48,7 +48,7 @@ class AddressThailand {
         .forEach((key, value) {
       data.add(key);
     });
-    print(data);
+    // print(data);
     return data;
   }
 

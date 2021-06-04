@@ -4,11 +4,13 @@ import 'package:shopder/ClassObjects/httpObjectGetShopInfo.dart';
 import 'package:shopder/ClassObjects/httpObjectLogin.dart';
 import 'package:shopder/MainScreen/mainScreen.dart';
 import 'package:shopder/CreateShopInfo/mainScreenRegisterShop.dart';
+import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/dataManagement/dataUserInfo.dart';
 import 'package:shopder/function/http/httpGetShopInfo.dart';
 import '../function/http/httpLogin.dart';
 
-String phone, password;
+String phone = "0630588299";
+String password = "12345";
 
 class Login extends StatefulWidget {
   @override
@@ -165,13 +167,20 @@ class _LoginState extends State<Login> {
     await UserInfoManagement()
         .InsertUserInfoToStorage(bufferUserInfo: bufferUserInfo);
     if (bufferGetShopInfoResponse.code == 20200) {
+      await ShopInfoMamagement().InsertShopInfoToStorage(
+          bufferShopInfo: bufferGetShopInfoResponse.shopInfo);
+
       Navigator.push(context,
           MaterialPageRoute(builder: (BuildContext context) => MainScreen()));
     } else {
-      Navigator.push(
+      int response = await Navigator.push(
           context,
           MaterialPageRoute(
               builder: (BuildContext context) => MainScreenRegisterShop()));
+      if (response == 1) {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (BuildContext context) => MainScreen()));
+      }
     }
   }
 }

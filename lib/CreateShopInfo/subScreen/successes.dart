@@ -12,18 +12,37 @@ class _RegisterSuccessesState extends State<RegisterSuccesses> {
     return Container(
       height: double.infinity,
       width: double.infinity,
-      color: Colors.green,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("ลงทะเบียนร้านค้าสำเร็จ"),
+          Text(
+            "successes!",
+            style: TextStyle(
+                color: Colors.green,
+                fontWeight: FontWeight.w900,
+                fontSize: 30.0),
+          ),
+          SizedBox(
+            height: 100,
+          ),
           TextButton(
               onPressed: () {
-                // setState(() {
-
-                // });
-                Navigator.pop(context);
+                Navigator.of(context).pop(1);
               },
-              child: Text("ตกลง")),
+              child: Container(
+                  alignment: Alignment.center,
+                  height: 50,
+                  width: 100,
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  child: Text(
+                    "OK",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700),
+                  ))),
         ],
       ),
     );
