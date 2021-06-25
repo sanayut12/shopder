@@ -34,12 +34,30 @@ class _MainScreenState extends State<MainScreen> {
     ];
 
     return Scaffold(
-        appBar: AppBar(
-          leading: Icon(Icons.menu_sharp),
-          leadingWidth: 10,
-          actions: [Text("data")],
+        drawer: Drawer(
+          child: Container(
+            height: double.infinity,
+            width: 200,
+            // color: Colors.red,
+          ),
         ),
-        body: ListSwapScreen[bottomBarIndex],
+        body: Column(
+          children: [
+            Expanded(
+                flex: 1,
+                child: Container(
+                  alignment: Alignment.center,
+                  height: double.infinity,
+                  width: double.infinity,
+                  color: Colors.red,
+                  child: Text(
+                    "shopder",
+                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  ),
+                )),
+            Expanded(flex: 9, child: ListSwapScreen[bottomBarIndex])
+          ],
+        ),
         bottomNavigationBar: BottomBar(
           bottombarIndex: bottomBarIndex,
           changeScreen: ChangeScreen,

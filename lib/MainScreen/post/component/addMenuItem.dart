@@ -19,7 +19,12 @@ class _AddMenuItemScreenState extends State<AddMenuItemScreen> {
 
   final picker = ImagePicker();
 
-  Map<String, String> foodtype = {"1": "1", "2": "2", "3": "3", "4": "4"};
+  Map<String, String> foodtype = {
+    "1": "อาหารอีสาน",
+    "2": "อาหารหวาน",
+    "3": "เครื่องดื่ม",
+    "4": "ของทอด"
+  };
   @override
   void initState() {
     // TODO: implement initState

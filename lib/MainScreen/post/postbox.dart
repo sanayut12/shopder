@@ -1,8 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:shopder/function/dataManagement/dataPostShop.dart';
 
 class PostBox extends StatefulWidget {
+  PostBox({@required PostList bufferPostList});
   @override
   _PostBoxState createState() => _PostBoxState();
 }
@@ -18,7 +20,7 @@ class _PostBoxState extends State<PostBox> {
             color: Colors.grey[500],
             borderRadius: BorderRadius.all(Radius.circular(10))),
         child: Image.network(
-          'https://static.wikia.nocookie.net/doraemon/images/c/c7/2005Doraemon.png/revision/latest?cb=20201017162935&path-prefix=en',
+          'http://192.168.137.1:3000/image/menuImage/0CEDE80402EA562BF3B9736716E5CA8D.jpg',
           fit: BoxFit.cover,
         ));
   }

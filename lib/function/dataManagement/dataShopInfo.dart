@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
-import 'package:shopder/CreateShopInfo/mainScreenRegisterShop.dart';
 import 'package:shopder/function/dataManagement/storageFunction.dart';
 
 ShopInfo shopInfo;
@@ -12,6 +11,8 @@ class ShopInfoMamagement {
   Future<void> InsertShopInfoToStorage(
       {@required ShopInfo bufferShopInfo}) async {
     shopInfo = bufferShopInfo;
+
+    print(shopInfo);
     image_shop_profile_byte = base64Decode(bufferShopInfo.image);
     Map<String, dynamic> dataJson = {
       'shop_id': bufferShopInfo.shop_id,
@@ -48,13 +49,52 @@ class ShopInfoMamagement {
     shopInfo = bufferShopInfo;
   }
 
+  String GetShop_id() {
+    return shopInfo.shop_id;
+  }
+
+  String GetName() {
+    return shopInfo.name;
+  }
+
   Uint8List GetImageShop() {
     return image_shop_profile_byte; //shopInfo.image;
   }
 
-  String GetShop_id() {
-    return shopInfo.shop_id;
+  String GetType() {
+    return shopInfo.type;
   }
+
+  String GetAddress() {
+    return shopInfo.address;
+  }
+
+  String GetSub_district() {
+    return shopInfo.sub_district;
+  }
+
+  String GetDistrict() {
+    return shopInfo.district;
+  }
+
+  String GetProvice() {
+    return shopInfo.province;
+  }
+
+  Position GetPosition() {
+    return Position(
+        latitude: shopInfo.latitude, longtitude: shopInfo.longtitude);
+  }
+
+  ShopInfo GetShopInfo() {
+    return shopInfo;
+  }
+}
+
+class Position {
+  final double latitude;
+  final double longtitude;
+  Position({@required this.latitude, @required this.longtitude});
 }
 
 class ShopInfo {

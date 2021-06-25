@@ -19,13 +19,13 @@ class _PostWriteState extends State<PostWrite> {
   int sendCost;
   DateBox dateClose;
   DateBox dateSend;
-
+  String sendtype;
   // FoodPostInfo bufferFoodPostInfo;
   // var  = <ItemFoodInfo>[];
   List<ItemFoodInfo> bufferItemFoodInfo = [];
 
   List<FoodCard> listFoodCard = [];
-
+  // Map<String, String> listsendtype = {"1": "ส่งถึงที่", "2": "รับที่ร้าน"};
   void initOrder() async {
     String dtNow = DateTime.now().toString();
     dateClose = await DateStringTransformInt(dateString: dtNow);
@@ -46,8 +46,24 @@ class _PostWriteState extends State<PostWrite> {
 
   @override
   Widget build(BuildContext context) {
+    // List<DropdownMenuItem<String>> ItemSendType =
+    //     <String>["1", "2"].map<DropdownMenuItem<String>>((String value) {
+    //   return DropdownMenuItem(value: value, child: Text(listsendtype[value]));
+    // }).toList();
+
+    // Widget ListSendType = DropdownButton(
+    //   value: sendtype,
+    //   items: ItemSendType,
+    //   hint: Text("เลือกประเภทการจัดส่ง"),
+    //   onChanged: (String value) {
+    //     setState(() {
+    //       sendtype = value;
+    //     });
+    //   },
+    // );
+
     Widget ListFoodCard = Container(
-      height: 100,
+      height: listFoodCard.length == 0 ? 0 : 100,
       width: double.infinity,
       child: ListView(
         scrollDirection: Axis.horizontal,
@@ -152,12 +168,11 @@ class _PostWriteState extends State<PostWrite> {
       margin: EdgeInsets.only(bottom: 20, left: 20, right: 20, top: 20),
       padding: EdgeInsets.all(10),
       child: Form(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
         children: [
           DescriptionInput,
-          AddMenuItem,
           ListFoodCard,
+          AddMenuItem,
           Text("ค่าจัดส่ง"),
           CostSend,
           Text("วันที่ปิดการจองสินค้า"),

@@ -1,6 +1,13 @@
+import 'package:flutter/cupertino.dart';
+
 class DateBox {
   final int year, month, day, hour, min;
-  DateBox({this.year, this.month, this.day, this.hour, this.min});
+  DateBox(
+      {@required this.year,
+      @required this.month,
+      @required this.day,
+      @required this.hour,
+      @required this.min});
 }
 
 Future<DateBox> DateStringTransformInt({String dateString}) async {

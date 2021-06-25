@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopder/FirstScreen/login.dart';
 import 'package:shopder/FirstScreen/register.dart';
+import 'package:shopder/function/dataManagement/readJsonAddress.dart';
+import 'package:shopder/function/http/httpGetPostShop.dart';
 
 class MainScreen extends StatelessWidget {
   @override
@@ -33,6 +35,7 @@ class _SubFirstState extends State<SubFirst> {
     // TODO: implement initState
     super.initState();
     this.page = 0;
+    LoadDataFormLocal();
   }
 
   Function changeFromRegistered() {
@@ -40,6 +43,11 @@ class _SubFirstState extends State<SubFirst> {
       this.page = 0;
     });
     // print("hello world");
+  }
+
+  void LoadDataFormLocal() async {
+    await AddressThailand().init();
+    await initHttpGetPostShop();
   }
 
   @override
