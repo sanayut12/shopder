@@ -58,45 +58,53 @@ class _LoginState extends State<Login> {
       onTap: () {
         OnpressLogin();
       },
+
       child: Container(
         alignment: Alignment.center,
-        height: 40,
-        width: 100,
+        height: 45,
+        width: 207,
+        margin: EdgeInsets.only(top:30,bottom:20) , 
         child: Text(
+
           "Login",
-          style: TextStyle(fontSize: 20, color: Colors.white),
+          style: TextStyle(fontSize: 18, color: Colors.white,),
         ),
         decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.all(Radius.circular(10))),
+            color: Color(0xFFFA897B),
+            borderRadius: BorderRadius.all(Radius.circular(35))),
+            
+            
       ),
     );
 
     Widget FacebookLogin = FacebookAuthButton(
       onPressed: () {},
-      style: AuthButtonStyle.icon,
+      style: AuthButtonStyle.icon, borderRadius: 35, 
     );
     Widget GoogleLogin = GoogleAuthButton(
       onPressed: () {},
       style: AuthButtonStyle.icon,
-      iconStyle: AuthIconStyle.secondary,
+      iconStyle: AuthIconStyle.secondary,borderRadius: 35,
     );
     Widget LoginFrom = Form(
+
         child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
+
           child: Column(
             children: [PhoneInput, PasswordInput, ButtonLogin],
           ),
         ),
         Container(
-          height: 200,
+          height: 100,
           child: Column(
+            
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [FacebookLogin, GoogleLogin],
+                children: [FacebookLogin,SizedBox(width: 20,), GoogleLogin],
               )
             ],
           ),

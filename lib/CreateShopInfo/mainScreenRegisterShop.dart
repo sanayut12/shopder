@@ -128,11 +128,25 @@ class _MainScreenRegisterShopState extends State<MainScreenRegisterShop> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("ลงทะเบียนร้านค้า"),
-      ),
+      
       resizeToAvoidBottomInset: false,
-      body: pageBuffer[pageIndex],
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage("assets/image/background/backgroundInfor.png"),
+               )),
+        child: Column(children: [
+          Expanded(child: Text("data"),),
+          Expanded(flex: 8, child: pageBuffer[pageIndex])
+        ],),
+      ),
+      
+
+
+
+
     );
   }
 

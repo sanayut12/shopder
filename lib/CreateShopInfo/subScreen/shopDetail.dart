@@ -14,12 +14,15 @@ class ShopDetail extends StatefulWidget {
   ShopDetail({this.nextPage, this.updateShopDetail});
   @override
   _ShopDetailState createState() => _ShopDetailState();
+  
+  
 }
 
 class _ShopDetailState extends State<ShopDetail> {
   TextEditingController _name;
   String _type, _image_profile;
   final picker = ImagePicker();
+  
 
   bool check_image = false;
   Uint8List _image_binary;
@@ -32,6 +35,7 @@ class _ShopDetailState extends State<ShopDetail> {
     "2": "ร้านอาหารหวาน Dessert restauran",
     "3": "ร้านขายเครื่องดื่ม refreshment shop",
     "4": "ร้านเบเกอรี่ bakery shop",
+   
   };
 
   @override
@@ -58,6 +62,8 @@ class _ShopDetailState extends State<ShopDetail> {
       "2",
       "3",
       "4",
+    
+      
     ].map<DropdownMenuItem<String>>((String value) {
       return DropdownMenuItem<String>(
         value: value,
@@ -87,8 +93,10 @@ class _ShopDetailState extends State<ShopDetail> {
       hint: Text(
         "เลือกประเภทของร้าน",
         style: TextStyle(
-            color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+            color: Colors.grey[350], fontSize: 16, ),
+        
       ),
+      
       onChanged: (String value) {
         setState(() {
           _type = value;
@@ -97,19 +105,33 @@ class _ShopDetailState extends State<ShopDetail> {
         checkNext();
       },
     );
-
+   
+  
+       
+         
     Widget InputImage = GestureDetector(
       onTap: () {
         UploadImage();
       },
       child: Container(
-        height: 200,
-        width: 300,
+        height: 170,
+        width: 170,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: Colors.grey,
-            border: Border.all(color: Colors.black)),
+          // boxShadow: [
+    //   BoxShadow(
+    //     color: Colors.grey.withOpacity(0.5),
+    //     spreadRadius:5,
+    //     blurRadius: 7,
+    //     offset: Offset(0, 3), // changes position of shadow
+    //   ),
+    // ],
+            borderRadius: BorderRadius.all(Radius.circular(100)),
+            color: Color(0xFFFFFFFF),
+            border: Border.all(width:5.0, color: Color(0xFFFA897B))
+            
+            ),
+            
         child: check_image
             ? Image.memory(
                 _image_binary,
@@ -119,10 +141,24 @@ class _ShopDetailState extends State<ShopDetail> {
             : Icon(
                 Icons.camera_alt_outlined,
                 size: 50,
-                color: Colors.red,
+                color: Color(0xFFFA897B),
               ),
       ),
     );
+
+    Widget label_name = Text("ชื่อร้าน",style: TextStyle(fontSize: 25),
+    );
+      child: Container(
+       margin: EdgeInsets.only(right: 10), 
+     );
+    
+    Widget label_Type = Text("เลือกประเภทของร้าน",style: TextStyle(fontSize: 25),
+    );
+    child: Container(
+       margin: EdgeInsets.only(right: 10), 
+     );
+
+
 
     Widget FormShopDetail = Container(
       height: double.infinity,
@@ -130,13 +166,14 @@ class _ShopDetailState extends State<ShopDetail> {
       margin: EdgeInsets.all(10),
       child: Form(
           child: Column(
-        children: [InputName, InputType, InputImage],
+        children: [InputImage,label_name,InputName,SizedBox(height: 20,),label_Type,InputType, ],
       )),
     );
 
     return Container(
       height: double.infinity,
       width: double.infinity,
+      margin: EdgeInsets.only(top:5 , left: 5, right: 0),
       child: Column(
         children: [
           Text("รายละเอียดร้านค้า"),
@@ -144,6 +181,7 @@ class _ShopDetailState extends State<ShopDetail> {
             child: FormShopDetail,
             flex: 8,
           ),
+          
           Expanded(
             child: Container(
               height: double.infinity,
@@ -167,11 +205,19 @@ class _ShopDetailState extends State<ShopDetail> {
                       }
                     },
                     child: Container(
-                      height: 50,
-                      width: 100,
-                      color: color_next,
+                      
+                      
+                      height: 40,
+                      width: 83,
+                      margin: EdgeInsets.only(top:45 ,left:70 ),
+                      
+                      // color: color_next,
                       alignment: Alignment.center,
-                      child: Text('Next'),
+                      decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(35)),
+                       color: Color(0xFFFA897B).withOpacity(0.5)
+                      ),
+                      child: Text('ถัดไป'),
                     ),
                   )
                 ],
@@ -214,8 +260,9 @@ class _ShopDetailState extends State<ShopDetail> {
       });
     } else {
       setState(() {
-        color_next = Colors.white;
+        color_next = Color(0xFFFA897B);
         check_next = false;
+        
       });
     }
   }

@@ -9,16 +9,43 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.grey[200],
-      body: Container(
-          margin: EdgeInsets.fromLTRB(20, 80, 20, 80),
+      // backgroundColor: Colors.grey[200],
+    
+      body: Stack(
+        children: [
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            
+
+            
+            decoration:BoxDecoration(image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage("assets/image/background/backgroundFirst1.png"),
+            )),
+          ),
+          Container(
+          margin: EdgeInsets.fromLTRB(20, 80, 20, 80,) ,
           height: double.infinity,
           width: double.infinity,
           decoration: BoxDecoration(
+            
               borderRadius: BorderRadius.circular(20),
               color: Colors.white,
-              border: Border()),
-          child: SubFirst()),
+              border: Border(),
+              boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.5),
+        spreadRadius:5,
+        blurRadius: 7,
+        offset: Offset(0, 3), // changes position of shadow
+      ),
+    ],
+              ),
+          child: SubFirst()
+          ),
+        ],
+      )
     );
   }
 }
@@ -65,18 +92,19 @@ class _SubFirstState extends State<SubFirst> {
           children: [
             GestureDetector(
               child: Container(
-                width: 100,
-                height: 40,
+                width: 141,
+                height: 34,
+                margin:EdgeInsets.only(top:15),
                 child: Text(
                   "Login",
                   style: TextStyle(
-                    color: this.page == 1 ? Colors.red : Colors.white,
+                    color: this.page == 1 ? Color(0xFFFA897B) : Colors.white,
                   ),
                 ),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: this.page == 0 ? Colors.red : Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(35)),
+                  color: this.page == 0 ? Color(0xFFFA897B): Colors.white,
                 ),
               ),
               onTap: () {
@@ -87,18 +115,21 @@ class _SubFirstState extends State<SubFirst> {
             ),
             GestureDetector(
               child: Container(
-                width: 100,
-                height: 40,
+                width: 141,
+                height: 34,
                 child: Text(
                   "Register",
                   style: TextStyle(
-                    color: this.page == 0 ? Colors.red : Colors.white,
+                    color: this.page == 0 ? Color(0xFFFA897B) : Colors.white,
+                    
                   ),
+                  
                 ),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: this.page == 1 ? Colors.red : Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(35)),
+                  color: this.page == 1 ? Color(0xFFFA897B) : Colors.white,
+                  
                 ),
               ),
               onTap: () {

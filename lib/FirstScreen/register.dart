@@ -106,14 +106,15 @@ class _RegisterState extends State<Register> {
       child: Container(
         child: Text(
           "Register",
-          style: TextStyle(fontSize: 20.0, color: Colors.white),
+          style: TextStyle(fontSize: 18.0, color: Colors.white),
         ),
-        height: 40,
-        width: 100,
+        height: 45,
+        width: 207,
+        margin: EdgeInsets.only(top:80) ,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.all(Radius.circular(10))),
+            color: Color(0xFFFA897B),
+            borderRadius: BorderRadius.all(Radius.circular(35))),
       ),
     );
 
@@ -215,7 +216,6 @@ class _RegisterState extends State<Register> {
       },
     );
   }
-
   Future<ConfirmRegisterResponse> RegisterConfirmHttp(String code) async {
     ConfirmRegisterRequest bufferConfirmRegisterRequest =
         ConfirmRegisterRequest(phone: phone, code: code);
