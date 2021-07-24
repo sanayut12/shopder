@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopder/ClassObjects/httpObjectGetPostShop.dart';
-import 'package:shopder/MainScreen/post/postboxshop.dart';
-import 'package:shopder/function/dataManagement/dataShopInfo.dart';
-import 'package:shopder/function/http/httpGetPostShop.dart';
 
 class ProfilePostComponent extends StatefulWidget {
   @override

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:auth_buttons/auth_buttons.dart';
-import 'package:shopder/ClassObjects/httpObjectGetShopInfo.dart';
-import 'package:shopder/ClassObjects/httpObjectLogin.dart';
 import 'package:shopder/MainScreen/mainScreen.dart';
 import 'package:shopder/CreateShopInfo/mainScreenRegisterShop.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/dataManagement/dataUserInfo.dart';
+import 'package:shopder/function/http/ClassObjects/httpObjectGetShopInfo.dart';
+import 'package:shopder/function/http/ClassObjects/httpObjectLogin.dart';
 import 'package:shopder/function/http/httpGetShopInfo.dart';
 import '../function/http/httpLogin.dart';
 
-String phone = "0630588299";
+String phone = "0987654321";
 String password = "12345";
 
 class Login extends StatefulWidget {
@@ -24,8 +24,7 @@ class _LoginState extends State<Login> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    initHttpLogin();
-    initHttpGetShopInfo();
+
     _phone = TextEditingController(text: phone);
     _password = TextEditingController(text: password);
   }
@@ -58,41 +57,40 @@ class _LoginState extends State<Login> {
       onTap: () {
         OnpressLogin();
       },
-
       child: Container(
         alignment: Alignment.center,
         height: 45,
         width: 207,
-        margin: EdgeInsets.only(top:30,bottom:20) , 
+        margin: EdgeInsets.only(top: 30, bottom: 20),
         child: Text(
-
           "Login",
-          style: TextStyle(fontSize: 18, color: Colors.white,),
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+          ),
         ),
         decoration: BoxDecoration(
             color: Color(0xFFFA897B),
             borderRadius: BorderRadius.all(Radius.circular(35))),
-            
-            
       ),
     );
 
     Widget FacebookLogin = FacebookAuthButton(
       onPressed: () {},
-      style: AuthButtonStyle.icon, borderRadius: 35, 
+      style: AuthButtonStyle.icon,
+      borderRadius: 35,
     );
     Widget GoogleLogin = GoogleAuthButton(
       onPressed: () {},
       style: AuthButtonStyle.icon,
-      iconStyle: AuthIconStyle.secondary,borderRadius: 35,
+      iconStyle: AuthIconStyle.secondary,
+      borderRadius: 35,
     );
     Widget LoginFrom = Form(
-
         child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-
           child: Column(
             children: [PhoneInput, PasswordInput, ButtonLogin],
           ),
@@ -100,11 +98,16 @@ class _LoginState extends State<Login> {
         Container(
           height: 100,
           child: Column(
-            
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [FacebookLogin,SizedBox(width: 20,), GoogleLogin],
+                children: [
+                  FacebookLogin,
+                  SizedBox(
+                    width: 20,
+                  ),
+                  GoogleLogin
+                ],
               )
             ],
           ),

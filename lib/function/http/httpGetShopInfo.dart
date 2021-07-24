@@ -1,20 +1,15 @@
 import 'package:flutter/cupertino.dart';
-import 'package:shopder/ClassObjects/httpObjectGetShopInfo.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/dataManagement/readjson.dart';
+import 'package:shopder/function/http/ClassObjects/httpObjectGetShopInfo.dart';
 
 var client = http.Client();
-String hostname;
 Map<String, String> Header = {
   'Content-Type': 'application/json; charset=UTF-8',
 };
-
-void initHttpGetShopInfo() async {
-  hostname = await json.decode(await readJson())['http'];
-  // print(hostname);
-}
 
 Future<GetShopInfoResponse> HttpGetShopInfo(
     {@required GetShopInfoRequest bufferGetShopInfoRequest}) async {
@@ -22,7 +17,7 @@ Future<GetShopInfoResponse> HttpGetShopInfo(
     'user_id': bufferGetShopInfoRequest.user_id,
   };
   // print(" ===========$hostname ===============");
-  var url = Uri.parse(hostname + "/shop/getShopInfo");
+  var url = Uri.parse("${HostName()}/shop/getShopInfo");
   var uriResponse = await client.post(
     url,
     body: jsonEncode(body),

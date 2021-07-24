@@ -2,11 +2,11 @@ import 'dart:typed_data';
 import 'dart:math' as math;
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:shopder/ClassObjects/httpObjectGetPostShop.dart';
 import 'package:shopder/MainScreen/post/postboxshop.dart';
 import 'package:shopder/MainScreen/subScreen/profilescreen/profileComponent.dart';
 import 'package:shopder/function/dataManagement/dataPostShop.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
+import 'package:shopder/function/http/ClassObjects/httpObjectGetPostShop.dart';
 import 'package:shopder/function/http/httpGetPostShop.dart';
 
 class ProfileScreen extends StatefulWidget {

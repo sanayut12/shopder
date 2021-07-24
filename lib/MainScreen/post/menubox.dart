@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/dataManagement/dataPostShop.dart';
 
 class MenuBox extends StatefulWidget {
@@ -26,7 +27,7 @@ class _MenuBoxState extends State<MenuBox> {
                 image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
-                        "http://192.168.137.1:3000/image/menuImage/${this.widget.bufferMenuList.path}"))),
+                        "${HostName()}/image/menuImage/${this.widget.bufferMenuList.path}"))),
           ),
           Container(
             height: double.infinity,

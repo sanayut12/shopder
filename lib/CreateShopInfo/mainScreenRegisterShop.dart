@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shopder/ClassObjects/httpObjectCreateShopInfo.dart';
 import 'package:shopder/CreateShopInfo/subScreen/shopAddress.dart';
 import 'package:shopder/CreateShopInfo/subScreen/shopDetail.dart';
 import 'package:shopder/CreateShopInfo/subScreen/shopPostion.dart';
 import 'package:shopder/CreateShopInfo/subScreen/successes.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/dataManagement/dataUserInfo.dart';
+import 'package:shopder/function/http/ClassObjects/httpObjectCreateShopInfo.dart';
 import 'package:shopder/function/http/httpCreateShopInfo.dart';
 
 class MainScreenRegisterShop extends StatefulWidget {
@@ -23,7 +23,6 @@ class _MainScreenRegisterShopState extends State<MainScreenRegisterShop> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    initHttpCreatShopInfo();
     user_id = UserInfoManagement().User_id();
   }
 
@@ -128,25 +127,24 @@ class _MainScreenRegisterShopState extends State<MainScreenRegisterShop> {
     ];
 
     return Scaffold(
-      
       resizeToAvoidBottomInset: false,
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage("assets/image/background/backgroundInfor.png"),
-               )),
-        child: Column(children: [
-          Expanded(child: Text("data"),),
-          Expanded(flex: 8, child: pageBuffer[pageIndex])
-        ],),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage("assets/image/background/backgroundInfor.png"),
+        )),
+        child: Column(
+          children: [
+            Expanded(
+              child: Text("data"),
+            ),
+            Expanded(flex: 8, child: pageBuffer[pageIndex])
+          ],
+        ),
       ),
-      
-
-
-
-
     );
   }
 

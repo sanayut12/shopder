@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:shopder/ClassObjects/httpObjectCreateShopInfo.dart';
 import 'package:shopder/CreateShopInfo/mainScreenRegisterShop.dart';
+import 'package:shopder/function/http/ClassObjects/httpObjectCreateShopInfo.dart';
 
 // double latitude, longtitude;
 var geoLocator = Geolocator();

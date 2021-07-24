@@ -1,19 +1,16 @@
-import 'package:shopder/ClassObjects/httpObjectCreateShopInfo.dart';
 import 'package:shopder/CreateShopInfo/mainScreenRegisterShop.dart';
+import 'package:shopder/function/dataManagement/Readhostname.dart';
+import 'package:shopder/function/http/ClassObjects/httpObjectCreateShopInfo.dart';
 
 import '../dataManagement/readjson.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 var client = http.Client();
-String hostname;
+
 Map<String, String> Header = {
   'Content-Type': 'application/json; charset=UTF-8',
 };
-
-void initHttpCreatShopInfo() async {
-  hostname = await json.decode(await readJson())['http'];
-}
 
 Future<ShopInfoCreateResponse> HttpCreateShopInfo(
     ShopInfoCreateRequest bufferShopInfoCreateRequest) async {
@@ -30,7 +27,7 @@ Future<ShopInfoCreateResponse> HttpCreateShopInfo(
     'latitude': latitude,
     'longtitude': longtitude
   };
-  var url = Uri.parse(hostname + "/shop/registerShop");
+  var url = Uri.parse("${HostName()}/shop/registerShop");
   var uriResponse = await client.post(
     url,
     body: jsonEncode(body),

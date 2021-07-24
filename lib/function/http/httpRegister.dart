@@ -1,20 +1,16 @@
 // import 'package:flutter/material.dart';
 import 'package:shopder/firstScreen/register.dart';
+import 'package:shopder/function/dataManagement/Readhostname.dart';
+import 'package:shopder/function/http/ClassObjects/httpObjectRegister.dart';
 import '../dataManagement/readjson.dart';
-import '../../ClassObjects/httpObjectRegister.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 var client = http.Client();
-String hostname;
 Map<String, String> Header = {
   'Content-Type': 'application/json; charset=UTF-8',
 };
-
-void initHttpRegister() async {
-  hostname = await json.decode(await readJson())['http'];
-}
 
 Future<RegisterResponse> HttpRegister(
     RegisterRequest bufferRegisterRequest) async {
@@ -24,7 +20,7 @@ Future<RegisterResponse> HttpRegister(
     'phone': bufferRegisterRequest.phone,
     'email': bufferRegisterRequest.email
   };
-  var url = Uri.parse(hostname + "/users/register");
+  var url = Uri.parse("${HostName()}/users/register");
   var uriResponse = await client.post(
     url,
     body: jsonEncode(body),

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:shopder/ClassObjects/httpObjectCreateShopInfo.dart';
 import 'package:shopder/function/dataManagement/readJsonAddress.dart';
+import 'package:shopder/function/http/ClassObjects/httpObjectCreateShopInfo.dart';
 
 String address, province, district, sub_district;
 
@@ -309,27 +309,3 @@ class _ShopAddressState extends State<ShopAddress> {
     }
   }
 }
-
-// addressThailand.DistrictValue(provinceKey: _province, districtKey: value, language: 'th')
-
-// Container(
-//       height: double.infinity,
-//       width: double.infinity,
-//       child: Column(
-//         children: [
-//           Text("Shop address Page"),
-//           RaisedButton(
-//             onPressed: () {
-//               this.widget.nextPage();
-//             },
-//             child: Text('next'),
-//           ),
-//           RaisedButton(
-//             onPressed: () {
-//               this.widget.backPage();
-//             },
-//             child: Text('back'),
-//           )
-//         ],
-//       ),
-//     );

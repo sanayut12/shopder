@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
-import 'package:shopder/ClassObjects/httpObjectPostWrite.dart';
 import 'package:shopder/MainScreen/post/component/addMenuItem.dart';
 import 'package:shopder/MainScreen/post/component/listFoodCard.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/dataManagement/dataWriteFoodPost.dart';
 import 'package:shopder/function/dataManagement/dateBox.dart';
+import 'package:shopder/function/http/ClassObjects/httpObjectPostWrite.dart';
 import 'package:shopder/function/http/httpPostWrite.dart';
 
 class PostWrite extends StatefulWidget {
@@ -32,16 +32,11 @@ class _PostWriteState extends State<PostWrite> {
     dateSend = await DateStringTransformInt(dateString: dtNow);
   }
 
-  void initHttp() async {
-    await initHttpPostWrite();
-  }
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     initOrder();
-    initHttp();
   }
 
   @override

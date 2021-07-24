@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopder/FirstScreen/login.dart';
 import 'package:shopder/FirstScreen/register.dart';
+import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/dataManagement/readJsonAddress.dart';
 import 'package:shopder/function/http/httpGetPostShop.dart';
 
@@ -8,45 +9,46 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      // backgroundColor: Colors.grey[200],
-    
-      body: Stack(
-        children: [
-          Container(
-            height: double.infinity,
-            width: double.infinity,
-            
+        resizeToAvoidBottomInset: false,
+        // backgroundColor: Colors.grey[200],
 
-            
-            decoration:BoxDecoration(image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage("assets/image/background/backgroundFirst1.png"),
-            )),
-          ),
-          Container(
-          margin: EdgeInsets.fromLTRB(20, 80, 20, 80,) ,
-          height: double.infinity,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
-              border: Border(),
-              boxShadow: [
-      BoxShadow(
-        color: Colors.grey.withOpacity(0.5),
-        spreadRadius:5,
-        blurRadius: 7,
-        offset: Offset(0, 3), // changes position of shadow
-      ),
-    ],
-              ),
-          child: SubFirst()
-          ),
-        ],
-      )
-    );
+        body: Stack(
+          children: [
+            Container(
+              height: double.infinity,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                fit: BoxFit.cover,
+                image:
+                    AssetImage("assets/image/background/backgroundFirst1.png"),
+              )),
+            ),
+            Container(
+                margin: EdgeInsets.fromLTRB(
+                  20,
+                  80,
+                  20,
+                  80,
+                ),
+                height: double.infinity,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  border: Border(),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: SubFirst()),
+          ],
+        ));
   }
 }
 
@@ -73,8 +75,8 @@ class _SubFirstState extends State<SubFirst> {
   }
 
   void LoadDataFormLocal() async {
+    await initLoadHostName();
     await AddressThailand().init();
-    await initHttpGetPostShop();
   }
 
   @override
@@ -94,7 +96,7 @@ class _SubFirstState extends State<SubFirst> {
               child: Container(
                 width: 141,
                 height: 34,
-                margin:EdgeInsets.only(top:15),
+                margin: EdgeInsets.only(top: 15),
                 child: Text(
                   "Login",
                   style: TextStyle(
@@ -104,7 +106,7 @@ class _SubFirstState extends State<SubFirst> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(35)),
-                  color: this.page == 0 ? Color(0xFFFA897B): Colors.white,
+                  color: this.page == 0 ? Color(0xFFFA897B) : Colors.white,
                 ),
               ),
               onTap: () {
@@ -121,15 +123,12 @@ class _SubFirstState extends State<SubFirst> {
                   "Register",
                   style: TextStyle(
                     color: this.page == 0 ? Color(0xFFFA897B) : Colors.white,
-                    
                   ),
-                  
                 ),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(35)),
                   color: this.page == 1 ? Color(0xFFFA897B) : Colors.white,
-                  
                 ),
               ),
               onTap: () {

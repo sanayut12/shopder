@@ -2,8 +2,9 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:shopder/ClassObjects/httpObjectRegister.dart';
-import '../function/http/httpRegister.dart';
+import 'package:shopder/function/http/ClassObjects/httpObjectRegister.dart';
+import 'package:shopder/function/http/httpRegister.dart';
+// import '../function/http/httpRegister.dart';
 
 String name, password, confirmpassword, phone, email;
 
@@ -28,7 +29,6 @@ class _RegisterState extends State<Register> {
     _confirmpassword = TextEditingController(text: confirmpassword);
     _phone = TextEditingController(text: phone);
     _email = TextEditingController(text: email);
-    initHttpRegister();
   }
 
   void resetInput() {
@@ -110,7 +110,7 @@ class _RegisterState extends State<Register> {
         ),
         height: 45,
         width: 207,
-        margin: EdgeInsets.only(top:80) ,
+        margin: EdgeInsets.only(top: 80),
         alignment: Alignment.center,
         decoration: BoxDecoration(
             color: Color(0xFFFA897B),
@@ -216,6 +216,7 @@ class _RegisterState extends State<Register> {
       },
     );
   }
+
   Future<ConfirmRegisterResponse> RegisterConfirmHttp(String code) async {
     ConfirmRegisterRequest bufferConfirmRegisterRequest =
         ConfirmRegisterRequest(phone: phone, code: code);

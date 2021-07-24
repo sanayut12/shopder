@@ -1,27 +1,22 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:shopder/ClassObjects/httpObjectGetPostShop.dart';
+import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/dataManagement/dataPostShop.dart';
 import 'package:shopder/function/dataManagement/dateBox.dart';
 import 'package:shopder/function/dataManagement/readjson.dart';
+import 'package:shopder/function/http/ClassObjects/httpObjectGetPostShop.dart';
 
 var client = http.Client();
-String hostname;
 Map<String, String> Header = {
   'Content-Type': 'application/json; charset=UTF-8',
 };
-
-void initHttpGetPostShop() async {
-  hostname = await json.decode(await readJson())['http'];
-  // print(hostname);
-}
 
 Future<GetpostShopResponse> HttpGetPostShop(
     {@required GetPostShopRequest bufferGetPostShopRequest}) async {
   var body = bufferGetPostShopRequest.value();
 
-  var url = Uri.parse(hostname + "/shop/getPostShopProfile");
+  var url = Uri.parse("${HostName()}/shop/getPostShopProfile");
   var uriResponse = await client.post(
     url,
     body: jsonEncode(body),
