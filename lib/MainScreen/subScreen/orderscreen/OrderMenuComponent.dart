@@ -22,8 +22,9 @@ class _OrderMenuScreenComponentState extends State<OrderMenuScreenComponent> {
 
   bool clickcheck = false;
 
-  Map<int, InventoryWait> bufferInventoryWait = {};
-  Map<int, InventoryConfirm> bufferInventoryConfirm = {};
+  var bufferInventoryWait = <InventoryWait>[];
+  var bufferInventoryConfirm = <InventoryConfirm>[];
+  var bufferInventoryCancel = <InventoryCancel>[];
   Map<String, UserInventory> bufferUserInventory = {};
 
   @override
@@ -99,13 +100,16 @@ class _OrderMenuScreenComponentState extends State<OrderMenuScreenComponent> {
   }
 
   void GotoMenuConfirmScreen() async {
-    Navigator.of(context).push(MaterialPageRoute(
+    await Navigator.of(context).push(MaterialPageRoute(
         builder: (BuildContext context) => MenuConfirmScreen(
               menu: this.widget.menu,
               bufferInventoryWait: bufferInventoryWait,
               bufferInventoryConfirm: bufferInventoryConfirm,
+              bufferInventoryCancel: bufferInventoryCancel,
               bufferUserInventory: bufferUserInventory,
             )));
+
+    onChangeQuantity();
   }
 
   void GetOrderInventory_local() async {
@@ -116,14 +120,29 @@ class _OrderMenuScreenComponentState extends State<OrderMenuScreenComponent> {
         await HttpGetOrderInventory(
             bufferGetOrderInventoryRequest: bufferGetOrderInventoryRequest);
 
+    bufferInventoryCancel =
+        bufferGetOrderInventoryResponse.bufferInventoryCancel;
     setState(() {
       bufferInventoryWait = bufferGetOrderInventoryResponse.bufferInventoryWait;
       bufferInventoryConfirm =
           bufferGetOrderInventoryResponse.bufferInventoryConfirm;
       bufferUserInventory = bufferGetOrderInventoryResponse.bufferUserInventory;
+    });
+    onChangeQuantity();
+  }
 
-      quantity_wait = bufferInventoryWait.length;
-      quantity_hold = bufferInventoryConfirm.length;
+////////////////////ฟังก์ชันสำหรับ rerender ค่าของ quantity ทั้งหมด   ////////ต้องเรียกใช้เมื่อมีการเพิ่มลงค่าใน bufferinventory ทั้งหมด
+  void onChangeQuantity() {
+    quantity_hold = 0;
+    quantity_wait = 0;
+    quantity_remain = 0;
+    setState(() {
+      bufferInventoryWait.forEach((value) {
+        quantity_wait += value.quantity;
+      });
+      bufferInventoryConfirm.forEach((value) {
+        quantity_hold += value.quantity;
+      });
       quantity_remain = quantity - quantity_hold;
     });
   }

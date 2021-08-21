@@ -5,7 +5,7 @@ import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/dataManagement/dataPostShop.dart';
 
 class PostBox extends StatefulWidget {
-  PostBox({@required PostList bufferPostList});
+  // PostBox({@required PostList bufferPostList});
   @override
   _PostBoxState createState() => _PostBoxState();
 }

@@ -3,7 +3,7 @@ import 'package:shopder/FirstScreen/login.dart';
 import 'package:shopder/FirstScreen/register.dart';
 import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/dataManagement/readJsonAddress.dart';
-import 'package:shopder/function/http/httpGetPostShop.dart';
+import 'package:shopder/function/http/httpGetPostShopInit.dart';
 
 class MainScreen extends StatelessWidget {
   @override

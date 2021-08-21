@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:flutter/cupertino.dart';
 import 'package:shopder/function/dataManagement/dateBox.dart';
 
 PostWriteInfo postWriteInfo;
@@ -20,17 +21,32 @@ class PostWriteInfo {
   final int sendcost;
   final DateBox dateClose;
   final DateBox dateSend;
+  final String how_send, over_order, confirm_order;
 
   PostWriteInfo(
-      {this.detail, this.items, this.sendcost, this.dateClose, this.dateSend});
+      {@required this.detail,
+      @required this.items,
+      @required this.sendcost,
+      @required this.dateClose,
+      @required this.dateSend,
+      @required this.how_send,
+      @required this.over_order,
+      @required this.confirm_order});
 }
 
 class ItemFoodInfo {
   final String name;
   final String type;
-  final Uint8List image;
+  final List<String> listImage;
+  final String detail;
   final int quantity;
   final int cost;
 
-  ItemFoodInfo({this.name, this.type, this.image, this.quantity, this.cost});
+  ItemFoodInfo(
+      {@required this.name,
+      @required this.type,
+      @required this.listImage,
+      @required this.detail,
+      @required this.quantity,
+      @required this.cost});
 }

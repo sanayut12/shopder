@@ -49,6 +49,10 @@ class ShopInfoMamagement {
     shopInfo = bufferShopInfo;
   }
 
+  ShopInfo value() {
+    return shopInfo;
+  }
+
   String GetShop_id() {
     return shopInfo.shop_id;
   }

@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetOrderInventory.dart';
 
-class MenuConfirmUserComponent extends StatefulWidget {
-  final InventoryConfirm inventoryConfirm;
+class MenuCancelUserComponent extends StatefulWidget {
+  final InventoryCancel inventoryCancel;
   final UserInventory userInventory;
   final int index;
-  MenuConfirmUserComponent(
-      {@required this.inventoryConfirm,
+  MenuCancelUserComponent(
+      {@required this.inventoryCancel,
       @required this.userInventory,
       @required this.index});
   @override
-  _MenuConfirmUserComponentState createState() =>
-      _MenuConfirmUserComponentState();
+  _MenuCancelUserComponentState createState() =>
+      _MenuCancelUserComponentState();
 }
 
-class _MenuConfirmUserComponentState extends State<MenuConfirmUserComponent> {
+class _MenuCancelUserComponentState extends State<MenuCancelUserComponent> {
   @override
   Widget build(BuildContext context) {
     Widget UserName = Container(
@@ -29,7 +29,7 @@ class _MenuConfirmUserComponentState extends State<MenuConfirmUserComponent> {
             "${this.widget.userInventory.name}",
             style: TextStyle(fontSize: 20),
           ),
-          Text("${this.widget.inventoryConfirm.date_time.ToString()}",
+          Text("${this.widget.inventoryCancel.date_time.ToString()}",
               style: TextStyle(fontSize: 8))
         ],
       ),
@@ -49,7 +49,7 @@ class _MenuConfirmUserComponentState extends State<MenuConfirmUserComponent> {
 
     Widget QuantityHole = Container(
       child: Text(
-        "${this.widget.inventoryConfirm.quantity}",
+        "${this.widget.inventoryCancel.quantity}",
         style: TextStyle(fontSize: 20),
       ),
     );
@@ -65,11 +65,9 @@ class _MenuConfirmUserComponentState extends State<MenuConfirmUserComponent> {
               margin: EdgeInsets.only(right: 2),
               alignment: Alignment.center,
               child: Text(
-                "ยืนยันแล้ว",
-                style: TextStyle(color: Colors.green[400]),
+                "ยกเลิกแล้ว",
+                style: TextStyle(color: Colors.red),
               ),
-              // decoration: BoxDecoration(
-              //     color: Colors.grey, borderRadius: BorderRadius.circular(5)),
             ),
           )
         ],
@@ -79,7 +77,7 @@ class _MenuConfirmUserComponentState extends State<MenuConfirmUserComponent> {
       height: 50,
       width: double.infinity,
       margin: EdgeInsets.all(5),
-      color: Colors.blue[100],
+      color: Colors.grey[100],
       padding: EdgeInsets.all(2),
       child: Row(
         children: [

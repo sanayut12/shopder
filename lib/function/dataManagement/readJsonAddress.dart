@@ -9,6 +9,7 @@ class AddressThailand {
     final String response = await rootBundle.loadString('assets/thailand.json');
     Map _datajson = await json.decode(response);
     datajson = _datajson;
+    print("read address thialand");
   }
 
   Future<List<String>> ProvinceKey() async {

@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
-import 'package:shopder/MainScreen/post/component/addMenuItem.dart';
-import 'package:shopder/MainScreen/post/component/listFoodCard.dart';
+import 'package:shopder/MainScreen/post/component/postscreen/HowSendComponent.dart';
+import 'package:shopder/MainScreen/post/component/postscreen/PostSetting.dart';
+import 'package:shopder/MainScreen/post/addMenuItemScreen.dart';
+import 'package:shopder/MainScreen/post/component/postscreen/MenuListDisplayComponent.dart';
+import 'package:shopder/MainScreen/post/component/postscreen/listFoodCardComponent.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/dataManagement/dataWriteFoodPost.dart';
 import 'package:shopder/function/dataManagement/dateBox.dart';
@@ -24,8 +27,13 @@ class _PostWriteState extends State<PostWrite> {
   // var  = <ItemFoodInfo>[];
   List<ItemFoodInfo> bufferItemFoodInfo = [];
 
-  List<FoodCard> listFoodCard = [];
   // Map<String, String> listsendtype = {"1": "ส่งถึงที่", "2": "รับที่ร้าน"};
+  String how_send =
+      "1"; //วิธีการรับสินค้า 1 = ส่งถึงที่ , 2 = รับที่ร้าน , 3 ทั้งสอง   , 0 ต้องเลือกอย่างใดอย่างหนึ่ง
+  String over_order =
+      "1"; // 1 ไม่สั่งเกินที่ระบุ  2 สั่งเกินได้   ระบุค่า / ไม่ระบุ สั่งได้ไม่จำกัด
+  String confirm_order =
+      "1"; //วิธีการยืนยันออเดอร์   1 อัตโนมัติ , 2 ยืนยันเอง ,3 ยันเฉพาะที่เกิน
   void initOrder() async {
     String dtNow = DateTime.now().toString();
     dateClose = await DateStringTransformInt(dateString: dtNow);
@@ -41,30 +49,7 @@ class _PostWriteState extends State<PostWrite> {
 
   @override
   Widget build(BuildContext context) {
-    // List<DropdownMenuItem<String>> ItemSendType =
-    //     <String>["1", "2"].map<DropdownMenuItem<String>>((String value) {
-    //   return DropdownMenuItem(value: value, child: Text(listsendtype[value]));
-    // }).toList();
-
-    // Widget ListSendType = DropdownButton(
-    //   value: sendtype,
-    //   items: ItemSendType,
-    //   hint: Text("เลือกประเภทการจัดส่ง"),
-    //   onChanged: (String value) {
-    //     setState(() {
-    //       sendtype = value;
-    //     });
-    //   },
-    // );
-
-    Widget ListFoodCard = Container(
-      height: listFoodCard.length == 0 ? 0 : 100,
-      width: double.infinity,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: listFoodCard,
-      ),
-    );
+    //////////////////////////////////////////cccc//////////////////////////////////
 
     Widget DescriptionInput = TextField(
       onChanged: (e) {
@@ -131,10 +116,12 @@ class _PostWriteState extends State<PostWrite> {
             context,
             MaterialPageRoute(
                 builder: (BuildContext context) => AddMenuItemScreen()));
+        // print("${item.listImage.length} ");
 
         if (item != null) {
-          bufferItemFoodInfo.add(item);
-          await UpdateFoodCard();
+          setState(() {
+            bufferItemFoodInfo.add(item);
+          });
         }
       },
       child: Container(
@@ -156,6 +143,7 @@ class _PostWriteState extends State<PostWrite> {
       },
     );
 
+    //////////////////////////dddd//////////////รวมหน้า///////////////////////////
     Widget PostForm = Container(
       height: double.infinity,
       width: double.infinity,
@@ -166,14 +154,33 @@ class _PostWriteState extends State<PostWrite> {
           child: ListView(
         children: [
           DescriptionInput,
-          ListFoodCard,
+          // ListFoodCard,  ///แสดงรายการอาการ
+          MenuListDisplayComponent(
+            bufferItemFoodInfo: bufferItemFoodInfo,
+          ),
           AddMenuItem,
           Text("ค่าจัดส่ง"),
           CostSend,
           Text("วันที่ปิดการจองสินค้า"),
           DatePickerCloseOrder,
           Text("วันที่ส่งสินค้าสินค้า"),
-          DatePickerSendOrder
+          DatePickerSendOrder,
+          HowSendComponent(
+            callback: setHowSend,
+          ),
+          PostSetting(
+            callBack: setPostsetting,
+          ),
+          // GestureDetector(
+          //   onTap: () {
+          //     print("${how_send} ${over_order} ${confirm_order}");
+          //   },
+          //   child: Container(
+          //     height: 100,
+          //     width: 100,
+          //     color: Colors.red,
+          //   ),
+          // )
         ],
       )),
     );
@@ -200,21 +207,35 @@ class _PostWriteState extends State<PostWrite> {
       ),
       body: PostForm,
       backgroundColor: Colors.grey[100],
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
     );
   }
 
-  Future<void> UpdateFoodCard() {
-    listFoodCard = [];
-    int index = 0;
+  ///////////////////////////////////////ffff////////////////////////ส่วนของฟังก์ชั่น/////////////////////////////////////////////////
+  Future setHowSend(String message) {
     setState(() {
-      bufferItemFoodInfo.forEach((element) {
-        print(index);
-        listFoodCard.add(FoodCard(index: index, itemFoodInfo: element));
-        index += 1;
-      });
+      how_send = message;
     });
   }
+
+  Future setPostsetting(String _over_order, String confirmOrder) {
+    setState(() {
+      over_order = _over_order;
+      confirm_order = confirmOrder;
+    });
+  }
+
+  // Future<void> UpdateFoodCard() {
+  //   listFoodCard = [];
+  //   int index = 0;
+  //   setState(() {
+  //     bufferItemFoodInfo.forEach((element) {
+  //       print(index);
+  //       listFoodCard.add(FoodCard(index: index, itemFoodInfo: element));
+  //       index += 1;
+  //     });
+  //   });
+  // }
 
   Future<void> OnPost() async {
     PostWriteInfo bufferPostWriteInfo = PostWriteInfo(
@@ -222,7 +243,10 @@ class _PostWriteState extends State<PostWrite> {
         items: bufferItemFoodInfo,
         sendcost: sendCost,
         dateClose: dateClose,
-        dateSend: dateSend);
+        dateSend: dateSend,
+        how_send: how_send,
+        over_order: over_order,
+        confirm_order: confirm_order);
 
     PostWriteRequest bufferPostWriteRequest = PostWriteRequest(
         postWriteInfo: bufferPostWriteInfo,

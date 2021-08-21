@@ -12,7 +12,8 @@ class PostWriteRequest {
       items["$index"] = {
         "name": element.name,
         "type": element.type,
-        "image": element.image,
+        "image": element.listImage,
+        "detail": element.detail,
         "quantity": element.quantity,
         "cost": element.cost
       };
@@ -25,6 +26,9 @@ class PostWriteRequest {
       "detail": postWriteInfo.detail,
       "items": items,
       "sendcost": postWriteInfo.sendcost,
+      "how_send": postWriteInfo.how_send,
+      "over_order": postWriteInfo.over_order,
+      "confirm_order": postWriteInfo.confirm_order,
       "dateClose": {
         "year": postWriteInfo.dateClose.year,
         "month": postWriteInfo.dateClose.month,

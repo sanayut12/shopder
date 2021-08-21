@@ -27,11 +27,13 @@ Future<GetOrderInventoryResponse> HttpGetOrderInventory(
   //กระจายดาต้า
   Map inventory_wait = res['data']['inventory_wait'];
   Map inventory_confirm = res['data']['inventory_confirm'];
+  Map inventory_cancel = res['data']['inventory_cancel'];
   Map user_inventory = res['data']['users_inventory'];
   String code = res['code'];
   //ส่วนในการเก็บข้อมูลที่แปลงเสร็จ
-  Map<int, InventoryWait> bufferInventoryWait = {};
-  Map<int, InventoryConfirm> bufferInventoryConfirm = {};
+  var bufferInventoryWait = <InventoryWait>[];
+  var bufferInventoryConfirm = <InventoryConfirm>[];
+  var bufferInventoryCancel = <InventoryCancel>[];
   Map<String, UserInventory> bufferUserInventory = {};
 
   inventory_wait.forEach((key, value) {
@@ -53,7 +55,8 @@ Future<GetOrderInventoryResponse> HttpGetOrderInventory(
         comment: value['comment'],
         date_time: _date_time,
         status: value['status']);
-    bufferInventoryWait[int.parse(key)] = inventoryWait;
+    bufferInventoryWait.add(inventoryWait);
+    // bufferInventoryWait[int.parse(key)] = ;
   });
   inventory_confirm.forEach((key, value) {
     // print("${key}");
@@ -74,7 +77,30 @@ Future<GetOrderInventoryResponse> HttpGetOrderInventory(
         comment: value['comment'],
         date_time: _date_time,
         status: value['status']);
-    bufferInventoryConfirm[int.parse(key)] = inventoryConfirm;
+    bufferInventoryConfirm.add(inventoryConfirm);
+    // bufferInventoryConfirm[int.parse(key)] = ;
+  });
+  inventory_cancel.forEach((key, value) {
+    // print("${key}");
+    Map date_time = value['date_time'];
+    DateBox _date_time = DateBox(
+        year: date_time['year'],
+        month: date_time['month'],
+        day: date_time['day'],
+        hour: date_time['hour'],
+        min: date_time['min'],
+        sec: date_time['sec']);
+    InventoryCancel inventoryCancel = InventoryCancel(
+        item_id: value['item_id'],
+        bill_id: value['bill_id'],
+        inventor_id: value['inventor_id'],
+        user_id: value['user_id'],
+        quantity: value['quantity'],
+        comment: value['comment'],
+        date_time: _date_time,
+        status: value['status']);
+    bufferInventoryCancel.add(inventoryCancel);
+    // bufferInventoryConfirm[int.parse(key)] = ;
   });
   user_inventory.forEach((key, value) {
     // print("${key}");
@@ -87,6 +113,7 @@ Future<GetOrderInventoryResponse> HttpGetOrderInventory(
       GetOrderInventoryResponse(
           bufferInventoryWait: bufferInventoryWait,
           bufferInventoryConfirm: bufferInventoryConfirm,
+          bufferInventoryCancel: bufferInventoryCancel,
           bufferUserInventory: bufferUserInventory,
           code: code);
   return bufferGetOrderInventoryResponse;

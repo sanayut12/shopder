@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:shopder/MainScreen/post/component/addmenu/imageMenuDisplayComponent.dart';
 import 'package:shopder/function/dataManagement/dataWriteFoodPost.dart';
 
 class AddMenuItemScreen extends StatefulWidget {
@@ -15,9 +16,8 @@ class _AddMenuItemScreenState extends State<AddMenuItemScreen> {
   String name;
   String type;
   int cost, quantity;
-  Uint8List image;
-
-  final picker = ImagePicker();
+  List<String> listImage = [];
+  String detail;
 
   Map<String, String> foodtype = {
     "1": "อาหารอีสาน",
@@ -68,6 +68,7 @@ class _AddMenuItemScreenState extends State<AddMenuItemScreen> {
         children: [CancelButton, ConfirmButton],
       ),
     );
+
     List<DropdownMenuItem<String>> ItemFoodType = <String>["1", "2", "3", "4"]
         .map<DropdownMenuItem<String>>((String value) {
       return DropdownMenuItem(value: value, child: Text(foodtype[value]));
@@ -90,6 +91,19 @@ class _AddMenuItemScreenState extends State<AddMenuItemScreen> {
         });
       },
     );
+
+    Widget InputDetail = TextField(
+      onChanged: (e) {
+        setState(() {
+          detail = e;
+        });
+      },
+      decoration: InputDecoration(
+          border: InputBorder.none,
+          filled: true,
+          labelText: "เพิ่มรายละเอียดของสินค้า"),
+      maxLines: 5,
+    );
     Widget InputCost = TextFormField(
       onChanged: (e) {
         setState(() {
@@ -104,73 +118,64 @@ class _AddMenuItemScreenState extends State<AddMenuItemScreen> {
         });
       },
     );
-
-    Widget ImageFood = GestureDetector(
+    Widget ButtonAddMenuComponent = GestureDetector(
       onTap: () {
         UploadImage();
       },
       child: Container(
-        margin: EdgeInsets.only(bottom: 10),
-        height: 150,
+        height: 50,
         width: double.infinity,
-        child: image != null
-            ? Image.memory(
-                image,
-                fit: BoxFit.cover,
-              )
-            : Container(
-                height: double.infinity,
-                width: double.infinity,
-                alignment: Alignment.center,
-                color: Colors.amber,
-                child: Text("เพิ่มรูปภาพอาหาร"),
-              ),
+        alignment: Alignment.center,
+        color: Colors.red,
+        child: Text("เพิ่มรูปอาหาร"),
       ),
     );
 
     Widget AddFoodForm = Container(
-      height: double.infinity,
-      width: double.infinity,
-      margin: EdgeInsets.only(bottom: 10, top: 10, left: 10, right: 10),
-      padding: EdgeInsets.only(top: 10, left: 10, right: 10),
-      color: Colors.white,
-      child: Form(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ImageFood,
-          Text("ใส่ชื่อสินค้า"),
-          InputName,
-          InputType,
-          Text("ใส่จำนวนสินค้า"),
-          InputQuantity,
-          Text("ใส่ราคาสินค้า"),
-          InputCost,
-          ChoiceBar
-        ],
-      )),
-    );
+        height: double.infinity,
+        width: double.infinity,
+        margin: EdgeInsets.only(bottom: 10, top: 10, left: 10, right: 10),
+        padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+        color: Colors.white,
+        child: ListView(
+          children: [
+            ImageMenuDisplayComponent(
+              listImage: listImage,
+            ),
+            ButtonAddMenuComponent,
+            Text("ใส่ชื่อสินค้า"),
+            InputName,
+            InputDetail,
+            InputType,
+            Text("ใส่จำนวนสินค้า"),
+            InputQuantity,
+            Text("ใส่ราคาสินค้า"),
+            InputCost,
+            ChoiceBar,
+          ],
+        ));
     return Scaffold(
       appBar: AppBar(
         title: Text("ใส่รายละเอียดสินค้า"),
       ),
       body: AddFoodForm,
       backgroundColor: Colors.grey[100],
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
     );
   }
 
   Future<void> UploadImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
-    final bytes = File(pickedFile.path).readAsBytes();
-    String base64 = base64Encode(await bytes);
-    Uint8List _binary = base64Decode(base64);
+    ImagePicker picker = ImagePicker();
+    PickedFile pickedFile = await picker.getImage(source: ImageSource.gallery);
+    Uint8List bytes = File(pickedFile.path).readAsBytesSync();
+    String base64 = base64Encode(bytes);
+    // Uint8List _binary = base64Decode(base64);
 
     setState(() {
       if (pickedFile != null) {
         setState(() {
           // image_profile = base64;
-          image = _binary;
+          listImage.add(base64);
         });
       } else {
         print('No image selected.');
@@ -180,7 +185,12 @@ class _AddMenuItemScreenState extends State<AddMenuItemScreen> {
 
   Future PushItemFoodInfo() async {
     ItemFoodInfo item = ItemFoodInfo(
-        name: name, type: type, image: image, quantity: quantity, cost: cost);
+        name: name,
+        type: type,
+        listImage: listImage,
+        quantity: quantity,
+        detail: detail,
+        cost: cost);
 
     Navigator.of(context).pop(item);
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:shopder/MainScreen/component/bottomBar.dart';
+import 'package:shopder/MainScreen/subScreen/billScreen.dart';
 import 'package:shopder/MainScreen/subScreen/feedScreen.dart';
 import 'package:shopder/MainScreen/subScreen/notificationScreen.dart';
 import 'package:shopder/MainScreen/subScreen/orderScreen.dart';
@@ -29,6 +30,7 @@ class _MainScreenState extends State<MainScreen> {
     List<Widget> ListSwapScreen = [
       FeedScreen(),
       OrderScreen(),
+      BillScreen(),
       NotificationScreen(),
       ProfileScreen()
     ];

@@ -67,8 +67,8 @@ class _BottomBarState extends State<BottomBar> {
                   width: double.infinity,
                   child: Icon(
                     this.widget.bottombarIndex == 2
-                        ? Icons.notifications_rounded
-                        : Icons.notifications_outlined,
+                        ? Icons.assignment_rounded
+                        : Icons.assignment_outlined,
                     size: 40,
                     color: this.widget.bottombarIndex == 2
                         ? Colors.red
@@ -87,10 +87,30 @@ class _BottomBarState extends State<BottomBar> {
                   width: double.infinity,
                   child: Icon(
                     this.widget.bottombarIndex == 3
+                        ? Icons.notifications_rounded
+                        : Icons.notifications_outlined,
+                    size: 40,
+                    color: this.widget.bottombarIndex == 3
+                        ? Colors.red
+                        : Colors.black,
+                  ),
+                ),
+              )),
+          Expanded(
+              flex: 1,
+              child: GestureDetector(
+                onTap: () {
+                  this.widget.changeScreen(bottombarindex: 4);
+                },
+                child: Container(
+                  height: double.infinity,
+                  width: double.infinity,
+                  child: Icon(
+                    this.widget.bottombarIndex == 4
                         ? Icons.person_sharp
                         : Icons.person_outline,
                     size: 40,
-                    color: this.widget.bottombarIndex == 3
+                    color: this.widget.bottombarIndex == 4
                         ? Colors.red
                         : Colors.black,
                   ),
