@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shopder/CreateShopInfo/subScreen/shopAddress.dart';
-import 'package:shopder/CreateShopInfo/subScreen/shopDetail.dart';
-import 'package:shopder/CreateShopInfo/subScreen/shopPostion.dart';
-import 'package:shopder/CreateShopInfo/subScreen/successes.dart';
+import 'package:shopder/CreateShopInfo/subScreenMainScreenRegisterShop/registerSuccessSubScreen.dart';
+import 'package:shopder/CreateShopInfo/subScreenMainScreenRegisterShop/shopAddressSubScreen.dart';
+import 'package:shopder/CreateShopInfo/subScreenMainScreenRegisterShop/shopDetailSubScreen.dart';
+import 'package:shopder/CreateShopInfo/subScreenMainScreenRegisterShop/shopPostionSubScreen.dart';
+
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
-import 'package:shopder/function/dataManagement/dataUserInfo.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectCreateShopInfo.dart';
 import 'package:shopder/function/http/httpCreateShopInfo.dart';
 
@@ -13,98 +13,17 @@ class MainScreenRegisterShop extends StatefulWidget {
   _MainScreenRegisterShopState createState() => _MainScreenRegisterShopState();
 }
 
-String user_id, name, image, type, address, sub_district, district, province;
-double latitude, longtitude;
-
 class _MainScreenRegisterShopState extends State<MainScreenRegisterShop> {
   int pageIndex = 0;
+  //##############ตัวแปรที่ใช้เก็บข้อมูลร้านค้า#################
+  DataShopDetail dataShopDetail;
+  DataShopAddress dataShopAddress;
+  DataShopPosition dataShopPosition;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    user_id = UserInfoManagement().User_id();
-  }
-
-  Function NextPage() {
-    setState(() {
-      pageIndex += 1;
-    });
-  }
-
-  Function BackPage() {
-    setState(() {
-      pageIndex -= 1;
-    });
-  }
-
-  Function Finsh() {
-    OnShopRegister();
-  }
-
-  Function UpdateShopDetail({DataShopDetail bufferDataShopDetail}) {
-    setState(() {
-      name = bufferDataShopDetail.name;
-      type = bufferDataShopDetail.type;
-      image = bufferDataShopDetail.image;
-    });
-  }
-
-  Function UpdateShopAddress({DataShopAddress bufferDataShopAddress}) {
-    setState(() {
-      address = bufferDataShopAddress.address;
-      province = bufferDataShopAddress.province;
-      district = bufferDataShopAddress.district;
-      sub_district = bufferDataShopAddress.sub_district;
-    });
-    // print("$address $province $district ");
-  }
-
-  Function UpdateShopPosition({DataShopPosition bufferDataShopPosition}) {
-    setState(() {
-      latitude = bufferDataShopPosition.latitude;
-      longtitude = bufferDataShopPosition.longtitude;
-    });
-  }
-
-  Future<void> OnShopRegister() async {
-    ShopInfoCreateRequest bufferShopInfoCreateRequest = ShopInfoCreateRequest(
-        user_id: user_id,
-        name: name,
-        type: type,
-        image: image,
-        address: address,
-        sub_district: sub_district,
-        district: district,
-        province: province,
-        latitude: latitude,
-        longtitude: longtitude);
-    ShopInfoCreateResponse bufferShopInfoCreateResponse =
-        await HttpCreateShopInfo(bufferShopInfoCreateRequest);
-    // print(bufferShopInfoCreateResponse.code);
-    if (bufferShopInfoCreateResponse.code == 20200) {
-      ShopInfo bufferShopInfo = await ShopInfo(
-        shop_id:
-            bufferShopInfoCreateResponse.shopInfoCreateDataResponse.shop_id,
-        name: name,
-        type: type,
-        image: image,
-        address: address,
-        sub_district: sub_district,
-        district: district,
-        province: province,
-        latitude: latitude,
-        longtitude: longtitude,
-      );
-      ShopInfoMamagement shopInfoMamagement = ShopInfoMamagement();
-      await shopInfoMamagement.InsertShopInfoToStorage(
-          bufferShopInfo: bufferShopInfo);
-      await setState(() {
-        pageIndex += 1;
-      });
-    } else {
-      AlertLoginFail();
-    }
   }
 
   // Future<>
@@ -112,40 +31,74 @@ class _MainScreenRegisterShopState extends State<MainScreenRegisterShop> {
   @override
   Widget build(BuildContext context) {
     List<Widget> pageBuffer = [
-      ShopDetail(nextPage: NextPage, updateShopDetail: UpdateShopDetail),
-      ShopAddress(
-        nextPage: NextPage,
-        backPage: BackPage,
-        updateShopAddress: UpdateShopAddress,
+      ShopDetailSubScreen(
+          dataShopDetail: dataShopDetail, setdataShopDetail: setdataShopDetail),
+      ShopAddressSubScreen(
+        dataShopAddress: dataShopAddress,
+        setdataShopAddress: setdataShopAddress,
       ),
-      ShopPosition(
-        finishPage: Finsh,
-        backPage: BackPage,
-        updateShopPosition: UpdateShopPosition,
-      ),
-      RegisterSuccesses(),
+      ShopPositionSubScreen(
+          dataShopPosition: dataShopPosition,
+          setdataShopPosition: setdataShopPosition),
+      RegisterSuccessSubScreen(
+          dataShopDetail: dataShopDetail,
+          dataShopAddress: dataShopAddress,
+          dataShopPosition: dataShopPosition)
+      // ShopAddress(
+      //   nextPage: NextPage,
+      //   backPage: BackPage,
+      //   updateShopAddress: UpdateShopAddress,
+      // ),
+      // ShopPosition(
+      //   finishPage: Finsh,
+      //   backPage: BackPage,
+      //   updateShopPosition: UpdateShopPosition,
+      // ),
+      // RegisterSuccesses(),
     ];
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
             image: DecorationImage(
-          fit: BoxFit.cover,
-          image: AssetImage("assets/image/background/backgroundInfor.png"),
-        )),
-        child: Column(
-          children: [
-            Expanded(
-              child: Text("data"),
+              fit: BoxFit.cover,
+              image: AssetImage("assets/image/background/backgroundInfor.png"),
             ),
-            Expanded(flex: 8, child: pageBuffer[pageIndex])
-          ],
-        ),
-      ),
+          ),
+          child: pageBuffer[pageIndex]),
     );
+  }
+
+  Future<void> setdataShopDetail(DataShopDetail _dataShopDetail) {
+    setState(() {
+      dataShopDetail = _dataShopDetail;
+      pageIndex += 1;
+    });
+  }
+
+  Future<void> setdataShopAddress(
+      DataShopAddress _dataShopAddress, int _index) {
+    setState(() {
+      dataShopAddress = _dataShopAddress;
+      pageIndex += _index;
+    });
+  }
+
+  Future<void> setdataShopPosition(
+      DataShopPosition _dataShopPosition, int _index) {
+    setState(() {
+      dataShopPosition = _dataShopPosition;
+      pageIndex += _index;
+    });
+  }
+
+  Future<void> backPage() {
+    setState(() {
+      pageIndex -= 1;
+    });
   }
 
   Future<void> AlertLoginFail() {

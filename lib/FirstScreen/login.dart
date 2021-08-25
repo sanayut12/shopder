@@ -7,9 +7,10 @@ import 'package:shopder/function/dataManagement/dataUserInfo.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetShopInfo.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectLogin.dart';
 import 'package:shopder/function/http/httpGetShopInfo.dart';
+import 'package:shopder/module/AlertCard.dart';
 import '../function/http/httpLogin.dart';
 
-String phone = "0987654321";
+String phone = "0911111111";
 String password = "12345";
 
 class Login extends StatefulWidget {
@@ -76,7 +77,14 @@ class _LoginState extends State<Login> {
     );
 
     Widget FacebookLogin = FacebookAuthButton(
-      onPressed: () {},
+      onPressed: () {
+        print("object");
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertCard();
+            });
+      },
       style: AuthButtonStyle.icon,
       borderRadius: 35,
     );

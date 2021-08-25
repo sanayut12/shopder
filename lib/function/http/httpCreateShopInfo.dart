@@ -14,19 +14,7 @@ Map<String, String> Header = {
 
 Future<ShopInfoCreateResponse> HttpCreateShopInfo(
     ShopInfoCreateRequest bufferShopInfoCreateRequest) async {
-  // print("${bufferShopInfoCreateRequest.toString()}");
-  var body = {
-    'user_id': bufferShopInfoCreateRequest.user_id,
-    'name': name,
-    'image': image,
-    'type': type,
-    'address': address,
-    'sub_district': sub_district,
-    'district': district,
-    'province': province,
-    'latitude': latitude,
-    'longtitude': longtitude
-  };
+  var body = bufferShopInfoCreateRequest.value();
   var url = Uri.parse("${HostName()}/shop/registerShop");
   var uriResponse = await client.post(
     url,
@@ -35,10 +23,10 @@ Future<ShopInfoCreateResponse> HttpCreateShopInfo(
   );
   // print(uriResponse.body);
   var res = jsonDecode(uriResponse.body);
-  ShopInfoCreateDataResponse shopInfoCreateDataResponse =
-      ShopInfoCreateDataResponse(shop_id: res['shopInfo']['shop_id']);
-  ShopInfoCreateResponse data = ShopInfoCreateResponse(
-      shopInfoCreateDataResponse: shopInfoCreateDataResponse,
-      code: res['code']);
-  return data;
+  // ShopInfoCreateDataResponse shopInfoCreateDataResponse =
+  //     ShopInfoCreateDataResponse(shop_id: res['shopInfo']['shop_id']);
+  // ShopInfoCreateResponse data = ShopInfoCreateResponse(
+  //     shopInfoCreateDataResponse: shopInfoCreateDataResponse,
+  //     code: res['code']);
+  // return data;
 }

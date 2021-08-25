@@ -21,7 +21,7 @@ class _PostBoxState extends State<PostBox> {
             color: Colors.grey[500],
             borderRadius: BorderRadius.all(Radius.circular(10))),
         child: Image.network(
-          '${HostName()}/image/menuImage/0CEDE80402EA562BF3B9736716E5CA8D.jpg',
+          '${HostName()}/image/menuImage/0AD3246B86B391E52B9FA3DF0163E8CB.jpg',
           fit: BoxFit.cover,
         ));
   }

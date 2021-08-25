@@ -85,8 +85,8 @@ class ShopInfoMamagement {
     return shopInfo.province;
   }
 
-  Position GetPosition() {
-    return Position(
+  PositionAddress GetPosition() {
+    return PositionAddress(
         latitude: shopInfo.latitude, longtitude: shopInfo.longtitude);
   }
 
@@ -95,10 +95,10 @@ class ShopInfoMamagement {
   }
 }
 
-class Position {
+class PositionAddress {
   final double latitude;
   final double longtitude;
-  Position({@required this.latitude, @required this.longtitude});
+  PositionAddress({@required this.latitude, @required this.longtitude});
 }
 
 class ShopInfo {
@@ -124,4 +124,39 @@ class ShopInfo {
       this.province,
       this.latitude,
       this.longtitude});
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+class DataShopDetail {
+  final String name, type, image;
+  DataShopDetail(
+      {@required this.name, @required this.type, @required this.image});
+}
+
+class DataShopAddress {
+  final String address,
+      no,
+      moo,
+      baan,
+      road,
+      soy,
+      sub_district,
+      district,
+      province;
+  DataShopAddress({
+    @required this.address,
+    @required this.no,
+    @required this.moo,
+    @required this.baan,
+    @required this.road,
+    @required this.soy,
+    @required this.sub_district,
+    @required this.district,
+    @required this.province,
+  });
+}
+
+class DataShopPosition {
+  final double latitude, longtitude;
+  DataShopPosition({@required this.latitude, @required this.longtitude});
 }
