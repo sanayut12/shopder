@@ -21,12 +21,6 @@ class _ShopPositionSubScreenState extends State<ShopPositionSubScreen> {
   double longtitude;
 
   void locatePosition() async {
-    // latitude = null;
-    // longtitude = null;
-    // var geoLocator = Geolocator();
-    // var position = await Geolocator.getCurrentPosition(
-    //     forceAndroidLocationManager: true,
-    //     desiredAccuracy: LocationAccuracy.best);
     Location location = new Location();
 
     bool _serviceEnabled;

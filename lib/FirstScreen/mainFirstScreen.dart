@@ -5,7 +5,7 @@ import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/dataManagement/readJsonAddress.dart';
 import 'package:shopder/function/http/httpGetPostShopInit.dart';
 
-class MainScreen extends StatelessWidget {
+class MainFirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
