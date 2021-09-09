@@ -21,7 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    httpGetPostShop();
+    // httpGetPostShop();
   }
 
   @override
@@ -29,25 +29,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Container(
       height: double.infinity,
       width: double.infinity,
-      child: ListView.builder(
-          itemCount: listPost.length,
-          itemBuilder: (BuildContext context, int index) {
-            return PostBoxProfileComponent(post_id: listPost[index]);
-          }),
+      child: Column(
+        children: [Text("${ShopInfoMamagement().GetName()}")],
+      ),
     );
+    // return Container(
+    //   height: double.infinity,
+    //   width: double.infinity,
+    //   child: ListView.builder(
+    //       itemCount: listPost.length,
+    //       itemBuilder: (BuildContext context, int index) {
+    //         return PostBoxProfileComponent(post_id: listPost[index]);
+    //       }),
+    // );
   }
 
-  Future<void> httpGetPostShop() async {
-    String user_id = await ShopInfoMamagement().GetShop_id();
-    GetPostShopInitRequest bufferGetPostShopRequest =
-        GetPostShopInitRequest(user_id: user_id);
-    GetpostShopInitResponse bufferGetpostShopResponse =
-        await httpGetPostShopInit(
-            bufferGetPostShopInitRequest: bufferGetPostShopRequest);
-    setState(() {
-      listPost = bufferGetpostShopResponse.bufferListPost;
-    });
-    // print(listPost);
-    // bufferGetpostShopResponse.bufferListPost;
-  }
+  // Future<void> httpGetPostShop() async {
+  //   String user_id = await ShopInfoMamagement().GetShop_id();
+  //   GetPostShopInitRequest bufferGetPostShopRequest =
+  //       GetPostShopInitRequest(user_id: user_id);
+  //   GetpostShopInitResponse bufferGetpostShopResponse =
+  //       await httpGetPostShopInit(
+  //           bufferGetPostShopInitRequest: bufferGetPostShopRequest);
+  //   setState(() {
+  //     listPost = bufferGetpostShopResponse.bufferListPost;
+  //   });
+  //   // print(listPost);
+  //   // bufferGetpostShopResponse.bufferListPost;
+  // }
 }
