@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
 import 'package:shopder/function/dataManagement/storageFunction.dart';
@@ -25,15 +26,16 @@ class UserInfoManagement {
   //ทำการนำข้อมมูลจาก local storage ชื่อ 'userInfo' แล้วไป update ที่ตัวแปร userInfo ของ class นี้
   Future<void> init() async {
     String dataString = await ReadDataInStorage(key: 'userInfo');
-    var dataJson = await json.decode(dataString);
+    print(dataString);
+    // var dataJson = await json.decode(dataString);
 
-    UserInfo bufferUserInfo = UserInfo(
-        user_id: dataJson['user_id'],
-        name: dataJson['name'],
-        phone: dataJson['phone'],
-        email: dataJson['email'],
-        image: dataJson['image']);
-    userInfo = bufferUserInfo;
+    // UserInfo bufferUserInfo = UserInfo(
+    //     user_id: dataJson['user_id'],
+    //     name: dataJson['name'],
+    //     phone: dataJson['phone'],
+    //     email: dataJson['email'],
+    //     image: dataJson['image']);
+    // userInfo = bufferUserInfo;
   }
 
   String User_id() {
@@ -52,19 +54,24 @@ class UserInfoManagement {
     return userInfo.email;
   }
 
-  String Image() {
+  Uint8List Image() {
     return userInfo.image;
   }
 }
 
 class UserInfo {
   final String user_id;
-  final String name;
-  final String phone;
-  final String email;
-  final String image;
+  String name;
+  String phone;
+  String email;
+  Uint8List image;
 
-  UserInfo({this.user_id, this.name, this.phone, this.email, this.image});
+  UserInfo(
+      {@required this.user_id,
+      @required this.name,
+      @required this.phone,
+      @required this.email,
+      @required this.image});
 }
 
 // class DataUserInfo(){

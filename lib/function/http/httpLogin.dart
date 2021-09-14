@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectLogin.dart';
 
@@ -22,12 +24,18 @@ Future<LoginResponse> HttpLogin(LoginRequest bufferLoginRequest) async {
     headers: Header,
   );
   var res = jsonDecode(uriResponse.body);
+  // print(res);
+  Uint8List image;
+  print(res['userInfo']['image'] == null);
+  if (res['userInfo']['image'] != null) {
+    image = base64Decode(res['userInfo']['image']);
+  }
   DataUserInfo userInfo = DataUserInfo(
       user_id: res['userInfo']['user_id'],
       name: res['userInfo']['name'],
       phone: res['userInfo']['phone'],
       email: res['userInfo']['email'],
-      image: res['userInfo']['image']);
+      image: image);
   LoginResponse data = LoginResponse(userInfo: userInfo, code: res['code']);
   return data;
 }

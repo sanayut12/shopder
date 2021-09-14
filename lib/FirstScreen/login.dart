@@ -79,11 +79,11 @@ class _LoginState extends State<Login> {
     Widget FacebookLogin = FacebookAuthButton(
       onPressed: () {
         print("object");
-        showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertCard();
-            });
+        // showDialog(
+        //     context: context,
+        //     builder: (BuildContext context) {
+        //       // return AlertCard();
+        //     });
       },
       style: AuthButtonStyle.icon,
       borderRadius: 35,
@@ -177,15 +177,13 @@ class _LoginState extends State<Login> {
   Future<void> CheckShopCreateANDCreatedGoToMainScreen(
       {GetShopInfoResponse bufferGetShopInfoResponse,
       LoginResponse bufferLoginResponse}) async {
-    UserInfo bufferUserInfo = UserInfo(
-        user_id: bufferLoginResponse.userInfo.user_id,
-        name: bufferLoginResponse.userInfo.name,
-        email: bufferLoginResponse.userInfo.email,
-        phone: bufferLoginResponse.userInfo.phone,
-        image: bufferLoginResponse.userInfo.image);
+    UserInfo bufferUserInfo = bufferLoginResponse.userInfo.TranformUserInfo();
+
     await UserInfoManagement()
-        .InsertUserInfoToStorage(bufferUserInfo: bufferUserInfo);
+        .InsertUserInfoToStorage(bufferUserInfo: bufferUserInfo); //
     if (bufferGetShopInfoResponse.code == 20200) {
+      //ลอกอินสำเร็จ
+
       await ShopInfoMamagement().InsertShopInfoToStorage(
           bufferShopInfo: bufferGetShopInfoResponse.shopInfo);
 
@@ -197,8 +195,9 @@ class _LoginState extends State<Login> {
           MaterialPageRoute(
               builder: (BuildContext context) => MainScreenRegisterShop()));
       if (response == 1) {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (BuildContext context) => MainScreen()));
+        Navigator.of(context).pushNamed("/main");
+        // Navigator.push(context,
+        //     MaterialPageRoute(builder: (BuildContext context) => MainScreen()));
       }
     }
   }

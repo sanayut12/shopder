@@ -37,6 +37,10 @@ dependencies:
   material_floating_search_bar: ^0.3.4
   date_time_picker: ^2.0.0
   location: ^4.3.0
+  #ส่วนของแจ้งเตือนและระบบแบลคกราวน์
+  flutter_background_service: ^0.1.5
+  socket_io_client: ^1.0.1
+  flutter_local_notifications: ^6.0.0
 
 dev_dependencies:
   flutter_test:

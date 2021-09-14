@@ -64,7 +64,7 @@ class _SubFirstState extends State<SubFirst> {
     // TODO: implement initState
     super.initState();
     this.page = 0;
-    LoadDataFormLocal();
+    // LoadDataFormLocal();
   }
 
   Function changeFromRegistered() {
@@ -74,10 +74,10 @@ class _SubFirstState extends State<SubFirst> {
     // print("hello world");
   }
 
-  void LoadDataFormLocal() async {
-    await initLoadHostName();
-    await AddressThailand().init();
-  }
+  // void LoadDataFormLocal() async {
+  //   await initLoadHostName();
+  //   await AddressThailand().init();
+  // }
 
   @override
   Widget build(BuildContext context) {

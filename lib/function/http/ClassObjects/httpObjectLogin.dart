@@ -1,5 +1,9 @@
 import 'dart:convert';
 
+import 'dart:typed_data';
+
+import 'package:shopder/function/dataManagement/dataUserInfo.dart';
+
 class LoginRequest {
   final String phone;
   final String password;
@@ -19,7 +23,7 @@ class DataUserInfo {
   final String name;
   final String phone;
   final String email;
-  final String image;
+  final Uint8List image;
 
   DataUserInfo({this.user_id, this.name, this.phone, this.email, this.image});
 
@@ -34,5 +38,14 @@ class DataUserInfo {
 
     String dataString = await json.encode(dataJson);
     return dataString;
+  }
+
+  UserInfo TranformUserInfo() {
+    return UserInfo(
+        user_id: this.user_id,
+        name: this.name,
+        phone: this.phone,
+        email: this.email,
+        image: this.image);
   }
 }

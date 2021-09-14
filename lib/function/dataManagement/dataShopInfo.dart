@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:shopder/function/dataManagement/storageFunction.dart';
 
 ShopInfo shopInfo;
-Uint8List image_shop_profile_byte;
+// Uint8List image_shop_profile_byte;
 
 class ShopInfoMamagement {
   Future<void> InsertShopInfoToStorage(
@@ -13,7 +13,7 @@ class ShopInfoMamagement {
     shopInfo = bufferShopInfo;
 
     print(shopInfo);
-    image_shop_profile_byte = base64Decode(bufferShopInfo.image);
+    // image_shop_profile_byte = base64Decode(bufferShopInfo.image);
     Map<String, dynamic> dataJson = {
       'shop_id': bufferShopInfo.shop_id,
       'name': bufferShopInfo.name,
@@ -30,23 +30,39 @@ class ShopInfoMamagement {
     await InsertDataToStorage(key: 'shopInfo', buffer: buffer);
   }
 
-  Future<void> init() async {
+  Future<bool> init() async {
     String dataString = await ReadDataInStorage(key: 'shopInfo');
-    var dataJson = await json.decode(dataString);
 
-    ShopInfo bufferShopInfo = ShopInfo(
-        shop_id: dataJson['shop_id'],
-        name: dataJson['name'],
-        type: dataJson['type'],
-        image: dataJson['image'],
-        address: dataJson['address'],
-        sub_district: dataJson['sub_district'],
-        district: dataJson['district'],
-        province: dataJson['province'],
-        latitude: dataJson['latitude'].toDouble(),
-        longtitude: dataJson['longtitude'].toDouble());
+    // print(dataJson);
+    // print(dataJson);
+    if (dataString == null) {
+      return false;
+    } else {
+      var dataJson = await json.decode(dataString);
+      List _image = dataJson['image'];
+      print(_image.length);
+      Uint8List image = new Uint8List(_image.length);
 
-    shopInfo = bufferShopInfo;
+      for (int i = 0; i < _image.length; i++) {
+        image[i] = _image[i];
+      }
+
+      // print(image.runtimeType);
+      ShopInfo bufferShopInfo = ShopInfo(
+          shop_id: dataJson['shop_id'],
+          name: dataJson['name'],
+          type: dataJson['type'],
+          image: image,
+          address: dataJson['address'],
+          sub_district: dataJson['sub_district'],
+          district: dataJson['district'],
+          province: dataJson['province'],
+          latitude: dataJson['latitude'].toDouble(),
+          longtitude: dataJson['longtitude'].toDouble());
+
+      shopInfo = bufferShopInfo;
+      return true;
+    }
   }
 
   ShopInfo value() {
@@ -62,7 +78,7 @@ class ShopInfoMamagement {
   }
 
   Uint8List GetImageShop() {
-    return image_shop_profile_byte; //shopInfo.image;
+    return shopInfo.image; //shopInfo.image;
   }
 
   String GetType() {
@@ -109,7 +125,7 @@ class ShopInfo {
   final String district;
   final String province;
   final String type;
-  final String image;
+  final Uint8List image;
   final double latitude;
   final double longtitude;
 

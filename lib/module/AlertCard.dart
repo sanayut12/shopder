@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AlertCard extends StatefulWidget {
+class AlertCardAsk extends StatefulWidget {
+  String message;
+  Function func;
+  AlertCardAsk({@required this.message, @required this.func});
   @override
-  _AlertCardState createState() => _AlertCardState();
+  _AlertCardAskState createState() => _AlertCardAskState();
 }
 
-class _AlertCardState extends State<AlertCard> {
+class _AlertCardAskState extends State<AlertCardAsk> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -15,9 +18,14 @@ class _AlertCardState extends State<AlertCard> {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text("ตกลง"))
+            child: Text("ไม่")),
+        TextButton(
+            onPressed: () {
+              this.widget.func();
+            },
+            child: Text("ใช่")),
       ],
-      content: Text("ddddd"),
+      content: Text("${this.widget.message}"),
     );
   }
 }

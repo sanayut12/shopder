@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/cupertino.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -25,11 +27,13 @@ Future<GetShopInfoResponse> HttpGetShopInfo(
   );
   var res = jsonDecode(uriResponse.body);
   // print(res);
+
+  Uint8List image = base64Decode(res['shopInfo']['image']);
   ShopInfo shopInfo = ShopInfo(
       shop_id: res['shopInfo']['shop_id'],
       name: res['shopInfo']['name'],
       type: res['shopInfo']['type'],
-      image: res['shopInfo']['image'],
+      image: image,
       address: res['shopInfo']['address'],
       sub_district: res['shopInfo']['sub_district'],
       district: res['shopInfo']['district'],
