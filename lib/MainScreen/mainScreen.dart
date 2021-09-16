@@ -31,6 +31,13 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    print("=================main dispost========================");
+  }
+
+  @override
   Widget build(BuildContext context) {
     List<Widget> ListSwapScreen = [
       FeedScreen(),

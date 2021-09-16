@@ -5,6 +5,7 @@ import 'package:shopder/Load/loadScreen.dart';
 import 'package:shopder/MainScreen/mainScreen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
