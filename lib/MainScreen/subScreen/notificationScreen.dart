@@ -34,7 +34,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       child: Container(
         width: double.infinity,
         color: Colors.red,
-        child: Text("data"),
+        child: Text("login"),
       ),
     );
 

@@ -100,7 +100,7 @@ class _PostBoxShopState extends State<PostBoxShop> {
                 child: Text(this.widget.bufferPostList.detail),
               )), // ส่วนนี้ไว้แสดง ร้ายละเอียดของ post
           Expanded(
-              flex: 8,
+              flex: 6,
               child: Container(
                 height: double.infinity,
                 width: double.infinity,

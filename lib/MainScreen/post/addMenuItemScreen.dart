@@ -37,27 +37,27 @@ class _AddMenuItemScreenState extends State<AddMenuItemScreen> {
       onTap: () async {
         await PushItemFoodInfo();
       },
-      child: Container(
-        height: double.infinity,
-        width: 100,
-        color: Colors.red,
-        alignment: Alignment.center,
-        child: Text("ยืนยัน"),
-      ),
+      // child: Container(
+      //   height: double.infinity,
+      //   width: 100,
+      //   color: Colors.red,
+      //   alignment: Alignment.center,
+      //   child: Text("ยืนยัน"),
+      // ),
     );
 
-    Widget CancelButton = GestureDetector(
-      onTap: () {
-        Navigator.of(context).pop(null);
-      },
-      child: Container(
-        height: double.infinity,
-        width: 100,
-        color: Colors.red,
-        alignment: Alignment.center,
-        child: Text("ยกเลิก"),
-      ),
-    );
+    // Widget CancelButton = GestureDetector(
+    //   onTap: () {
+    //     Navigator.of(context).pop(null);
+    //   },
+    //   child: Container(
+    //     height: double.infinity,
+    //     width: 100,
+    //     color: Colors.red,
+    //     alignment: Alignment.center,
+    //     child: Text("ยกเลิก"),
+    //   ),
+    // );
 
     Widget ChoiceBar = Container(
       margin: EdgeInsets.only(top: 10),
@@ -65,7 +65,7 @@ class _AddMenuItemScreenState extends State<AddMenuItemScreen> {
       width: double.infinity,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [CancelButton, ConfirmButton],
+        children: [ConfirmButton],
       ),
     );
 
@@ -122,23 +122,46 @@ class _AddMenuItemScreenState extends State<AddMenuItemScreen> {
       onTap: () {
         UploadImage();
       },
-      child: Container(
-        height: 50,
-        width: double.infinity,
+    child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(
+        margin: EdgeInsets.only(top:20),
         alignment: Alignment.center,
-        color: Colors.red,
-        child: Text("เพิ่มรูปอาหาร"),
+        height: 50,
+        width: 115,
+        decoration: BoxDecoration(
+          color: Color(0xFFFA897B),borderRadius: BorderRadius.circular(50),
+        ),
+        
+        child: Text("เพิ่มรูปภาพอาหาร", 
+        style: TextStyle(color: Color(0xffffffff),
+        fontFamily: "SukhumvitSet-SemiBold"),
+        ),)],
       ),
     );
 
+     Widget back = Container(
+      height: 35,
+      width: 35,
+      margin: EdgeInsets.only(top:10),
+      child: GestureDetector(onTap: (){
+        Navigator.of(context).pop();
+      },child: Container(color: Color(0xFFFA897B),),),
+    );
+
     Widget AddFoodForm = Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+      color: Colors.white ),
         height: double.infinity,
         width: double.infinity,
         margin: EdgeInsets.only(bottom: 10, top: 10, left: 10, right: 10),
-        padding: EdgeInsets.only(top: 10, left: 10, right: 10),
-        color: Colors.white,
+        padding: EdgeInsets.only(top: 50, left: 10, right: 10),
+        //color: Colors.white,
         child: ListView(
+          
           children: [
+            
             ImageMenuDisplayComponent(
               listImage: listImage,
             ),
@@ -146,20 +169,76 @@ class _AddMenuItemScreenState extends State<AddMenuItemScreen> {
             Text("ใส่ชื่อสินค้า"),
             InputName,
             InputDetail,
+            SizedBox(height: 5,),
             InputType,
+            SizedBox(height: 5,),
             Text("ใส่จำนวนสินค้า"),
             InputQuantity,
+            SizedBox(height: 5,),
             Text("ใส่ราคาสินค้า"),
             InputCost,
-            ChoiceBar,
+            // ChoiceBar,
           ],
         ));
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("ใส่รายละเอียดสินค้า"),
+
+
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       title: Text("ใส่รายละเอียดสินค้า"),
+  //     ),
+  //     body: AddFoodForm,
+  //     backgroundColor: Colors.grey[100],
+  //     // resizeToAvoidBottomInset: false,
+  //   );
+  // }
+
+  return Scaffold(
+
+        floatingActionButton: FloatingActionButton(
+        onPressed: () async{
+          // Add your onPressed code here!r
+          await PushItemFoodInfo();
+        },
+        child: const Icon(Icons.done),
+        backgroundColor: Color(0xFFFA897B),
       ),
-      body: AddFoodForm,
-      backgroundColor: Colors.grey[100],
+        body: Container (
+        decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end:Alignment(0.0, 0.0), // 10% of the width, so there are ten blinds.
+          colors: <Color>[
+            Color(0xffFA897B),
+            Color(0xfffffff)
+          ], // red to yellow
+          //tileMode: TileMode.repeated, // repeats the gradient over the canvas
+        ),
+          //image: DecorationImage(fit: BoxFit.cover,image: AssetImage('assets/image/background/backgroundp.png') )
+          ),
+        child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container( 
+              child:Row(
+                children: [
+                  SizedBox(height: 70,),
+                  Container(
+                    child:TextButton(
+                    onPressed: (){
+                      Navigator.of(context).pop();
+                    }, 
+                    child: Icon(Icons.arrow_back, color: Colors.white,))),
+                  Container(
+                    child:Text('สร้างรายการอาหาร' ,style: TextStyle(color:Colors.white, fontSize: 20,fontFamily:"SukhumvitSet-SemiBold" ),))
+                  
+                ],
+            )),
+           
+            Expanded(child: AddFoodForm),
+          ],
+        ),
+        )
+
+      // backgroundColor: Colors.grey[100],
       // resizeToAvoidBottomInset: false,
     );
   }

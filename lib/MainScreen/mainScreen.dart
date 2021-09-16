@@ -61,22 +61,43 @@ class _MainScreenState extends State<MainScreen> {
               // color: Colors.red,
             ),
           ),
-          body: Column(
+          body: Stack(
             children: [
               Expanded(
-                  flex: 1,
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: double.infinity,
-                    width: double.infinity,
-                    color: Colors.red,
-                    child: Text(
-                      "shopder",
-                      style:
-                          TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                    ),
-                  )),
-              Expanded(flex: 9, child: ListSwapScreen[bottomBarIndex])
+                // flex: 1,
+                child: Container(
+                  alignment: Alignment.center,
+                  height: double.infinity,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    image:  DecorationImage(
+                fit: BoxFit.cover,
+                image:
+                    AssetImage("assets/image/background/backgroundp.png"),
+                  ),
+                
+                  )
+                 // color: Colors.red,
+                 // child: Text(
+                   // "shopder",
+                   // style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              // Expanded(
+              //     flex: 1,
+              //     child: Container(
+              //       alignment: Alignment.center,
+              //       height: double.infinity,
+              //       width: double.infinity,
+
+              //       color: Colors.red,
+              //       child: Text(
+              //         "shopder",
+              //         style:
+              //             TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+              //       ),
+              //     )),
+              Expanded( child: ListSwapScreen[bottomBarIndex])
             ],
           ),
           bottomNavigationBar: BottomBar(

@@ -125,13 +125,17 @@ class _PostWriteState extends State<PostWrite> {
         }
       },
       child: Container(
-        height: 30,
-        width: 80,
-        margin: EdgeInsets.only(right: 10),
+        height: 50,
+        width: 150,
+        margin: EdgeInsets.all(5),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: Colors.red, borderRadius: BorderRadius.circular(10)),
-        child: Text("เพิ่มสินค้า"),
+            color: Color(0xFFFA897B), borderRadius: BorderRadius.circular(50)),
+        child: Text(
+          "เพิ่มสินค้า",
+          style: TextStyle(
+              color: Colors.white, fontFamily: "SukhumvitSet-SemiBold"),
+        ),
       ),
     );
 
@@ -147,8 +151,18 @@ class _PostWriteState extends State<PostWrite> {
     Widget PostForm = Container(
       height: double.infinity,
       width: double.infinity,
-      color: Colors.white,
-      margin: EdgeInsets.only(bottom: 20, left: 20, right: 20, top: 20),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 1,
+                blurRadius: 1,
+                offset: Offset(1, 1)),
+          ],
+          color: Colors.white),
+      margin: EdgeInsets.only(bottom: 0, left: 10, right: 10, top: 10),
       padding: EdgeInsets.all(10),
       child: Form(
           child: ListView(
@@ -159,11 +173,14 @@ class _PostWriteState extends State<PostWrite> {
             bufferItemFoodInfo: bufferItemFoodInfo,
           ),
           AddMenuItem,
-          Text("ค่าจัดส่ง"),
+          Text(
+            "ค่าจัดส่ง",
+            style: TextStyle(fontSize: 15),
+          ),
           CostSend,
-          Text("วันที่ปิดการจองสินค้า"),
+          Text("วันที่ปิดการจองสินค้า", style: TextStyle(fontSize: 15)),
           DatePickerCloseOrder,
-          Text("วันที่ส่งสินค้าสินค้า"),
+          Text("วันที่ส่งสินค้าสินค้า", style: TextStyle(fontSize: 15)),
           DatePickerSendOrder,
           HowSendComponent(
             callback: setHowSend,
@@ -185,28 +202,102 @@ class _PostWriteState extends State<PostWrite> {
       )),
     );
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("สร้างโพส"),
-        // backgroundColor: Colors.white,
-        actions: [
-          GestureDetector(
-            onTap: () {
-              OnPost();
-            },
-            child: Container(
-              height: double.infinity,
-              width: 80,
-              color: Colors.red,
-              margin: EdgeInsets.all(10),
-              alignment: Alignment.center,
-              child: Text("โพสต์"),
-            ),
-          )
+    Widget backButton = GestureDetector(
+        onTap: () {
+          Navigator.of(context).pop();
+        },
+        child: Icon(
+          Icons.arrow_back,
+          color: Colors.white,
+        ));
+    Widget PostButton = GestureDetector(
+      onTap: () {
+        OnPost();
+      },
+      child: Container(
+          height: 40,
+          width: 70,
+          // margin: EdgeInsets.only(left: 160),
+          alignment: Alignment.center,
+          child: Text("โพสต์",
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              )),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25),
+            color: Color(0xFFFA897B),
+          )),
+    );
+
+    Widget appBar = Container(
+      padding: EdgeInsets.only(right: 20, left: 35),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          backButton,
+          Text("สร้างโพสต์",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              )),
+          PostButton
         ],
       ),
-      body: PostForm,
-      backgroundColor: Colors.grey[100],
+    );
+
+    //   return Scaffold(
+    //     appBar: AppBar(
+    //       title: Text("สร้างโพสต์"),
+    //       // backgroundColor: Colors.white,
+    //       actions: [
+    //         GestureDetector(
+    //           onTap: () {
+    //             OnPost();
+    //           },
+    //           child: Container(
+    //             height: double.infinity,
+    //             width: 80,
+    //             color: Colors.red,
+    //             margin: EdgeInsets.all(10),
+    //             alignment: Alignment.center,
+    //             child: Text("โพสต์"),
+    //           ),
+    //         )
+    //       ],
+    //     ),
+    //     body: PostForm,
+    //     backgroundColor: Colors.grey[100],
+    //     // resizeToAvoidBottomInset: false,
+    //   );
+    // }
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment(
+                0.0, 0.0), // 10% of the width, so there are ten blinds.
+            colors: <Color>[
+              Color(0xffFA897B),
+              Color(0xfffffff)
+            ], // red to yellow
+            //tileMode: TileMode.repeated, // repeats the gradient over the canvas
+          ),
+        ),
+        // color: ,
+        // decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.cover,image: AssetImage('assets/image/background/backgroundp.png') )),
+        child: Column(
+          children: [
+            Expanded(child: appBar),
+            Expanded(flex: 9, child: PostForm)
+          ],
+        ),
+      ),
+
+      // backgroundColor: Colors.grey[500],
       // resizeToAvoidBottomInset: false,
     );
   }
@@ -272,13 +363,15 @@ class _PostWriteState extends State<PostWrite> {
                   Navigator.of(context).pop(1);
                 },
                 child: Container(
-                  height: 50,
-                  width: 100,
-                  color: Colors.red,
+                  decoration: BoxDecoration(
+                      color: Color(0xFFFA897B),
+                      borderRadius: BorderRadius.circular(20)),
+                  height: 30,
+                  width: 80,
                   alignment: Alignment.center,
                   child: Text("ตกลง"),
                 ),
-              )
+              ),
             ],
           );
         });

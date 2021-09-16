@@ -26,71 +26,78 @@ class _CreatePostState extends State<CreatePost> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 2, bottom: 8),
+    Widget ImageShop = Container(
+      height: double.infinity,
       width: double.infinity,
-      height: 130,
+      margin: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+          color: Colors.blue,
+          shape: BoxShape.circle,
+          image: DecorationImage(
+              image: image_shop_profile_byte != null
+                  ? MemoryImage(
+                      image_shop_profile_byte,
+                    )
+                  : NetworkImage(
+                      "https://static.wikia.nocookie.net/doraemon/images/c/c7/2005Doraemon.png/revision/latest?cb=20201017162935&path-prefix=en"),
+              fit: BoxFit.cover)),
+    );
+
+    Widget TextGuild = Container(
+      // width: double.infinity,
+      // height: double.infinity,
+      // color: Colors.blue,
+      // margin: EdgeInsets.only(top:1, bottom:10 ),
+      alignment: Alignment(-1, 0),
+      // decoration: BoxDecoration(
+      //     color: Colors.blue,
+      //     borderRadius: BorderRadius.circular(20)),
+      child: Text(
+        "วันนี้ขายอะไรดี?",
+        style: TextStyle(fontSize: 20),
+      ),
+    );
+
+    Widget CreatePost = Container(
+      // width: double.infinity,
+      // height: double.infinity,
+      color: Colors.white,
+      // padding: EdgeInsets.only(right:10 , bottom: 0.5),
+      alignment: Alignment.centerRight,
+      child: TextButton(
+        child: Text(
+          "เพิ่มเมนูอาหาร",
+          style: TextStyle(fontSize: 18, color: Colors.black),
+        ),
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => PostWrite()));
+        },
+      ),
+    );
+    return Container(
+      margin: EdgeInsets.only(top: 100),
+      width: double.infinity,
+      height: 140,
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: Colors.black, width: 1),
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20), topRight: Radius.circular(20)),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Expanded(
-              flex: 3,
+              flex: 2,
               child: Row(
                 children: [
-                  Expanded(
-                      flex: 1,
-                      child: Container(
-                        height: double.infinity,
-                        width: double.infinity,
-                        margin: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: image_shop_profile_byte != null
-                                    ? MemoryImage(
-                                        image_shop_profile_byte,
-                                      )
-                                    : NetworkImage(
-                                        "https://static.wikia.nocookie.net/doraemon/images/c/c7/2005Doraemon.png/revision/latest?cb=20201017162935&path-prefix=en"),
-                                fit: BoxFit.cover)),
-                      )),
-                  Expanded(
-                      flex: 3,
-                      child: Container(
-                        width: double.infinity,
-                        height: double.infinity,
-                        margin: EdgeInsets.all(10),
-                        alignment: Alignment(-1, 0),
-                        decoration: BoxDecoration(
-                            // color: Colors.blue,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Text(
-                          "วันนี้ขายอะไรดี?",
-                          style: TextStyle(fontSize: 30),
-                        ),
-                      ))
+                  Expanded(child: ImageShop),
+                  Expanded(flex: 3, child: TextGuild)
                 ],
               )),
-          Expanded(
-              flex: 1,
-              child: Container(
-                height: double.infinity,
-                width: double.infinity,
-                padding: EdgeInsets.only(right: 10),
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  child: Text("เพิ่มเมนูอาหาร"),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => PostWrite()));
-                  },
-                ),
-              ))
+          Expanded(child: CreatePost)
         ],
       ),
     );

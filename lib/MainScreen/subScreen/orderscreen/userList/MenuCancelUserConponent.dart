@@ -66,7 +66,7 @@ class _MenuCancelUserComponentState extends State<MenuCancelUserComponent> {
               alignment: Alignment.center,
               child: Text(
                 "ยกเลิกแล้ว",
-                style: TextStyle(color: Colors.red),
+                style: TextStyle(color: Colors.blue),
               ),
             ),
           )
