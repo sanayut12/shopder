@@ -31,8 +31,8 @@ class _BottomBarState extends State<BottomBar> {
                         : Icons.home_outlined,
                     size: 40,
                     color: this.widget.bottombarIndex == 0
-                        ? Colors.red
-                        : Colors.black,
+                        ? Color(0xFFFA897B)
+                        : Colors.grey.shade700,
                   ),
                 ),
               )),
@@ -51,8 +51,8 @@ class _BottomBarState extends State<BottomBar> {
                         : Icons.description_outlined,
                     size: 40,
                     color: this.widget.bottombarIndex == 1
-                        ? Colors.red
-                        : Colors.black,
+                        ? Color(0xFFFA897B)
+                        : Colors.grey.shade700,
                   ),
                 ),
               )),
@@ -71,8 +71,8 @@ class _BottomBarState extends State<BottomBar> {
                         : Icons.assignment_outlined,
                     size: 40,
                     color: this.widget.bottombarIndex == 2
-                        ? Colors.red
-                        : Colors.black,
+                        ? Color(0xFFFA897B)
+                        : Colors.grey.shade700,
                   ),
                 ),
               )),
@@ -91,8 +91,8 @@ class _BottomBarState extends State<BottomBar> {
                         : Icons.notifications_outlined,
                     size: 40,
                     color: this.widget.bottombarIndex == 3
-                        ? Colors.red
-                        : Colors.black,
+                        ? Color(0xFFFA897B)
+                        : Colors.grey.shade700,
                   ),
                 ),
               )),
@@ -111,8 +111,8 @@ class _BottomBarState extends State<BottomBar> {
                         : Icons.person_outline,
                     size: 40,
                     color: this.widget.bottombarIndex == 4
-                        ? Colors.red
-                        : Colors.black,
+                        ? Color(0xFFFA897B)
+                        : Colors.grey.shade700,
                   ),
                 ),
               )),

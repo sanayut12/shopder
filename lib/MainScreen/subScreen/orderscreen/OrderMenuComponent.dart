@@ -85,7 +85,7 @@ class _OrderMenuScreenComponentState extends State<OrderMenuScreenComponent> {
       child: Container(
         height: 100,
         width: double.infinity,
-        color: clickcheck ? Colors.red : Colors.white,
+        color: clickcheck ? Colors.red[100] : Colors.white,
         child: Row(
           children: [
             imageMenu,

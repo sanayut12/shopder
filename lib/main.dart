@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'shopder',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'SukhumvitSet-Light',
         primarySwatch: Colors.blue,
       ),
       // home: MainFirstScreen(),

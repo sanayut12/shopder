@@ -110,7 +110,7 @@ class _RegisterState extends State<Register> {
         ),
         height: 45,
         width: 207,
-        margin: EdgeInsets.only(top: 80),
+        margin: EdgeInsets.only(top: 70 , bottom: 20),
         alignment: Alignment.center,
         decoration: BoxDecoration(
             color: Color(0xFFFA897B),
@@ -130,6 +130,7 @@ class _RegisterState extends State<Register> {
       ],
     ));
     return Container(
+        height: 400,
         margin: EdgeInsets.fromLTRB(20, 0, 20, 0), child: RegisterForm);
   }
 
@@ -231,7 +232,7 @@ class _RegisterState extends State<Register> {
         context: context,
         builder: (BuildContext builder) {
           return AlertDialog(
-            title: Text("successes"),
+            title: Text("success"),
             content: Text("ลงทะเบียนสำเร็จ"),
             actions: [
               TextButton(

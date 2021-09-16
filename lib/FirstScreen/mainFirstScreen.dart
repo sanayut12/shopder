@@ -119,6 +119,7 @@ class _SubFirstState extends State<SubFirst> {
               child: Container(
                 width: 141,
                 height: 34,
+                margin: EdgeInsets.only(top: 15),
                 child: Text(
                   "Register",
                   style: TextStyle(
