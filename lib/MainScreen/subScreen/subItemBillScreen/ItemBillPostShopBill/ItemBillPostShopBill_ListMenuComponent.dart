@@ -16,9 +16,11 @@ class _ItemBillPostShopBill_ListMenuComponentState
   @override
   Widget build(BuildContext context) {
     Widget ShowImage(String image) => Container(
+          margin: EdgeInsets.fromLTRB(4, 5, 8 ,3),
           height: MediaQuery.of(context).size.width * 0.1,
           width: MediaQuery.of(context).size.width * 0.1,
           decoration: BoxDecoration(
+            
               borderRadius: BorderRadius.circular(2),
               image: DecorationImage(
                   fit: BoxFit.cover,

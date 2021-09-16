@@ -24,10 +24,13 @@ class _ItemConfirmScreenState extends State<ItemConfirmScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: Container( /*3*/
+        
         height: double.infinity,
         width: double.infinity,
-        color: Colors.yellow,
+        decoration: BoxDecoration( 
+          color: Colors.red[100],
+          ),
         child: data == null
             ? Container()
             : ListView.builder(

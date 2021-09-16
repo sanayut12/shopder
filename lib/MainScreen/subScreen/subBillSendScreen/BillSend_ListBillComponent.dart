@@ -33,7 +33,7 @@ class _BillSend_ListBillComponentState
         padding: EdgeInsets.all(5),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Colors.red)),
+            border: Border.all(color: Colors.grey)),
         // color: Colors.red,
         child: Column(
           children: [

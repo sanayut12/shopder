@@ -29,11 +29,16 @@ class _ItemConfirm_PostComponentState extends State<ItemConfirm_PostComponent> {
         // print("object");
         OpenFullItemConfirm();
       },
-      child: Container(
+      child: Container( /*2*/
         // height: 100,
         width: double.infinity,
-        color: Colors.red,
         margin: EdgeInsets.only(top: 10),
+        decoration: BoxDecoration(
+          color: Colors.white, 
+          borderRadius: BorderRadius.circular(15)
+        ), 
+        padding: EdgeInsets.only(left: 10,top: 10,bottom: 10,right: 10),
+        
         child: Column(
           children: [
             ItemConfirmPost_DetailComponent(

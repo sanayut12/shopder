@@ -25,10 +25,10 @@ class _ItemBillScreenState extends State<ItemBillScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
+        body: Container( /*4*/
       height: double.infinity,
       width: double.infinity,
-      color: Colors.grey,
+      color: Colors.white,
       child: ListView.builder(
         itemCount: bufferPost_id.length,
         itemBuilder: (BuildContext context, int index) {

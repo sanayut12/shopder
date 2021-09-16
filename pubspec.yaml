@@ -90,3 +90,13 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+ ## fonts:
+   ## -family: SukhumvitSet
+   ## fonts:
+   ## -asset: fonts\SukhumvitSet-Bold.ttf
+   ## -asset: fonts\SukhumvitSet-Light.ttf
+   ## -asset: fonts\SukhumvitSet-Medium.ttf
+   ## -asset: fonts\SukhumvitSet-SemiBold.ttf
+   ## -asset: fonts\SukhumvitSet-Text.ttf
+  ##  -asset: fonts\SukhumvitSet-Thin.ttf 

@@ -69,7 +69,9 @@ class _CreatePostState extends State<CreatePost> {
                             borderRadius: BorderRadius.circular(20)),
                         child: Text(
                           "วันนี้ขายอะไรดี?",
-                          style: TextStyle(fontSize: 30),
+                          style: TextStyle(
+                            fontFamily: 'Sukhumvit-Bold', 
+                            fontSize: 30),
                         ),
                       ))
                 ],
