@@ -65,6 +65,11 @@ class ShopInfoMamagement {
     }
   }
 
+  Future<bool> DeleteUser() async {
+    bool status = await DeleteDataInLocalStorage(key: "shopInfo");
+    return status;
+  }
+
   ShopInfo value() {
     return shopInfo;
   }

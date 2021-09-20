@@ -12,7 +12,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    // SystemChrome.setEnabledSystemUIOverlays([]);
     return MaterialApp(
       title: 'shopder',
       debugShowCheckedModeBanner: false,
@@ -21,11 +21,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: MainFirstScreen(),
-      initialRoute: "/",
+      initialRoute: LoadScreen.routeName,
       routes: <String, WidgetBuilder>{
-        "/": (context) => LoadScreen(),
-        "/login": (context) => MainFirstScreen(),
-        "/main": (context) => MainScreen()
+        LoadScreen.routeName: (context) => LoadScreen(),
+        MainFirstScreen.routeName: (context) => MainFirstScreen(),
+        MainScreen.routeName: (context) => MainScreen()
       },
     );
   }

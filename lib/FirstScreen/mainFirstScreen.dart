@@ -6,6 +6,7 @@ import 'package:shopder/function/dataManagement/readJsonAddress.dart';
 import 'package:shopder/function/http/httpGetPostShopInit.dart';
 
 class MainFirstScreen extends StatelessWidget {
+  static String routeName = "/first";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

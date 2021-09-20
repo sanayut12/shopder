@@ -6,6 +6,7 @@ import 'package:shopder/MainScreen/component/bottomBar.dart';
 import 'package:shopder/MainScreen/subScreen/ItemBillScreen.dart';
 import 'package:shopder/MainScreen/subScreen/ItemConfirmScreen.dart';
 import 'package:shopder/MainScreen/subScreen/billScreen.dart';
+import 'package:shopder/MainScreen/subScreen/drawer/DrawerApp.dart';
 import 'package:shopder/MainScreen/subScreen/feedScreen.dart';
 import 'package:shopder/MainScreen/subScreen/notificationScreen.dart';
 import 'package:shopder/MainScreen/subScreen/orderScreen.dart';
@@ -13,6 +14,7 @@ import 'package:shopder/MainScreen/subScreen/profileScreen.dart';
 import 'package:shopder/module/AlertCard.dart';
 
 class MainScreen extends StatefulWidget {
+  static String routeName = "/main";
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -54,35 +56,28 @@ class _MainScreenState extends State<MainScreen> {
         ShowExit();
       },
       child: Scaffold(
-          drawer: Drawer(
-            child: Container(
-              height: double.infinity,
-              width: 200,
-              // color: Colors.red,
-            ),
-          ),
+          drawer: Drawer(child: DrawerApp()),
           body: Stack(
             children: [
               Expanded(
                 // flex: 1,
                 child: Container(
-                  alignment: Alignment.center,
-                  height: double.infinity,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    image:  DecorationImage(
-                fit: BoxFit.cover,
-                image:
-                    AssetImage("assets/image/background/backgroundp.png"),
-                  ),
-                
-                  )
-                 // color: Colors.red,
-                 // child: Text(
-                   // "shopder",
-                   // style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                  ),
-                ),
+                    alignment: Alignment.center,
+                    height: double.infinity,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(
+                            "assets/image/background/backgroundp.png"),
+                      ),
+                    )
+                    // color: Colors.red,
+                    // child: Text(
+                    // "shopder",
+                    // style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                    ),
+              ),
               // Expanded(
               //     flex: 1,
               //     child: Container(
@@ -97,7 +92,7 @@ class _MainScreenState extends State<MainScreen> {
               //             TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
               //       ),
               //     )),
-              Expanded( child: ListSwapScreen[bottomBarIndex])
+              Expanded(child: ListSwapScreen[bottomBarIndex])
             ],
           ),
           bottomNavigationBar: BottomBar(
