@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shopder/MainScreen/post/postboxshop.dart';
 import 'package:shopder/MainScreen/subScreen/profilescreen/PostBoxProfileComponent.dart';
+import 'package:shopder/MainScreen/subScreen/profilescreen/ShopProfileComponent.dart';
 import 'package:shopder/MainScreen/subScreen/profilescreen/profileComponent.dart';
 import 'package:shopder/function/dataManagement/dataPostShop.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
@@ -29,8 +30,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Container(
       height: double.infinity,
       width: double.infinity,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment(
+                0.8, 1.0), // 10% of the width, so there are ten blinds.
+            colors: <Color>[
+              Color(0xffFA897B),
+              Color(0xfffffff)
+            ],
+      ),
+      ),
+
+
       child: Column(
-        children: [Text("${ShopInfoMamagement().GetName()}")],
+        crossAxisAlignment : CrossAxisAlignment.start,
+        children: [
+
+          ShopProfileComponent(),
+          
+
+          Expanded(
+            child: Container(
+              child: ListView.builder(
+                    itemCount: listPost.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return PostBoxProfileComponent(post_id: listPost[index]);
+                    }),
+            ),
+          )
+          
+        ],
+      
       ),
     );
     // return Container(

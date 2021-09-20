@@ -67,7 +67,7 @@ class _MenuListDisplayComponentState extends State<MenuListDisplayComponent> {
         );
 
     return Container(
-      color: Colors.blue,
+      color: Colors.grey[100],
       height: (MediaQuery.of(context).size.width - 60) * 0.8,
       width: MediaQuery.of(context).size.width - 60,
       child: ListView.builder(

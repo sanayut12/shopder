@@ -68,7 +68,7 @@ class _MenuConfirmScreenState extends State<MenuConfirmScreen> {
       // height: 40,
       padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
       decoration: BoxDecoration(
-          color: Colors.red, borderRadius: BorderRadius.circular(30)),
+          color: Colors.red[100], borderRadius: BorderRadius.circular(30)),
       child: Text(
         "${this.widget.menu.name}",
         style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
@@ -105,7 +105,7 @@ class _MenuConfirmScreenState extends State<MenuConfirmScreen> {
 
     //ส่วน ลิสต์รายการ การ์ดของ ยูสเซอร์ที่ทำการสั่งจองสินค้าและได้ยืนยันสินค้าแล้ว
     Widget ListUser = Container(
-      color: Colors.red,
+      color: Colors.blue,
       child: ListView.builder(
           //จำนวนการ์ดทั้งหมด  = จำนวนการ์ดจอง  + จำวนวนการ์ดที่ยืนยันแล้ว
           itemCount: this.widget.bufferInventoryWait.length +

@@ -20,6 +20,7 @@ class _BillSend_ListBillComponentState
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
+        print('object');
         await Navigator.of(context).push(MaterialPageRoute(
             builder: (BuildContext context) => FullBillScreen(
                 bill_id: this.widget.bill_id, data: this.widget.data)));
@@ -37,6 +38,7 @@ class _BillSend_ListBillComponentState
         // color: Colors.red,
         child: Column(
           children: [
+            Text('data'),
             BillSendListBill_MiniProfilecomponent(
               bill_id: this.widget.bill_id,
               data: this.widget.data,

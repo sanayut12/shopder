@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:shopder/MainScreen/subScreen/BillSendScreen.dart';
 import 'package:shopder/MainScreen/subScreen/subItemBillScreen/ItemBillPostShopBill/ItemBillPostShopBill_ListMenuComponent.dart';
@@ -12,17 +13,22 @@ class ItemBill_PostShopBillComponent extends StatefulWidget {
   @override
   _ItemBill_PostShopBillComponentState createState() =>
       _ItemBill_PostShopBillComponentState();
+
+
 }
+
+
 
 class _ItemBill_PostShopBillComponentState
     extends State<ItemBill_PostShopBillComponent> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        OpenBillSendScreen();
-      },
-      child: Container( /*1*/
+    onTap: (){
+      OpenBillSendScreen();
+    },
+  
+      child: Container( /*11*/
         margin: EdgeInsets.only(top: 5, bottom: 3),
         padding: EdgeInsets.only(left: 12,top: 10,bottom: 12),
         decoration: BoxDecoration( /*(color: Colors.white),
@@ -55,6 +61,7 @@ class _ItemBill_PostShopBillComponentState
         ),
       ),
     );
+
   }
 
   Future<void> OpenBillSendScreen() async {

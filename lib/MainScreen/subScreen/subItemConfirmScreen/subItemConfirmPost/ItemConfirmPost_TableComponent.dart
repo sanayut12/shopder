@@ -5,6 +5,10 @@ class ItemConfirmPost_TableComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+    /*  decoration: BoxDecoration(
+        border: Border.all(color: Colors.red[100], 
+        width : 5.0, style: BorderStyle.solid),), */
+      
       height: MediaQuery.of(context).size.width * 0.05,
       width: double.infinity,
       color: Colors.white,
@@ -17,25 +21,30 @@ class ItemConfirmPost_TableComponent extends StatelessWidget {
               flex: 2,
               child: Container(
                 alignment: Alignment.center,
-                child: Text("ชื่อ"),
+                child: Text("ชื่อ",
+            style: TextStyle(color: Color(0xFFFA897B),fontWeight: FontWeight.bold),),
               )),
           Expanded(
               child: Container(
             alignment: Alignment.center,
-            child: Text("จำนวน"),
+            child: Text("จำนวน",
+            style: TextStyle(color: Color(0xFFFA897B),fontWeight: FontWeight.bold),),
           )),
           Expanded(
               child: Container(
             alignment: Alignment.center,
-            child: Text("จองแล้ว"),
+            child: Text("จองแล้ว",
+            style: TextStyle(color: Color(0xFFFA897B),fontWeight: FontWeight.bold),),
           )),
           Expanded(
               child: Container(
             alignment: Alignment.center,
-            child: Text("ราคา"),
+            child: Text("ราคา",
+            style: TextStyle(color: Color(0xFFFA897B),fontWeight: FontWeight.bold),),
           )),
         ],
       ),
+      
     );
   }
 }

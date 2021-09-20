@@ -27,7 +27,7 @@ class _BillScreenState extends State<BillScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.amber,
+      color: Colors.red[100],
       child: ListView.builder(
           itemCount: bufferPost.length,
           itemBuilder: (BuildContext context, int index) {

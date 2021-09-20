@@ -62,7 +62,7 @@ class _LoginState extends State<Login> {
         alignment: Alignment.center,
         height: 45,
         width: 207,
-        margin: EdgeInsets.only(top: 30, bottom: 20),
+        margin: EdgeInsets.only(top: 80, bottom: 20),
         child: Text(
           "Login",
           style: TextStyle(
@@ -86,7 +86,7 @@ class _LoginState extends State<Login> {
         //     });
       },
       style: AuthButtonStyle.icon,
-      borderRadius: 35,
+      borderRadius: 100,
     );
     Widget GoogleLogin = GoogleAuthButton(
       onPressed: () {},

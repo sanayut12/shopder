@@ -29,15 +29,23 @@ class _ItemConfirm_PostComponentState extends State<ItemConfirm_PostComponent> {
         // print("object");
         OpenFullItemConfirm();
       },
-      child: Container( /*2*/
+      child: Container( /*12*/
         // height: 100,
+        
         width: double.infinity,
         margin: EdgeInsets.only(top: 10),
+        padding: EdgeInsets.only(left: 10,top: 10,bottom: 10,right: 10),
         decoration: BoxDecoration(
           color: Colors.white, 
-          borderRadius: BorderRadius.circular(15)
+          borderRadius: BorderRadius.circular(15),
+
+          border: Border.all(color: Color(0xFFFF6F5D), 
+          width : 3.0, style: BorderStyle.solid),
+         
+        
+
         ), 
-        padding: EdgeInsets.only(left: 10,top: 10,bottom: 10,right: 10),
+        
         
         child: Column(
           children: [
