@@ -21,7 +21,9 @@ class _ItemBillPostShopBill_StatusComponentState
         children: [
           Text(
             "${this.widget.post_shop.send.ToString()}",
-            style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.1),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: MediaQuery.of(context).size.width *0.06),
           ),
           this.widget.post_shop.detail == ""
               ? Container()

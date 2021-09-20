@@ -12,6 +12,7 @@ class ItemConfirmScreen extends StatefulWidget {
   _ItemConfirmScreenState createState() => _ItemConfirmScreenState();
 }
 
+
 class _ItemConfirmScreenState extends State<ItemConfirmScreen> {
   Map<int, GetPostShopItemDataResposne> data;
   @override
@@ -24,10 +25,13 @@ class _ItemConfirmScreenState extends State<ItemConfirmScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: Container( /*13*/
+        
         height: double.infinity,
         width: double.infinity,
-        color: Colors.yellow,
+        decoration: BoxDecoration( 
+          color: Color(0xFFF7D3CF),
+          ),
         child: data == null
             ? Container()
             : ListView.builder(

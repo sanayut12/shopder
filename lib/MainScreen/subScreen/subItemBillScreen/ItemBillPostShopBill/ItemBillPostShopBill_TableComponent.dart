@@ -12,17 +12,22 @@ class ItemBillPostShopBill_TableComponent extends StatelessWidget {
           Expanded(
               flex: 2,
               child: Container(
+                
                   child: Text(
                 "รายการสินค้า",
-                style: style,
-              ))),
+                
+                style: TextStyle(color: Color(0xFFFA897B),fontWeight: FontWeight.bold,fontSize: 16.0),
+               
+                
+              )
+              )),
           Expanded(
               child: Container(
                   alignment: Alignment.center,
                   child: Text(
                     "จำนวน",
-                    style: style,
-                  ))),
+                    style: TextStyle(color: Color(0xFFFA897B),fontWeight: FontWeight.bold,fontSize: 16.0)),
+                  )),
         ],
       ),
     );
