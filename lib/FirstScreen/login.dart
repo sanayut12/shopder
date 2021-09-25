@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:auth_buttons/auth_buttons.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:shopder/MainScreen/mainScreen.dart';
 import 'package:shopder/CreateShopInfo/mainScreenRegisterShop.dart';
+import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/dataManagement/dataUserInfo.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetShopInfo.dart';
@@ -186,7 +188,11 @@ class _LoginState extends State<Login> {
 
       await ShopInfoMamagement().InsertShopInfoToStorage(
           bufferShopInfo: bufferGetShopInfoResponse.shopInfo);
-
+      print("กำลังลอกอิน ${bufferGetShopInfoResponse.shopInfo}");
+      FlutterBackgroundService().sendData({
+        "event": "start_service_push_notification",
+        "shop_id": "${bufferGetShopInfoResponse.shopInfo.shop_id}"
+      });
       Navigator.push(context,
           MaterialPageRoute(builder: (BuildContext context) => MainScreen()));
     } else {

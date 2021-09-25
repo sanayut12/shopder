@@ -34,8 +34,5 @@ Future<GetpostShopInitResponse> httpGetPostShopInit(
     bufferListPost.add(value);
   });
   // print(bufferListPost);
-  GetpostShopInitResponse bufferGetpostShopInitResponse =
-      GetpostShopInitResponse(bufferListPost: bufferListPost, code: code);
-  return bufferGetpostShopInitResponse;
-  // Map post_list = res['data'][];
+  return GetpostShopInitResponse(bufferListPost: bufferListPost, code: code);
 }

@@ -1,11 +1,17 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:shopder/FirstScreen/mainFirstScreen.dart';
 import 'package:shopder/Load/loadScreen.dart';
 import 'package:shopder/MainScreen/mainScreen.dart';
+import 'package:shopder/module/BackGroundService.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  FlutterBackgroundService.initialize(onStartBackGroundService);
+
   runApp(MyApp());
 }
 

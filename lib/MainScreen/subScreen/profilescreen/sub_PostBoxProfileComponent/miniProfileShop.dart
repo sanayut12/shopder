@@ -18,8 +18,7 @@ class _MiniProfileShopState extends State<MiniProfileShop> {
       decoration: BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(
-              fit: BoxFit.cover,
-              image: MemoryImage(base64Decode("${shopInfo.image}")))),
+              fit: BoxFit.cover, image: MemoryImage(shopInfo.image))),
     );
     Widget NameShop = Container(
       height: double.infinity,

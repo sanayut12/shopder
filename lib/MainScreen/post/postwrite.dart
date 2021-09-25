@@ -18,11 +18,11 @@ class PostWrite extends StatefulWidget {
 }
 
 class _PostWriteState extends State<PostWrite> {
-  String detail;
-  int sendCost;
+  String detail = "";
+  int sendCost = 0;
   DateBox dateClose;
   DateBox dateSend;
-  String sendtype;
+  String sendtype = "1";
   // FoodPostInfo bufferFoodPostInfo;
   // var  = <ItemFoodInfo>[];
   List<ItemFoodInfo> bufferItemFoodInfo = [];

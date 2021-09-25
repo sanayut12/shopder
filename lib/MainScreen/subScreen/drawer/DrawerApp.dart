@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:shopder/FirstScreen/mainFirstScreen.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/dataManagement/dataUserInfo.dart';
@@ -51,6 +52,11 @@ class _DrawerAppState extends State<DrawerApp> {
   Future<void> Logout() async {
     bool status = await ShopInfoMamagement().DeleteUser();
     if (status) {
+      FlutterBackgroundService().sendData({
+        "event": "stop_service_push_notification",
+        "shop_id": ShopInfoMamagement().GetShop_id()
+      });
+
       Navigator.of(context).pushNamed("${MainFirstScreen.routeName}");
     }
   }

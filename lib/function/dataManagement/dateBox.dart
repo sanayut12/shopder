@@ -14,6 +14,11 @@ class DateBox {
         ? "${this.hour}:${this.min} ${this.year}-${this.month}-${this.day}"
         : "${this.hour}:${this.min}:${this.sec} ${this.year}-${this.month}-${this.day}";
   }
+
+  DateTime datetime() {
+    return DateTime(this.year, this.month, this.day, this.hour, this.min,
+        this.sec == null ? 0 : this.sec);
+  }
 }
 
 Future<DateBox> DateStringTransformInt({String dateString}) async {
