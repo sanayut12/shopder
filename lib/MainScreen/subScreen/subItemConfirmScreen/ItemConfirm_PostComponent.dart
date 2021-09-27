@@ -11,11 +11,8 @@ import 'package:shopder/MainScreen/subScreen/subItemConfirmScreen/subItemConfirm
 import 'package:shopder/function/http/ClassObjects/httpGetPostShopItemData.dart';
 
 class ItemConfirm_PostComponent extends StatefulWidget {
-  final GetPostShopItemDataResposne data;
-  final int index;
-  final Function SetStatus;
-  ItemConfirm_PostComponent(
-      {@required this.data, @required this.index, @required this.SetStatus});
+  GetPostShopItemDataResposne data;
+  ItemConfirm_PostComponent({@required this.data});
   @override
   _ItemConfirm_PostComponentState createState() =>
       _ItemConfirm_PostComponentState();
@@ -29,24 +26,20 @@ class _ItemConfirm_PostComponentState extends State<ItemConfirm_PostComponent> {
         // print("object");
         OpenFullItemConfirm();
       },
-      child: Container( /*12*/
+      child: Container(
+        /*12*/
         // height: 100,
-        
+
         width: double.infinity,
         margin: EdgeInsets.only(top: 10),
-        padding: EdgeInsets.only(left: 10,top: 10,bottom: 10,right: 10),
+        padding: EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 10),
         decoration: BoxDecoration(
-          color: Colors.white, 
+          color: Colors.white,
           borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+              color: Color(0xFFFF6F5D), width: 3.0, style: BorderStyle.solid),
+        ),
 
-          border: Border.all(color: Color(0xFFFF6F5D), 
-          width : 3.0, style: BorderStyle.solid),
-         
-        
-
-        ), 
-        
-        
         child: Column(
           children: [
             ItemConfirmPost_DetailComponent(
@@ -68,14 +61,14 @@ class _ItemConfirm_PostComponentState extends State<ItemConfirm_PostComponent> {
   }
 
   Future<void> OpenFullItemConfirm() async {
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (BuildContext context) => FullItemConfirmScreen(
-              data: this.widget.data,
-              SetStatus: SetStatus,
-            )));
+    await Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) =>
+            FullItemConfirmScreen(data: this.widget.data)));
+
+    setState(() {});
   }
 
-  Future<void> SetStatus(String bill_id, String _status) {
-    this.widget.SetStatus(this.widget.index, bill_id, _status);
-  }
+  // Future<void> SetStatus(String bill_id, String _status) {
+  //   this.widget.SetStatus(this.widget.index, bill_id, _status);
+  // }
 }

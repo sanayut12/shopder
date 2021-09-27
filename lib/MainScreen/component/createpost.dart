@@ -78,7 +78,7 @@ class _CreatePostState extends State<CreatePost> {
       ),
     );
     return Container(
-      margin: EdgeInsets.only(top: 100),
+      // margin: EdgeInsets.only(top: 100),
       width: double.infinity,
       height: 140,
       decoration: BoxDecoration(
@@ -124,7 +124,7 @@ class _CreatePostState extends State<CreatePost> {
 //                         child: Text(
 //                           "วันนี้ขายอะไรดี?",
 //                           style: TextStyle(
-//                             fontFamily: 'Sukhumvit-Bold', 
+//                             fontFamily: 'Sukhumvit-Bold',
 //                             fontSize: 30),
 //                         ),
 //                       ))

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:shopder/FirstScreen/mainFirstScreen.dart';
 import 'package:shopder/Load/loadScreen.dart';
@@ -19,9 +19,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // SystemChrome.setEnabledSystemUIOverlays([]);
+    // SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
     return MaterialApp(
       title: 'shopder',
       debugShowCheckedModeBanner: false,
+
       theme: ThemeData(
         fontFamily: 'SukhumvitSet-Light',
         primarySwatch: Colors.blue,

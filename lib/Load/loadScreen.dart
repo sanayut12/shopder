@@ -1,13 +1,18 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopder/FirstScreen/mainFirstScreen.dart';
+import 'package:shopder/Load/navigator_notification/page1GotoFullItemConfirmScreen.dart';
 import 'package:shopder/Load/spaceScreen.dart';
 import 'package:shopder/MainScreen/mainScreen.dart';
+import 'package:shopder/MainScreen/subScreen/FullItemConfirmScreen.dart';
 import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/dataManagement/readJsonAddress.dart';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:shopder/function/http/ClassObjects/httpGetPostShopItemData.dart';
 // import 'package:rxdart/subjects.dart';
 import 'package:shopder/module/socketioManagerForgound.dart';
 
@@ -99,8 +104,19 @@ class _LoadScreenState extends State<LoadScreen> {
         // debugPrint('notification payload: $payload');
         debugPrint("กด notification ตอนแอปเปิด ${payload}");
 
-        await Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) => SpaceScreen()));
+        Map dataJson = json.decode(payload);
+        String page = dataJson['page'];
+
+        if (page == "1") {
+          String post_id = dataJson['post_id'];
+          GetPostShopItemDataResposne data =
+              await Page1GotoFullItemConfirmScreen(post_id);
+          await Navigator.of(context).push(MaterialPageRoute(
+              builder: (BuildContext context) =>
+                  FullItemConfirmScreen(data: data)));
+        }
+        // await Navigator.of(context).push(MaterialPageRoute(
+        //     builder: (BuildContext context) => SpaceScreen()));
       }
     });
   }

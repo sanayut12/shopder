@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/http/ClassObjects/httpGetPostShopItemData.dart';
 
@@ -98,6 +99,8 @@ class _FullItemConfirmPost_ListMenuComponentState
                 });
               }
             });
+
+            print("${index} ${this.widget.data.bufferInventory.length}");
             return ShowMenu(_name, _image, _quantity, _cost, _item);
           }),
     );

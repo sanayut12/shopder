@@ -8,8 +8,7 @@ import 'package:shopder/function/http/ClassObjects/httpGetPostShopItemData.dart'
 
 class FullItemConfirmScreen extends StatefulWidget {
   GetPostShopItemDataResposne data;
-  final Function SetStatus;
-  FullItemConfirmScreen({@required this.data, @required this.SetStatus});
+  FullItemConfirmScreen({@required this.data});
   @override
   _FullItemConfirmScreenState createState() => _FullItemConfirmScreenState();
 }
@@ -91,7 +90,7 @@ class _FullItemConfirmScreenState extends State<FullItemConfirmScreen> {
       ),
     );
     Widget ShowDetail = Container(
-      // color: Colors.red,
+      color: Colors.red,
       width: double.infinity,
       child: Column(
         children: [
@@ -124,6 +123,6 @@ class _FullItemConfirmScreenState extends State<FullItemConfirmScreen> {
       this.widget.data.bufferBill[bill_id].status = status;
     });
 
-    this.widget.SetStatus(bill_id, status);
+    // this.widget.SetStatus(bill_id, status);
   }
 }

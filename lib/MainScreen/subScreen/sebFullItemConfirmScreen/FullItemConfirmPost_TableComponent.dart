@@ -5,7 +5,7 @@ class FullItemConfirmPost_TableComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.width * 0.05,
+      // height: MediaQuery.of(context).size.width * 0.05,
       width: double.infinity,
       color: Colors.white,
       child: Row(

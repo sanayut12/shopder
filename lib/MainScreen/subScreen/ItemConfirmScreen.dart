@@ -12,9 +12,8 @@ class ItemConfirmScreen extends StatefulWidget {
   _ItemConfirmScreenState createState() => _ItemConfirmScreenState();
 }
 
-
 class _ItemConfirmScreenState extends State<ItemConfirmScreen> {
-  Map<int, GetPostShopItemDataResposne> data;
+  Map<String, GetPostShopItemDataResposne> data = {};
   @override
   void initState() {
     // TODO: implement initState
@@ -25,21 +24,20 @@ class _ItemConfirmScreenState extends State<ItemConfirmScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container( /*13*/
-        
+      body: Container(
+        /*13*/
+
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration( 
+        decoration: BoxDecoration(
           color: Color(0xFFF7D3CF),
-          ),
-        child: data == null
-            ? Container()
-            : ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ItemConfirm_PostComponent(
-                      data: data[index], index: index, SetStatus: SetStatus);
-                }),
+        ),
+        child: ListView.builder(
+            itemCount: data.length,
+            itemBuilder: (BuildContext context, int index) {
+              String post_id = data.keys.toList()[index];
+              return ItemConfirm_PostComponent(data: data[post_id]);
+            }),
       ),
     );
   }
@@ -51,11 +49,7 @@ class _ItemConfirmScreenState extends State<ItemConfirmScreen> {
     GetPostShopItemInitResponse bufferGetPostShopItemInitResponse =
         await HttpGetPostShopItemInit(
             bufferGetPostShopItemInitRequest: bufferGetPostShopItemInitRequest);
-    // bufferGetPostShopItemInitResponse.bufferPost_id.forEach((element) {
-    //   print(element);
-    // });
-    int index = 0;
-    Map<int, GetPostShopItemDataResposne> _data = {};
+
     for (String post_id in bufferGetPostShopItemInitResponse.bufferPost_id) {
       // print(post_id);
       GetPostShopItemDataRequest bufferGetPostShopItemDataRequest =
@@ -65,17 +59,15 @@ class _ItemConfirmScreenState extends State<ItemConfirmScreen> {
               bufferGetPostShopItemDataRequest:
                   bufferGetPostShopItemDataRequest);
 
-      _data[index] = bufferGetPostShopItemDataResposne;
-      index += 1;
+      setState(() {
+        data[post_id] = bufferGetPostShopItemDataResposne;
+      });
     }
-    setState(() {
-      data = _data;
-    });
   }
 
-  Future<void> SetStatus(int index, String bill_id, String _status) {
-    setState(() {
-      data[index].bufferBill[bill_id].status = _status;
-    });
-  }
+  // Future<void> SetStatus(int index, String bill_id, String _status) {
+  //   setState(() {
+  //     data[index].bufferBill[bill_id].status = _status;
+  //   });
+  // }
 }
