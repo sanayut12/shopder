@@ -2,16 +2,12 @@ import 'dart:io';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:shopder/MainScreen/appbar/AppBarShopder.dart';
-import 'package:shopder/MainScreen/component/bottomBar.dart';
 import 'package:shopder/MainScreen/subScreen/ItemBillScreen.dart';
 import 'package:shopder/MainScreen/subScreen/ItemConfirmScreen.dart';
-import 'package:shopder/MainScreen/subScreen/billScreen.dart';
-import 'package:shopder/MainScreen/subScreen/drawer/DrawerApp.dart';
+import 'package:shopder/MainScreen/drawer/DrawerApp.dart';
 import 'package:shopder/MainScreen/subScreen/feedScreen.dart';
 import 'package:shopder/MainScreen/subScreen/notificationScreen.dart';
-import 'package:shopder/MainScreen/subScreen/orderScreen.dart';
 import 'package:shopder/MainScreen/subScreen/profileScreen.dart';
 import 'package:shopder/module/AlertCard.dart';
 
@@ -26,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
   int bottomBarIndex = 0;
 
   ///0-3uj
-
+  final GlobalKey<ScaffoldState> _key = GlobalKey(); // Create a key
   @override
   void initState() {
     // TODO: implement initState
@@ -58,8 +54,9 @@ class _MainScreenState extends State<MainScreen> {
         ShowExit();
       },
       child: Scaffold(
+        key: _key,
         drawer: Drawer(child: DrawerApp()),
-        // appBar: AppBar(),
+        appBar: AppbarShopder(OpenDrawer, MediaQuery.of(context).size.width),
         body: Stack(
           children: [
             Expanded(
@@ -82,23 +79,9 @@ class _MainScreenState extends State<MainScreen> {
                   // style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
             ),
-            // Expanded(
-            //     flex: 1,
-            //     child: Container(
-            //       alignment: Alignment.center,
-            //       height: double.infinity,
-            //       width: double.infinity,
-
-            //       color: Colors.red,
-            //       child: Text(
-            //         "shopder",
-            //         style:
-            //             TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-            //       ),
-            //     )),
             Column(
               children: [
-                AppBarShopder(page: bottomBarIndex),
+                // AppBarShopder(page: bottomBarIndex),
                 Expanded(child: ListSwapScreen[bottomBarIndex]),
               ],
             )
@@ -151,5 +134,9 @@ class _MainScreenState extends State<MainScreen> {
 
   Future<void> ExitApp() {
     exit(0);
+  }
+
+  Future<void> OpenDrawer() {
+    _key.currentState.openDrawer();
   }
 }
