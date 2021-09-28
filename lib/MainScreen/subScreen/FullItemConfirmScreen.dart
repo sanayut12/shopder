@@ -70,27 +70,25 @@ class _FullItemConfirmScreenState extends State<FullItemConfirmScreen> {
     Widget TitleBar = Container(
       height: MediaQuery.of(context).size.width * 0.2,
       width: double.infinity,
-      color: Colors.red,
       child: Row(
         children: [
           IconButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
+              padding: EdgeInsets.only(top: 30,bottom: 5),
               icon: Icon(Icons.arrow_back_ios_rounded)),
-          Expanded(
+           Expanded(
               child: Container(
-            margin: EdgeInsets.only(left: 10, top: 5, bottom: 5, right: 20),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), color: Colors.white),
+            margin: EdgeInsets.only(top: 30, bottom: 5, right: 30),
             alignment: Alignment.center,
-            child: Text("รับออเดอร์ลูกค้า"),
+            child: Text("รับออเดอร์ลูกค้า",
+            style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
           ))
         ],
       ),
     );
     Widget ShowDetail = Container(
-      color: Colors.red,
       width: double.infinity,
       child: Column(
         children: [
@@ -103,13 +101,38 @@ class _FullItemConfirmScreenState extends State<FullItemConfirmScreen> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
+        
+        decoration: BoxDecoration( 
+         gradient: LinearGradient(
+          colors:[Color(0xFFFFC9C3),Colors.white],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: [
+                0.0,
+               0.3,
+              ],
+              ), 
+        ),
+
         child: Column(
           children: [
             TitleBar,
             ShowDetail,
             Expanded(
                 child: Container(
-              color: Colors.pink,
+                  decoration: BoxDecoration( 
+          gradient: LinearGradient(
+          colors:[Color(0xFFFFC9C3),Colors.white],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: [
+                0.0,
+                20,
+              ],
+              
+              ),
+        ),
+
               child: ListView(children: buffer),
             ))
           ],

@@ -47,9 +47,11 @@ class _FullItemConfirmPostListBill_BillComponentState
           color: this.widget.status == 0
               ? Colors.yellow
               : this.widget.status == 1
-                  ? Colors.green
+                  ? Colors.white
                   : Colors.red[200],
-          borderRadius: BorderRadius.circular(20)),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+              color: Color(0xFFFF8888), width: 3.0, style: BorderStyle.solid)),
       child: Column(
         children: [
           Text("รหัสคำสั่งซื้อ ${this.widget.bill_id}"),

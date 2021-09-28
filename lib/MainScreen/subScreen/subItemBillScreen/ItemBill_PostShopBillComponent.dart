@@ -31,14 +31,19 @@ class _ItemBill_PostShopBillComponentState
       child: Container( /*11*/
         margin: EdgeInsets.only(top: 5, bottom: 3),
         padding: EdgeInsets.only(left: 12,top: 10,bottom: 12),
-        decoration: BoxDecoration( /*(color: Colors.white),
-        padding: EdgeInsets.only(left: 20) */
-        
-          borderRadius: BorderRadius.circular(15),
+        decoration: BoxDecoration(
+          color: Colors.white,
+      /*    border: Border.all( 
+          color: Color(0xFFFFC0B8), width: 1.0, style: BorderStyle.solid), */
+          borderRadius: BorderRadius.circular(15), 
           gradient: LinearGradient(
-          colors:[Color(0xFFFFC9C3),Colors.white],
+          colors:[Color(0xFFFFB5AC),Colors.white],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
+          stops: [
+                0.0,
+                0.50,
+              ],
         ),
         
         boxShadow: [

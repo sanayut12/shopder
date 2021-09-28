@@ -28,7 +28,17 @@ class _ItemBillScreenState extends State<ItemBillScreen> {
         body: Container( /*4*/
       height: double.infinity,
       width: double.infinity,
-      color: Colors.white,
+      decoration: BoxDecoration( 
+          gradient: LinearGradient(
+          colors:[Color(0xFFFFC9C3),Colors.white],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: [
+                0.0,
+                20,
+              ],
+        ),
+        ), 
       child: ListView.builder(
         itemCount: bufferPost_id.length,
         itemBuilder: (BuildContext context, int index) {
