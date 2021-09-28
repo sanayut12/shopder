@@ -36,11 +36,11 @@ class _BillSend_ListBillComponentState
         decoration: BoxDecoration(
           color: Colors.white,
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Colors.grey)),
+            border: Border.all(color: Colors.grey[300] )),
         // color: Colors.red,
         child: Column(
           children: [
-            Text('data'),
+            // Text('data'),
             
             BillSendListBill_MiniProfilecomponent(
               bill_id: this.widget.bill_id,

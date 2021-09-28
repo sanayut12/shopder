@@ -12,8 +12,9 @@ class _BillSendMiniPost_ShopProfileComponentState
   @override
   Widget build(BuildContext context) {
     Widget ShowImage = Container(
-      height: MediaQuery.of(context).size.width * 0.1,
-      width: MediaQuery.of(context).size.width * 0.1,
+      height: MediaQuery.of(context).size.width * 0.12,
+      width: MediaQuery.of(context).size.width * 0.12,
+      margin: EdgeInsets.only(right: 10 ,bottom: 10),
       decoration: BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(
@@ -22,7 +23,7 @@ class _BillSendMiniPost_ShopProfileComponentState
     );
 
     Widget ShowName = Container(
-      child: Text("${ShopInfoMamagement().GetName()}"),
+      child: Text("${ShopInfoMamagement().GetName()}", style: TextStyle(fontSize: 18 , fontFamily: "SukhumvitSet-SemiBold"),),
     );
     return Container(
       child: Row(

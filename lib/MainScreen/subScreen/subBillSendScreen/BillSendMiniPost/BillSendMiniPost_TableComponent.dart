@@ -7,9 +7,12 @@ class BillSendMiniPost_TableComponent extends StatelessWidget {
     TextStyle style = TextStyle(fontWeight: FontWeight.bold);
     return Container(
       width: double.infinity,
+      margin: EdgeInsets.only(top: 20,bottom: 10,right: 10, left: 10),
       child: Row(
         children: [
+          
           Expanded(
+            
               flex: 2,
               child: Container(
                   child: Text(

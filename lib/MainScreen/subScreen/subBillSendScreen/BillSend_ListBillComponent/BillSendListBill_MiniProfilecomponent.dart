@@ -24,17 +24,18 @@ class _BillSendListBill_MiniProfilecomponentState
       }
     });
     Widget ShowImage(String _image) => Container(
-          height: MediaQuery.of(context).size.width * 0.15,
-          width: MediaQuery.of(context).size.width * 0.15,
+          height: MediaQuery.of(context).size.width * 0.13,
+          width: MediaQuery.of(context).size.width * 0.13,
+          margin: EdgeInsets.only(right: 17),
           decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
                       "${_image == null ? '${HostName()}/image/menuImage/0AD3246B86B391E52B9FA3DF0163E8CB.jpg' : '${HostName()}/image/ImageUsers/${_image}'}"))),
-        );
+        ); 
     Widget ShowName(String _name) => Container(
-          child: Text("${_name}"),
+          child: Text("${_name}" ,style: TextStyle(fontSize: 17),),
         );
 
     String image = this.widget.data.bufferUsers[user_id].path;

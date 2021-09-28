@@ -17,8 +17,8 @@ class _BillSend_TopBarComponentState extends State<BillSend_TopBarComponent> {
         icon: Icon(Icons.arrow_back_ios_new ,color: Colors.white,));
 
     Widget TitleBar = Container(
-      alignment: Alignment.center,
-      margin: EdgeInsets.all(10),
+      alignment: Alignment.topCenter,
+      margin: EdgeInsets.only(top: 20 ,left: 1,right: 20),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),),
       child: Text("สินค้าที่ต้องจัดส่ง" , style: TextStyle(fontFamily: "SukhumvitSet-SemiBold", fontSize: 22 , color: Colors.white),),
