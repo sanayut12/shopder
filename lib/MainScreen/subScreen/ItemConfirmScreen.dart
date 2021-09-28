@@ -41,7 +41,7 @@ class _ItemConfirmScreenState extends State<ItemConfirmScreen> {
           children: [
             Padding(padding: EdgeInsets.all(5),),
             Text("ยอดจองสินค้า" , style: TextStyle(
-              color: Colors.white,fontFamily: "SukhumvitSet-SemiBold", fontSize: 20
+              color: Colors.white,fontFamily: "SukhumvitSet-SemiBold", fontSize: 22
             ),),
             Expanded(
               child: ListView.builder(

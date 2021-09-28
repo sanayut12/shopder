@@ -25,32 +25,43 @@ class _ItemBillScreenState extends State<ItemBillScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container( /*4*/
+        body: Container(
+      /*4*/
       height: double.infinity,
       width: double.infinity,
-      decoration: BoxDecoration( 
-          gradient: LinearGradient(
-          colors:[Color(0xFFFFC9C3),Colors.white],
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Color(0xFFFFC9C3), Colors.white],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           stops: [
-                0.0,
-                20,
-              ],
+            0.0,
+            2.0,
+          ],
         ),
-        ), 
-      child: ListView.builder(
-        itemCount: bufferPost_id.length,
-        itemBuilder: (BuildContext context, int index) {
-          String post_id = bufferPost_id[index];
-          return ItemBill_PostShopBillComponent(data: data[post_id]);
-          // return Container(
-          //   height: 100,
-          //   width: double.infinity,
-          //   color: Colors.white,
-          //   margin: EdgeInsets.all(10),
-          // );
-        },
+      ),
+      child: Column(
+        children: [
+          Padding(padding: EdgeInsets.all(5),),
+          Text("สินค้าที่ต้องจัดส่ง" , style: TextStyle(fontFamily: "SukhumvitSet-SemiBold", fontSize: 22 , color: Colors.white),),
+          
+          Expanded(
+            child: ListView.builder(
+              itemCount: bufferPost_id.length,
+              itemBuilder: (BuildContext context, int index) {
+                String post_id = bufferPost_id[index];
+                return ItemBill_PostShopBillComponent(data: data[post_id]);
+
+                // return Container(
+                //   height: 100,
+                //   width: double.infinity,
+                //   color: Colors.white,
+                //   margin: EdgeInsets.all(10),
+                // );
+              },
+            ),
+          ),
+        ],
       ),
     ));
   }
