@@ -7,7 +7,7 @@ class FullItemConfirmPost_TableComponent extends StatelessWidget {
     return Container(
       height: 50,
       width: double.infinity,
-      color: Colors.green,
+   //   color: Colors.green,
       child: Row(
         children: [
           SizedBox(
@@ -16,33 +16,34 @@ class FullItemConfirmPost_TableComponent extends StatelessWidget {
           Expanded(
               flex: 2,
               child: Container(
+                margin: EdgeInsets.only(top: 10),
                 alignment: Alignment.center,
                 child: Text(
-                  "ชื่อ",
-                  style: TextStyle(
-                      fontSize: 15, fontFamily: "SukhumvitSet-Medium"),
+                  "รายการสินค้า",
+                  style: TextStyle(color:Color(0xFFFF6957),fontWeight: FontWeight.bold,fontSize: 15.0)),
                 ),
-              )),
+              ),
           Expanded(
               child: Container(
+                margin: EdgeInsets.only(top: 10),
             alignment: Alignment.center,
             child: Text("จำนวน",
-                style:
-                    TextStyle(fontSize: 15, fontFamily: "SukhumvitSet-Medium")),
+                style: TextStyle(color:Color(0xFFFF6957),fontWeight: FontWeight.bold,fontSize: 15.0)),
           )),
           Expanded(
               child: Container(
+                margin: EdgeInsets.only(top: 10),
             alignment: Alignment.center,
             child: Text("จองแล้ว",
-                style:
-                    TextStyle(fontSize: 15, fontFamily: "SukhumvitSet-Medium")),
+            style: TextStyle(color:Color(0xFFFF6957),fontWeight: FontWeight.bold,fontSize: 15.0)),
+                
           )),
           Expanded(
               child: Container(
+                margin: EdgeInsets.only(top: 10),
             alignment: Alignment.center,
             child: Text("ราคา",
-                style:
-                    TextStyle(fontSize: 25, fontFamily: "SukhumvitSet-Medium")),
+               style: TextStyle(color:Color(0xFFFF6957),fontWeight: FontWeight.bold,fontSize: 15.0)),
           )),
         ],
       ),
