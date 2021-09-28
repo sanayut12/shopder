@@ -26,7 +26,7 @@ class _ItemConfirmPost_DetailComponentState
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      child: Text("${this.widget.post_info.detail}"),
+      child: Text("${this.widget.post_info.detail}" ,style: TextStyle(fontSize: 15,fontFamily: "SukhumvitSet-Medium")),
     );
   }
 }

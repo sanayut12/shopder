@@ -30,15 +30,18 @@ class _BillSend_ListBillComponentState
       child: Container(
         // height: 500,
         width: double.infinity,
-        margin: EdgeInsets.all(5),
+        margin: EdgeInsets.all(10),
         padding: EdgeInsets.all(5),
+        
         decoration: BoxDecoration(
+          color: Colors.white,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Colors.grey)),
         // color: Colors.red,
         child: Column(
           children: [
             Text('data'),
+            
             BillSendListBill_MiniProfilecomponent(
               bill_id: this.widget.bill_id,
               data: this.widget.data,

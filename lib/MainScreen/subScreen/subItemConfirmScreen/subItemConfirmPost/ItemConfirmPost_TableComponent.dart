@@ -22,25 +22,25 @@ class ItemConfirmPost_TableComponent extends StatelessWidget {
               child: Container(
                 alignment: Alignment.center,
                 child: Text("ชื่อ",
-            style: TextStyle(color: Color(0xFFFA897B),fontWeight: FontWeight.bold),),
+            style: TextStyle(color: Color(0xFFFA897B),fontFamily: "SukhumvitSet-Medium", fontSize: 17),),
               )),
           Expanded(
               child: Container(
             alignment: Alignment.center,
             child: Text("จำนวน",
-            style: TextStyle(color: Color(0xFFFA897B),fontWeight: FontWeight.bold),),
+            style: TextStyle(color: Color(0xFFFA897B),fontFamily: "SukhumvitSet-Medium", fontSize: 17),),
           )),
           Expanded(
               child: Container(
             alignment: Alignment.center,
             child: Text("จองแล้ว",
-            style: TextStyle(color: Color(0xFFFA897B),fontWeight: FontWeight.bold),),
+            style: TextStyle(color: Color(0xFFFA897B),fontFamily: "SukhumvitSet-Medium", fontSize: 17),),
           )),
           Expanded(
               child: Container(
             alignment: Alignment.center,
             child: Text("ราคา",
-            style: TextStyle(color: Color(0xFFFA897B),fontWeight: FontWeight.bold),),
+            style: TextStyle(color: Color(0xFFFA897B),fontFamily: "SukhumvitSet-Medium", fontSize: 17 ),),
           )),
         ],
       ),

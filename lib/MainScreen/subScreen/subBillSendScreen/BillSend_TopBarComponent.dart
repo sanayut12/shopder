@@ -14,19 +14,19 @@ class _BillSend_TopBarComponentState extends State<BillSend_TopBarComponent> {
         onPressed: () {
           Navigator.of(context).pop();
         },
-        icon: Icon(Icons.arrow_back_ios_new));
+        icon: Icon(Icons.arrow_back_ios_new ,color: Colors.white,));
 
     Widget TitleBar = Container(
       alignment: Alignment.center,
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10), color: Colors.white),
-      child: Text("สินค้าที่ต้องจัดส่ง"),
+          borderRadius: BorderRadius.circular(10),),
+      child: Text("สินค้าที่ต้องจัดส่ง" , style: TextStyle(fontFamily: "SukhumvitSet-SemiBold", fontSize: 22 , color: Colors.white),),
     );
     return Container(
       height: MediaQuery.of(context).size.width * 0.15,
       width: double.infinity,
-      color: Colors.red,
+      // color: Colors.red,
       child: Row(
         children: [BackButton, Expanded(child: TitleBar)],
       ),

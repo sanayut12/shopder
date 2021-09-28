@@ -26,18 +26,33 @@ class _ItemConfirmScreenState extends State<ItemConfirmScreen> {
     return Scaffold(
       body: Container(
         /*13*/
-
+        
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Color(0xFFF7D3CF),
+          gradient: LinearGradient(
+            colors: [Color(0xFFFFC9C3), Colors.white],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+          // color: Color(0xFFF7D3CF),
         ),
-        child: ListView.builder(
-            itemCount: data.length,
-            itemBuilder: (BuildContext context, int index) {
-              String post_id = data.keys.toList()[index];
-              return ItemConfirm_PostComponent(data: data[post_id]);
-            }),
+        child: Column(
+          children: [
+            Padding(padding: EdgeInsets.all(5),),
+            Text("ยอดจองสินค้า" , style: TextStyle(
+              color: Colors.white,fontFamily: "SukhumvitSet-SemiBold", fontSize: 20
+            ),),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    String post_id = data.keys.toList()[index];
+                    return ItemConfirm_PostComponent(data: data[post_id]);
+                  }),
+            ),
+          ],
+        ),
       ),
     );
   }
