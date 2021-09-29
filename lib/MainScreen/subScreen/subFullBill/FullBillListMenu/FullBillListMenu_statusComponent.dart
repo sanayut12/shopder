@@ -9,25 +9,25 @@ class FullBillListMenu_statusComponent extends StatelessWidget {
     Widget ShowServiceCost = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text("ค่าบริการ"), Text("3")],
+        children: [Text("ค่าบริการ"), Text("3 บาท")],
       ),
     );
     Widget ShowSendCost = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text("ค่าจัดส่ง"), Text("${this.sendCost}")],
+        children: [Text("ค่าจัดส่ง"), Text("${this.sendCost} บาท" )],
       ),
     );
     Widget ShowFreeCost = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text("ส่วนลด"), Text("0")],
+        children: [Text("ส่วนลด"), Text("0  บาท")],
       ),
     );
     Widget ShowTotal = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text("รวม"), Text("${this.total}")],
+        children: [Text("รวม"), Text("${this.total}  บาท")],
       ),
     );
     return Container(
