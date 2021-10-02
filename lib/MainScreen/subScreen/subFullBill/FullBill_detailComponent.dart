@@ -59,16 +59,18 @@ class _FullBill_detailComponentState extends State<FullBill_detailComponent> {
     );
     return Container(
       padding: EdgeInsets.all(5),
-      margin: EdgeInsets.all(5),
+      margin: EdgeInsets.only(right: 10,left: 10, top: 25),
+      // color: Colors.white,
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.red, width: 2),
+          border: Border.all(color: Colors.grey[200], width: 2),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "รายละเอีดลูกค้า",
-            style: TextStyle(fontSize: 20),
+            "รายละเอียดลูกค้า",
+            style: TextStyle(fontSize: 19,fontFamily: "SukhumvitSet-SemiBold"),
           ),
           ShowAddress
         ],
