@@ -9,14 +9,19 @@ class DetailPostProfileComponent extends StatefulWidget {
       _DetailPostProfileComponentState();
 }
 
+
 class _DetailPostProfileComponentState
     extends State<DetailPostProfileComponent> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
+   return Container(
+   //   color:Color(0xFFFDAC00),
+      height: 70,
       width: double.infinity,
-      child: Text("${this.widget.postShopData_post.detail}"),
-    );
+      margin: EdgeInsets.only(left: 5, top: 10), //แคปชั่น
+      child: Text("${this.widget.postShopData_post.detail}",
+       style : TextStyle( fontSize: 16,)),
+    ); 
   }
 }
+

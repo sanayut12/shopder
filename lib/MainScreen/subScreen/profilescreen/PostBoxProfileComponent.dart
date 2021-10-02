@@ -28,16 +28,17 @@ class _PostBoxProfileComponentState extends State<PostBoxProfileComponent> {
     Widget PostComponent = Container(
       // height: 100,
       width: double.infinity,
-      color: Colors.amber,
-      margin: EdgeInsets.only(top: 10),
+      color:Color(0xFFFFC0B8), //Colors.amber,
+      margin: EdgeInsets.only(top: 5),
       child: Column(
         children: [
           MiniProfileShop(),
+          DetailPostProfileComponent(
+              postShopData_post: this.widget.data.postShopData_post),
           DatePostAndSendCost(
             postShopData_post: this.widget.data.postShopData_post,
           ),
-          DetailPostProfileComponent(
-              postShopData_post: this.widget.data.postShopData_post),
+          
           MenuListPostProfileComponent(
               bufferPostShopData_inventory:
                   this.widget.data.bufferPostShopData_inventory,

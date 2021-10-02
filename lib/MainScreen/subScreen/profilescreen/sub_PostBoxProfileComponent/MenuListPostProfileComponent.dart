@@ -24,9 +24,10 @@ class _MenuListPostProfileComponentState
   @override
   Widget build(BuildContext context) {
     return Container(
+      color:Color(0xFF000000), //Colors.amber,
       height: this.widget.bufferPostShopData_inventory.length == 0
           ? 0
-          : MediaQuery.of(context).size.width * 0.80,
+          : MediaQuery.of(context).size.width * 0.60,
       width: double.infinity,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,

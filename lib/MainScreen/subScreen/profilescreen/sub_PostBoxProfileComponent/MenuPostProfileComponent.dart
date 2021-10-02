@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,13 +27,18 @@ class _MenuPostProfileComponentState extends State<MenuPostProfileComponent> {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle styleText = TextStyle(
-        fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white);
+    //TextStyle styleText = TextStyle(
+      //  fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white);
+      TextStyle style = TextStyle(fontWeight: FontWeight.bold);
 
     Widget ImageMenu = Container(
       height: double.infinity,
       width: double.infinity,
+      margin: EdgeInsets.only(left: 10),
+     // Text("5555555555"),
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25), 
+        color: Colors.pink, //ข้างในรูป
           image: DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage(
@@ -48,25 +54,38 @@ class _MenuPostProfileComponentState extends State<MenuPostProfileComponent> {
         children: [
           Text(
             "${this.widget.postShopData_menu.name}",
-            style: styleText,
-          ),
+            style : TextStyle( fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white,
+            shadows: [Shadow(offset: Offset(2.0,2.0),
+              blurRadius: 5.0,
+              color: Colors.black.withOpacity(0.6)),])),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+         
               Text("จำนวน ${this.widget.postShopData_inventory.quantity}",
-                  style: styleText),
+                  style : TextStyle( fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white,
+                  shadows: [Shadow(offset: Offset(2.0,2.0),
+              blurRadius: 5.0,
+              color: Colors.black.withOpacity(0.6)),])),
               Text("ราคา ${this.widget.postShopData_inventory.cost} บาท",
-                  style: styleText),
+              style : TextStyle( fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white,
+              shadows: [Shadow(offset: Offset(2.0,2.0),
+              blurRadius: 5.0,
+              color: Colors.black.withOpacity(0.6)),]))
             ],
-          )
+          ) /* border: Border.all(
+              color: Colors.grey[300], width: 1.0, style: BorderStyle.solid),*/
         ],
       ),
     );
     return Container(
-      height: MediaQuery.of(context).size.width * 0.60,
+      color: Colors.green, 
+    //  height: 90,
+    //  width: 240,
+      height: MediaQuery.of(context).size.width * 0.8,
       width: MediaQuery.of(context).size.width * 0.8,
-      color: Colors.red,
-      margin: EdgeInsets.only(right: 10),
+      margin: EdgeInsets.only(right: 5,bottom: 10),
+      
       child: Stack(
         children: [
           //ใน children นี้มีปัญหา
