@@ -31,12 +31,12 @@ import 'package:shopder/MainScreen/appbar/subAppBar/searchAppBarComponent.dart';
 
 AppBar AppbarShopder(Function fun1, double heigth) => AppBar(
       automaticallyImplyLeading: false,
-      toolbarHeight: heigth * 0.15,
-      leading: IconButton(
-          onPressed: () {
-            fun1();
-          },
-          icon: Icon(Icons.menu)),
+      // toolbarHeight: heigth * 0.15,
+      // leading: IconButton(
+      //     onPressed: () {
+      //       fun1();
+      //     },
+      //     icon: Icon(Icons.menu)),
       actions: [
         Container(
           margin: EdgeInsets.only(left: 1, top: 5, bottom: 5, right: 1),
