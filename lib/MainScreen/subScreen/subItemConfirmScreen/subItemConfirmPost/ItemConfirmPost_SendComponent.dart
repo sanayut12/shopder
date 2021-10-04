@@ -18,8 +18,13 @@ class _ItemConfirmPost_SendComponentState
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("วันที่จัดส่งสืนค้า"),
-          Text("${this.widget.post_info.send.ToString()}"),
+          Text("วันที่จัดส่งสินค้า" ,
+          style: TextStyle(
+            fontSize: 15,
+            fontFamily: "SukhumvitSet-Medium"
+          ),),
+          Text("${this.widget.post_info.send.ToString()}",
+          style: TextStyle(fontSize: 15,fontFamily: "SukhumvitSet-Medium"),),
         ],
       ),
     );

@@ -41,16 +41,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ShopProfileComponent(),
           Expanded(
             child: Container(
               child: ListView.builder(
-                  itemCount: dataPost.length,
+                  itemCount: dataPost.length + 1,
                   itemBuilder: (BuildContext context, int index) {
-                    String key = dataPost.keys.toList()[index];
-                    return PostBoxProfileComponent(
-                      data: dataPost[key],
-                    );
+                    if (index == 0) {
+                      return ShopProfileComponent();
+                    } else {
+                      String key = dataPost.keys.toList()[index - 1];
+                      return PostBoxProfileComponent(
+                        data: dataPost[key],
+                      );
+                    }
                   }),
             ),
           )
@@ -73,7 +76,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       GetPostShopDataResponse bufferGetPostShopDataResponse =
           await httpGetPostShopData(
               bufferGetPostShopDataRequest: bufferGetPostShopDataRequest);
-      print("ffff ${post_id} ${bufferGetPostShopDataResponse}");
+      // print("ffff ${post_id} ${bufferGetPostShopDataResponse}");
       setState(() {
         dataPost[post_id] = bufferGetPostShopDataResponse;
       });

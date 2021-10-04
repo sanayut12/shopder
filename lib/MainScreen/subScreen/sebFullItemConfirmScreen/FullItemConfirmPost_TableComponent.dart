@@ -5,9 +5,9 @@ class FullItemConfirmPost_TableComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: MediaQuery.of(context).size.width * 0.05,
+      height: 50,
       width: double.infinity,
-      color: Colors.white,
+   //   color: Colors.green,
       child: Row(
         children: [
           SizedBox(
@@ -16,23 +16,34 @@ class FullItemConfirmPost_TableComponent extends StatelessWidget {
           Expanded(
               flex: 2,
               child: Container(
+                margin: EdgeInsets.only(top: 10),
                 alignment: Alignment.center,
-                child: Text("ชื่อ"),
-              )),
+                child: Text(
+                  "รายการสินค้า",
+                  style: TextStyle(color:Color(0xFFFF6957),fontWeight: FontWeight.bold,fontSize: 15.0)),
+                ),
+              ),
           Expanded(
               child: Container(
+                margin: EdgeInsets.only(top: 10),
             alignment: Alignment.center,
-            child: Text("จำนวน"),
+            child: Text("จำนวน",
+                style: TextStyle(color:Color(0xFFFF6957),fontWeight: FontWeight.bold,fontSize: 15.0)),
           )),
           Expanded(
               child: Container(
+                margin: EdgeInsets.only(top: 10),
             alignment: Alignment.center,
-            child: Text("จองแล้ว"),
+            child: Text("จองแล้ว",
+            style: TextStyle(color:Color(0xFFFF6957),fontWeight: FontWeight.bold,fontSize: 15.0)),
+                
           )),
           Expanded(
               child: Container(
+                margin: EdgeInsets.only(top: 10),
             alignment: Alignment.center,
-            child: Text("ราคา"),
+            child: Text("ราคา",
+               style: TextStyle(color:Color(0xFFFF6957),fontWeight: FontWeight.bold,fontSize: 15.0)),
           )),
         ],
       ),

@@ -14,9 +14,11 @@ class _DetailPostProfileComponentState
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
       width: double.infinity,
-      child: Text("${this.widget.postShopData_post.detail}"),
+      child: Text("${this.widget.postShopData_post.detail}",
+          style: TextStyle(
+            fontSize: 16,
+          )),
     );
   }
 }

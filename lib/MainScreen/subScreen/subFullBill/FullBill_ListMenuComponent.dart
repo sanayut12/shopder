@@ -38,8 +38,9 @@ class _FullBill_ListMenuComponentState
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.only(left: 5, right: 5, top: 10, bottom: 10),
       decoration: BoxDecoration(
+        color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.red, width: 2)),
+          border: Border.all(color: Colors.grey[200], width: 2)),
       child: Column(
         children: [
           FullBillListMenu_TableComponent(),

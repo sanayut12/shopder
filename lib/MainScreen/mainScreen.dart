@@ -65,6 +65,7 @@ class _MainScreenState extends State<MainScreen> {
                   alignment: Alignment.center,
                   height: double.infinity,
                   width: double.infinity,
+                  
                   decoration: BoxDecoration(
                     // color: Colors.green,
                     image: DecorationImage(
@@ -91,15 +92,16 @@ class _MainScreenState extends State<MainScreen> {
           index: 0,
           height: 60.0,
           items: <Widget>[
-            Icon(Icons.home, size: 30),
-            Icon(Icons.event, size: 30),
-            Icon(Icons.local_shipping, size: 30),
-            Icon(Icons.notifications, size: 30),
-            Icon(Icons.account_circle_sharp, size: 30),
+            Icon(Icons.home, size: 30 , color: Colors.white,),
+            Icon(Icons.event, size: 30, color: Colors.white),
+            Icon(Icons.local_shipping, size: 30, color: Colors.white),
+            Icon(Icons.notifications, size: 30, color: Colors.white),
+            Icon(Icons.account_circle_sharp, size: 30, color: Colors.white),
           ],
-          color: Colors.white,
-          buttonBackgroundColor: Colors.white,
-          backgroundColor: Color(0xFFFA897B),
+          color: Color(0xFFFA897B).withOpacity(0.8),
+          buttonBackgroundColor: Color(0xFFFA897B).withOpacity(0.8) ,
+          
+          backgroundColor: Colors.white,
           animationCurve: Curves.easeInOut,
           animationDuration: Duration(milliseconds: 600),
           onTap: (index) {

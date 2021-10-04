@@ -18,11 +18,11 @@ class _BillSend_PostBoxComponentState extends State<BillSend_PostBoxComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.all(2),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.red)),
+      padding: EdgeInsets.all(5),
+      margin: EdgeInsets.only(top: 1,left: 10,right: 10),
+      // decoration: BoxDecoration(
+      //     borderRadius: BorderRadius.circular(10),
+      //     border: Border.all(color: Colors.red)),
       child: Column(
         children: [
           BillSendMiniPost_ShopProfileComponent(),

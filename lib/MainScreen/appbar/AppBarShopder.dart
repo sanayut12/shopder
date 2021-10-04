@@ -31,17 +31,19 @@ import 'package:shopder/MainScreen/appbar/subAppBar/searchAppBarComponent.dart';
 
 AppBar AppbarShopder(Function fun1, double heigth) => AppBar(
       automaticallyImplyLeading: false,
-      // toolbarHeight: heigth * 0.15,
-      // leading: IconButton(
-      //     onPressed: () {
-      //       fun1();
-      //     },
-      //     icon: Icon(Icons.menu)),
+      toolbarHeight: 55,
+      backgroundColor: Color(0xFFFA897B),
+      leading: IconButton(
+          onPressed: () {
+            fun1();
+          },
+          icon: Icon(Icons.menu)),
       actions: [
         Container(
           margin: EdgeInsets.only(left: 1, top: 5, bottom: 5, right: 1),
           padding: EdgeInsets.all(2),
-          decoration: BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+          decoration:
+              BoxDecoration(color: Colors.transparent, shape: BoxShape.circle),
           child: IconButton(
               onPressed: () {},
               icon: Icon(
@@ -52,11 +54,12 @@ AppBar AppbarShopder(Function fun1, double heigth) => AppBar(
         Container(
           margin: EdgeInsets.only(left: 1, right: 2, top: 5, bottom: 5),
           padding: EdgeInsets.all(2),
-          decoration: BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+          decoration:
+              BoxDecoration(color: Colors.transparent, shape: BoxShape.circle),
           child: IconButton(
               onPressed: () {},
               icon: Icon(
-                Icons.chat_outlined,
+                Icons.chat,
                 size: heigth * 0.06,
               )),
         )

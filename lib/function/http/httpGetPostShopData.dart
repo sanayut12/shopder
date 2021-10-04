@@ -31,7 +31,7 @@ Future<GetPostShopDataResponse> httpGetPostShopData(
   // print(res);
   // ส่วนของข้อมูลที่ทำการแปลงแล้ว
   PostShopData_post postShopData_post;
-  List<PostShopData_inventory> bufferPostShopData_inventory = [];
+  Map<String, PostShopData_inventory> bufferPostShopData_inventory = {};
   Map<String, PostShopData_menu> bufferPostShopData_menu = {};
 
   /// ทำการแปลงข้อมูลเข้า class คือข้อมูลของโพสต์
@@ -72,18 +72,16 @@ Future<GetPostShopDataResponse> httpGetPostShopData(
     // print(value);
 
     PostShopData_inventory postShopData_inventory = PostShopData_inventory(
-        inventory_id: value['inventory_id'],
-        post_id: value['post_id'],
         menu_id: value['menu_id'],
         quantity: value['quantity'],
         cost: value['cost']);
-    bufferPostShopData_inventory.add(postShopData_inventory);
+    bufferPostShopData_inventory[value['inventory_id']] =
+        postShopData_inventory;
   });
 
   //////  ส่วนของข้อมูลสินค้าที่จะจัดเข้า class /////////////
   data_menu.forEach((key, value) {
     PostShopData_menu postShopData_menu = PostShopData_menu(
-        shop_id: value['shop_id'],
         name: value['name'],
         detail: value['detail'],
         type: value['type'],

@@ -28,8 +28,8 @@ class _ShopProfileComponentState extends State<ShopProfileComponent> {
           ),
           //กลาง
           ShopProfile_ShowImageComponent(),
-          ShopProfile_BackComponent()
-          
+          // ShopProfile_BackComponent()
+
           //บนสุด
         ],
       ),

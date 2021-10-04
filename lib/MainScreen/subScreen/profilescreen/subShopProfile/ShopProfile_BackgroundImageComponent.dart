@@ -12,9 +12,18 @@ class _ShopProfile_BackgroundImageComponentState
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.width * 0.5,
+      height: MediaQuery.of(context).size.width * 0.4,
       width: double.infinity,
       color: Colors.grey,
+    /*  decoration: BoxDecoration(
+        boxShadow:[
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0,3),
+          )
+        ]),*/
       child:
           IconButton(onPressed: () {}, icon: Icon(Icons.camera_alt)),
           alignment: Alignment.bottomRight,

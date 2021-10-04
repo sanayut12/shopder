@@ -16,7 +16,9 @@ class _BillSendMiniPost_StatusComponentState
     Widget ShowDateStart = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        
         children: [
+          
           Text("วันที่โพสต์"),
           Text("${this.widget.data.post_info.start.ToString()}")
         ],
@@ -101,7 +103,7 @@ class _BillSendMiniPost_StatusComponentState
           ShowHowSend,
           ShowOverOrder,
           ShowHowConfirm,
-          ShowDetail,
+          // ShowDetail,
         ],
       ),
     );

@@ -18,8 +18,14 @@ class _ItemConfirmPost_StopComponentState
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("วันที่ปิดการขาย"),
-          Text("${this.widget.post_info.stop.ToString()}"),
+          Text("วันที่ปิดการจองสินค้า" ,
+          style: TextStyle(
+            fontSize: 15,
+            fontFamily: "SukhumvitSet-Medium"
+          ),
+          ),
+          Text("${this.widget.post_info.stop.ToString()}" ,
+          style: TextStyle(fontFamily: "SukhumvitSet-Medium",fontSize: 15),),
         ],
       ),
     );

@@ -3,11 +3,8 @@ import 'package:shopder/MainScreen/subScreen/profilescreen/sub_PostBoxProfileCom
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPostShopData.dart';
 
 class MenuListPostProfileComponent extends StatefulWidget {
-  final List<PostShopData_inventory> bufferPostShopData_inventory;
-  final Map<String, PostShopData_menu> bufferPostShopData_menu;
-  MenuListPostProfileComponent(
-      {@required this.bufferPostShopData_inventory,
-      @required this.bufferPostShopData_menu});
+  GetPostShopDataResponse data;
+  MenuListPostProfileComponent({@required this.data});
   @override
   _MenuListPostProfileComponentState createState() =>
       _MenuListPostProfileComponentState();
@@ -24,23 +21,21 @@ class _MenuListPostProfileComponentState
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: this.widget.bufferPostShopData_inventory.length == 0
-          ? 0
-          : MediaQuery.of(context).size.width * 0.80,
+      // color: Color(0xFF000000), //Colors.amber,
+      height: 300,
       width: double.infinity,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: this.widget.bufferPostShopData_inventory.length,
+          itemCount: this.widget.data.bufferPostShopData_inventory.length,
           itemBuilder: (BuildContext context, int index) {
-            PostShopData_inventory postShopData_inventory =
-                this.widget.bufferPostShopData_inventory[index];
-            PostShopData_menu postShopData_menu = this
+            String inventory_id = this
                 .widget
-                .bufferPostShopData_menu[postShopData_inventory.menu_id];
+                .data
+                .bufferPostShopData_inventory
+                .keys
+                .toList()[index];
             return MenuPostProfileComponent(
-              postShopData_inventory: postShopData_inventory,
-              postShopData_menu: postShopData_menu,
-            );
+                inventory_id: inventory_id, data: this.widget.data);
           }),
     );
   }

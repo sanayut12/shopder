@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,11 +8,9 @@ import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPostShopData.dart';
 
 class MenuPostProfileComponent extends StatefulWidget {
-  final PostShopData_inventory postShopData_inventory;
-  final PostShopData_menu postShopData_menu;
-  MenuPostProfileComponent(
-      {@required this.postShopData_inventory,
-      @required this.postShopData_menu});
+  String inventory_id;
+  GetPostShopDataResponse data;
+  MenuPostProfileComponent({@required this.inventory_id, @required this.data});
   @override
   _MenuPostProfileComponentState createState() =>
       _MenuPostProfileComponentState();
@@ -26,65 +25,121 @@ class _MenuPostProfileComponentState extends State<MenuPostProfileComponent> {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle styleText = TextStyle(
-        fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white);
+    //ส่วนของการประมวลผล
+    String inventory_id = this.widget.inventory_id;
+    String menu_id =
+        this.widget.data.bufferPostShopData_inventory[inventory_id].menu_id;
+    String name = this.widget.data.bufferPostShopData_menu[menu_id].name;
+    String image = this.widget.data.bufferPostShopData_menu[menu_id].path;
+    int quantity =
+        this.widget.data.bufferPostShopData_inventory[inventory_id].quantity;
+    int cost = this.widget.data.bufferPostShopData_inventory[inventory_id].cost;
+    //ส่วนของการแสดงออกบนหน้าจอ
+
+    TextStyle style = TextStyle(fontWeight: FontWeight.bold);
 
     Widget ImageMenu = Container(
-      height: double.infinity,
-      width: double.infinity,
+      height: 130,
+      width: 130,
+      margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.pink, //ข้างในรูป
           image: DecorationImage(
               fit: BoxFit.cover,
-              image: NetworkImage(
-                  "${HostName()}/image/menuImage/${this.widget.postShopData_menu.path}"))),
+              image: NetworkImage("${HostName()}/image/menuImage/${image}"))),
       // decoration: ,
     );
-    Widget InfoMenu = Container(
-      height: double.infinity,
-      width: double.infinity,
-      padding: EdgeInsets.all(20),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "${this.widget.postShopData_menu.name}",
-            style: styleText,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("จำนวน ${this.widget.postShopData_inventory.quantity}",
-                  style: styleText),
-              Text("ราคา ${this.widget.postShopData_inventory.cost} บาท",
-                  style: styleText),
-            ],
-          )
-        ],
-      ),
-    );
+
+    Widget Name = Text("${name}",
+        style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            shadows: [
+              Shadow(
+                  offset: Offset(2.0, 2.0),
+                  blurRadius: 5.0,
+                  color: Colors.black.withOpacity(0.6)),
+            ]));
+    Widget Quantity = Text("จำนวน ${quantity}",
+        style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            shadows: [
+              Shadow(
+                  offset: Offset(2.0, 2.0),
+                  blurRadius: 5.0,
+                  color: Colors.black.withOpacity(0.6)),
+            ]));
+    Widget Cost = Text("ราคา ${cost} บาท",
+        style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            shadows: [
+              Shadow(
+                  offset: Offset(2.0, 2.0),
+                  blurRadius: 5.0,
+                  color: Colors.black.withOpacity(0.6)),
+            ]));
+
     return Container(
-      height: MediaQuery.of(context).size.width * 0.60,
-      width: MediaQuery.of(context).size.width * 0.8,
-      color: Colors.red,
-      margin: EdgeInsets.only(right: 10),
-      child: Stack(
+      height: 300,
+      width: 150,
+      margin: EdgeInsets.only(right: 5, left: 5),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.grey[200])),
+      child: Column(
         children: [
-          //ใน children นี้มีปัญหา
-          Expanded(
-              child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) => MenuProfileScreen(
-                              postShopData_inventory:
-                                  this.widget.postShopData_inventory,
-                              postShopData_menu: this.widget.postShopData_menu,
-                            )));
-                  },
-                  child: ImageMenu)),
-          Expanded(child: InfoMenu),
+          ImageMenu,
+          Name,
+          Quantity,
+          Cost,
+          ButtonModel(text: "ดู", fun: OpenMenuScreen)
         ],
       ),
-      // child: ,
     );
+  }
+
+  Future<void> OpenMenuScreen() async {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => MenuProfileScreen(
+            inventory_id: this.widget.inventory_id, data: this.widget.data)));
+  }
+}
+
+class ButtonModel extends StatefulWidget {
+  String text;
+  Function fun;
+  ButtonModel({@required this.text, @required this.fun});
+  @override
+  _ButtonModelState createState() => _ButtonModelState();
+}
+
+class _ButtonModelState extends State<ButtonModel> {
+  Color color = Color(0xffFA897B);
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+        onTap: () async {
+          setState(() {
+            color = Colors.white;
+          });
+          await Future.delayed(Duration(milliseconds: 50));
+          setState(() {
+            color = Color(0xffFA897B);
+          });
+          this.widget.fun();
+        },
+        child: Container(
+          padding: EdgeInsets.all(5),
+          margin: EdgeInsets.all(5),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(color: color),
+          child: Text("${this.widget.text}"),
+        ));
   }
 }

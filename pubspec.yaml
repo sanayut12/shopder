@@ -65,6 +65,10 @@ flutter:
     - assets/thailand.json
     - assets/image/background/backgroundFirst1.png
     - assets/image/background/backgroundInfor.png
+    - assets/image/picture/food.png
+    - assets/image/background/bill.png
+    - assets/image/background/bill2.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

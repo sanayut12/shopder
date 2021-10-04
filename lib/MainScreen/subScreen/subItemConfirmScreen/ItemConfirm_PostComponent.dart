@@ -27,33 +27,39 @@ class _ItemConfirm_PostComponentState extends State<ItemConfirm_PostComponent> {
         OpenFullItemConfirm();
       },
       child: Container(
-        /*12*/
-        // height: 100,
-
         width: double.infinity,
-        margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.only(top: 15, bottom: 5, right: 8, left: 8),
         padding: EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
-              color: Color(0xFFFF6F5D), width: 3.0, style: BorderStyle.solid),
+              color: Colors.grey[300], width: 1.0, style: BorderStyle.solid),
         ),
-
         child: Column(
           children: [
+            // ItemConfirmPost_DetailComponent(                             1
+            //     post_info: this.widget.data.post_info),
+            // ItemConfirmPost_StartComponent(
+            //     post_info: this.widget.data.post_info),
+            // ItemConfirmPost_StopComponent(
+            //     post_info: this.widget.data.post_info),
+            // ItemConfirmPost_SendComponent(
+            //     post_info: this.widget.data.post_info),
+            // ItemConfirmPost_Detail2Component(
+            //     post_info: this.widget.data.post_info),
+            // ItemConfirmPost_TableComponent(),                            1
+            // ItemConfirmPost_ListMenuComponent(data: this.widget.data)    2
             ItemConfirmPost_DetailComponent(
-                post_info: this.widget.data.post_info),
-            ItemConfirmPost_StartComponent(
                 post_info: this.widget.data.post_info),
             ItemConfirmPost_StopComponent(
                 post_info: this.widget.data.post_info),
             ItemConfirmPost_SendComponent(
                 post_info: this.widget.data.post_info),
+            ItemConfirmPost_TableComponent(),
+            ItemConfirmPost_ListMenuComponent(data: this.widget.data),
             ItemConfirmPost_Detail2Component(
                 post_info: this.widget.data.post_info),
-            ItemConfirmPost_TableComponent(),
-            ItemConfirmPost_ListMenuComponent(data: this.widget.data)
           ],
         ),
       ),

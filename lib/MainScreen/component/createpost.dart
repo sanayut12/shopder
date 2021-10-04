@@ -94,23 +94,23 @@ class _CreatePostState extends State<CreatePost> {
               child: Row(
                 children: [
 // <<<<<<< HEAD
-                  Expanded(
-                      flex: 1,
-                      child: Container(
-                        height: double.infinity,
-                        width: double.infinity,
-                        margin: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: image_shop_profile_byte != null
-                                    ? MemoryImage(
-                                        image_shop_profile_byte,
-                                      )
-                                    : NetworkImage(
-                                        "https://static.wikia.nocookie.net/doraemon/images/c/c7/2005Doraemon.png/revision/latest?cb=20201017162935&path-prefix=en"),
-                                fit: BoxFit.cover)),
-                      )),
+                  // Expanded(
+                  //     flex: 1,
+                  //     child: Container(
+                  //       height: double.infinity,
+                  //       width: double.infinity,
+                  //       margin: EdgeInsets.all(10),
+                  //       decoration: BoxDecoration(
+                  //           shape: BoxShape.circle,
+                  //           image: DecorationImage(
+                  //               image: image_shop_profile_byte != null
+                  //                   ? MemoryImage(
+                  //                       image_shop_profile_byte,
+                  //                     )
+                  //                   : NetworkImage(
+                  //                       "https://static.wikia.nocookie.net/doraemon/images/c/c7/2005Doraemon.png/revision/latest?cb=20201017162935&path-prefix=en"),
+                  //               fit: BoxFit.cover)),
+                  //     )),
 //                   Expanded(
 //                       flex: 3,
 //                       child: Container(

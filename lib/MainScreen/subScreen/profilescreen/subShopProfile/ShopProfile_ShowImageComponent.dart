@@ -10,12 +10,12 @@ class ShopProfile_ShowImageComponent extends StatefulWidget {
 class _ShopProfile_ShowImageComponentState
     extends State<ShopProfile_ShowImageComponent> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { /*22*/
     return Container(
-      height: MediaQuery.of(context).size.width * 0.3,
-      width: MediaQuery.of(context).size.width * 0.3,
+      height: MediaQuery.of(context).size.width * 0.25,
+      width: MediaQuery.of(context).size.width * 0.25,
       margin: EdgeInsets.only(
-          left: 10, top: MediaQuery.of(context).size.width * 0.35),
+          left: 15, top: MediaQuery.of(context).size.width * 0.25),
       decoration: BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(

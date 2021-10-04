@@ -19,11 +19,11 @@ class _ItemBillPostShopBill_StatusComponentState
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          Text("วันที่จัดส่ง   "
             "${this.widget.post_shop.send.ToString()}",
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: MediaQuery.of(context).size.width *0.06),
+              fontSize: MediaQuery.of(context).size.width *0.042),
           ),
           this.widget.post_shop.detail == ""
               ? Container()

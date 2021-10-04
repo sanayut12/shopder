@@ -17,7 +17,7 @@ class _FullItemConfirmPostListBill_ButtomConfirmComponentState
         alignment: Alignment.center,
         margin: EdgeInsets.all(2),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10), color: Colors.red),
+            borderRadius: BorderRadius.circular(10), color: Color(0xFFFA897B)),
         child: Text("ยืนยันแล้ว"),
       ),
     );

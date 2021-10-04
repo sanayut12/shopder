@@ -32,7 +32,7 @@ class _ImageMenuDisplayComponentState extends State<ImageMenuDisplayComponent> {
             });
           },
           child: Icon(
-            Icons.delete,
+            Icons.delete,color:Colors.grey[400],
             size: 50,
           ),
         ),
@@ -41,7 +41,7 @@ class _ImageMenuDisplayComponentState extends State<ImageMenuDisplayComponent> {
         height: double.infinity,
         width: MediaQuery.of(context).size.width - (10.0 * 4),
         decoration:
-            BoxDecoration(border: Border.all(color: Colors.green, width: 5)),
+            BoxDecoration(border: Border.all( color: Colors.white,width: 5)),
         child: Stack(
           children: [
             Expanded(child: imageDisplay(_image)),

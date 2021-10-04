@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:shopder/function/dataManagement/dateBox.dart';
 
 class GetPostShopDataRequest {
-  final String post_id;
+  String post_id;
   GetPostShopDataRequest({@required this.post_id});
 
   Map<String, dynamic> value() {
@@ -11,10 +11,11 @@ class GetPostShopDataRequest {
 }
 
 class GetPostShopDataResponse {
-  final PostShopData_post postShopData_post;
-  final List<PostShopData_inventory> bufferPostShopData_inventory;
-  final Map<String, PostShopData_menu> bufferPostShopData_menu;
-  final String code;
+  PostShopData_post postShopData_post;
+  Map<String, PostShopData_inventory>
+      bufferPostShopData_inventory; //<inventory_id , data
+  Map<String, PostShopData_menu> bufferPostShopData_menu; //<menu_id , data
+  String code;
   GetPostShopDataResponse(
       {@required this.postShopData_post,
       @required this.bufferPostShopData_inventory,
@@ -23,9 +24,9 @@ class GetPostShopDataResponse {
 }
 
 class PostShopData_post {
-  final String post_id, shop_id, detail, how_send, over_order, confirm_order;
-  final int sendCost;
-  final DateBox start, stop, send;
+  String post_id, shop_id, detail, how_send, over_order, confirm_order;
+  int sendCost;
+  DateBox start, stop, send;
   PostShopData_post(
       {@required this.post_id,
       @required this.shop_id,
@@ -40,21 +41,16 @@ class PostShopData_post {
 }
 
 class PostShopData_inventory {
-  final String inventory_id, post_id, menu_id;
-  final int quantity, cost;
+  String menu_id;
+  int quantity, cost;
   PostShopData_inventory(
-      {@required this.inventory_id,
-      @required this.post_id,
-      @required this.menu_id,
-      @required this.quantity,
-      @required this.cost});
+      {@required this.menu_id, @required this.quantity, @required this.cost});
 }
 
 class PostShopData_menu {
-  final String shop_id, name, detail, type, path;
+  String name, detail, type, path;
   PostShopData_menu(
-      {@required this.shop_id,
-      @required this.name,
+      {@required this.name,
       @required this.detail,
       @required this.type,
       @required this.path});

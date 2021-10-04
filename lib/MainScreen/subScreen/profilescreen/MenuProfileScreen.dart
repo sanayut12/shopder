@@ -2,17 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopder/MainScreen/subScreen/profilescreen/sub_MenuProfileScreen/ShowDetailComponent.dart';
 import 'package:shopder/MainScreen/subScreen/profilescreen/sub_MenuProfileScreen/ShowImageProfileConponent.dart';
-import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPathImageMenu.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPostShopData.dart';
 import 'package:shopder/function/http/httpGetPathImageMenu.dart';
 
 class MenuProfileScreen extends StatefulWidget {
-  final PostShopData_inventory postShopData_inventory;
-  final PostShopData_menu postShopData_menu;
-  MenuProfileScreen(
-      {@required this.postShopData_inventory,
-      @required this.postShopData_menu});
+  String inventory_id;
+  GetPostShopDataResponse data;
+  MenuProfileScreen({@required this.inventory_id, @required this.data});
 
   @override
   _MenuProfileScreenState createState() => _MenuProfileScreenState();
@@ -29,6 +26,16 @@ class _MenuProfileScreenState extends State<MenuProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //ส่วนของการประมวลผล
+    String inventory_id = this.widget.inventory_id;
+    String menu_id =
+        this.widget.data.bufferPostShopData_inventory[inventory_id].menu_id;
+    String name = this.widget.data.bufferPostShopData_menu[menu_id].name;
+    String image = this.widget.data.bufferPostShopData_menu[menu_id].path;
+    int quantity =
+        this.widget.data.bufferPostShopData_inventory[inventory_id].quantity;
+    int cost = this.widget.data.bufferPostShopData_inventory[inventory_id].cost;
+    //ส่วนของการแสดงออกบนหน้าจอ
     Widget ShowImage = Container(
       height: MediaQuery.of(context).size.width * 0.6,
       width: double.infinity,
@@ -38,8 +45,7 @@ class _MenuProfileScreenState extends State<MenuProfileScreen> {
           itemCount: 1 + listImage.length,
           itemBuilder: (BuildContext context, int index) {
             if (index < 1) {
-              return ShowImageProfileComponent(
-                  path: this.widget.postShopData_menu.path);
+              return ShowImageProfileComponent(path: image);
             } else {
               return ShowImageProfileComponent(path: listImage[index - 1].path);
             }
@@ -55,8 +61,10 @@ class _MenuProfileScreenState extends State<MenuProfileScreen> {
           children: [
             ShowImage,
             ShowDetailComponent(
-                postShopData_inventory: this.widget.postShopData_inventory,
-                postShopData_menu: this.widget.postShopData_menu),
+                postShopData_inventory:
+                    this.widget.data.bufferPostShopData_inventory[inventory_id],
+                postShopData_menu:
+                    this.widget.data.bufferPostShopData_menu[menu_id]),
           ],
         ),
       ),
@@ -64,7 +72,7 @@ class _MenuProfileScreenState extends State<MenuProfileScreen> {
   }
 
   void getPathImageMenu() async {
-    String inventory_id = this.widget.postShopData_inventory.inventory_id;
+    String inventory_id = this.widget.inventory_id;
     GetPathImageMenuRequest bufferGetPathImageMenuRequest =
         GetPathImageMenuRequest(inventory_id: inventory_id);
     GetPathImageMenuResponse bufferGetPathImageMenuResponse =

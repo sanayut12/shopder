@@ -13,22 +13,26 @@ class _FeedScreenState extends State<FeedScreen> {
     return Container(
       height: double.infinity,
       width: double.infinity,
-      color: Colors.grey[100],
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Color(0xfffa897b), Colors.white])),
       child: ListView(
         // padding: EdgeInsets.only(left: 10, right: 10),
         children: [
           CreatePost(),
-          PostBox(),
-          PostBox(),
-          PostBox(),
-          PostBox(),
-          PostBox(),
-          PostBox(),
-          PostBox(),
-          PostBox(),
-          PostBox(),
-          PostBox(),
-          PostBox(),
+          // PostBox(),
+          // PostBox(),
+          // PostBox(),
+          // PostBox(),
+          // PostBox(),
+          // PostBox(),
+          // PostBox(),
+          // PostBox(),
+          // PostBox(),
+          // PostBox(),
+          // PostBox(),
         ],
       ),
     );

@@ -12,7 +12,7 @@ class ItemBillPostShopBill_TableComponent extends StatelessWidget {
           Expanded(
               flex: 2,
               child: Container(
-                
+                margin: EdgeInsets.only(left: 20),
                   child: Text(
                 "รายการสินค้า",
                 

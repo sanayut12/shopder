@@ -26,22 +26,22 @@ class _PostBoxProfileComponentState extends State<PostBoxProfileComponent> {
   @override
   Widget build(BuildContext context) {
     Widget PostComponent = Container(
-      // height: 100,
+      padding: EdgeInsets.all(10),
       width: double.infinity,
-      color: Colors.amber,
-      margin: EdgeInsets.only(top: 10),
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(10)),
+      margin: EdgeInsets.only(top: 3, bottom: 2, right: 10, left: 10),
       child: Column(
         children: [
-          MiniProfileShop(),
-          DatePostAndSendCost(
-            postShopData_post: this.widget.data.postShopData_post,
+          MiniProfileShop(
+            data: this.widget.data,
           ),
           DetailPostProfileComponent(
               postShopData_post: this.widget.data.postShopData_post),
-          MenuListPostProfileComponent(
-              bufferPostShopData_inventory:
-                  this.widget.data.bufferPostShopData_inventory,
-              bufferPostShopData_menu: this.widget.data.bufferPostShopData_menu)
+          MenuListPostProfileComponent(data: this.widget.data),
+          DatePostAndSendCost(
+            postShopData_post: this.widget.data.postShopData_post,
+          )
         ],
       ),
     );

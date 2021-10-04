@@ -14,7 +14,7 @@ class _ShopProfile_DetailComponentState
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.width * 0.4,
+      height: MediaQuery.of(context).size.width * 0.35,
       width: double.infinity,
       color: Colors.white,
       child: Column(
@@ -22,7 +22,7 @@ class _ShopProfile_DetailComponentState
           Container(
             alignment: Alignment.topLeft,
             margin: EdgeInsets.only(
-                left: 25, top: MediaQuery.of(context).size.width * 0.18),
+                left: 32, top: MediaQuery.of(context).size.width * 0.11),
             // padding: const EdgeInsets.only(left: 30, top: 20, bottom: 20),
             // color: Colors.red,
             child: Text("${ShopInfoMamagement().GetName()}",
