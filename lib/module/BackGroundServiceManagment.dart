@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shopder/function/httpbackground/httpGetNotificationPostShopBuy.dart';
 import 'package:shopder/function/httpbackground/object/httpObjectNotificationPostShopBuy.dart';
+import 'package:shopder/module/NotificationManagement/notificationChat.dart';
 import 'package:shopder/module/NotificationManagement/notificationType1.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -11,7 +12,7 @@ int index_notification_buy = 0; //0 - 5000
 void BackGroundServiceManager(dynamic _data, String host) async {
   String data = _data;
   Map jsonData = jsonDecode(data);
-  print("hhhhhhhhhh ${jsonData}");
+  print("shopder ${jsonData}");
   //test//////////////
   // int id = jsonData['id'];
   // String message = jsonData['data'];
@@ -29,9 +30,10 @@ void BackGroundServiceManager(dynamic _data, String host) async {
       index_notification_buy = 0;
     }
   }
-  // print(data);
-  // print(data.runtimeType);
-  // _showNotification();
+
+  if (type == "5") {
+    NotificationChat(host, _data);
+  }
 }
 
 Future<void> _showNotification() async {

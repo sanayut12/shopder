@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:shopder/function/dataManagement/dataWriteFoodPost.dart';
 
 class MenuListDisplayComponent extends StatefulWidget {
   List<ItemFoodInfo> bufferItemFoodInfo;
+
   MenuListDisplayComponent({@required this.bufferItemFoodInfo});
   @override
   _MenuListDisplayComponentState createState() =>
@@ -24,9 +26,9 @@ class _MenuListDisplayComponentState extends State<MenuListDisplayComponent> {
     TextStyle font = TextStyle(
         fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white);
 
-    Widget ImageMenu({@required String image}) => Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(image: MemoryImage(base64Decode(image)))),
+    Widget ImageMenu({@required Uint8List image}) => Container(
+          decoration:
+              BoxDecoration(image: DecorationImage(image: MemoryImage(image))),
         );
 
     Widget DetailMenu({@required ItemFoodInfo item}) => Container(
@@ -66,16 +68,20 @@ class _MenuListDisplayComponentState extends State<MenuListDisplayComponent> {
           ),
         );
 
-    return Container(
-      color: Colors.grey[100],
-      height: (MediaQuery.of(context).size.width - 60) * 0.8,
-      width: MediaQuery.of(context).size.width - 60,
-      child: ListView.builder(
-          itemCount: this.widget.bufferItemFoodInfo.length,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (BuildContext context, int index) {
-            return Card(item: this.widget.bufferItemFoodInfo[index]);
-          }),
+    return Column(
+      children: [
+        Container(
+          color: Colors.grey[100],
+          height: this.widget.bufferItemFoodInfo.length == 0 ? 0 : 300,
+          width: double.infinity,
+          child: ListView.builder(
+              itemCount: this.widget.bufferItemFoodInfo.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(item: this.widget.bufferItemFoodInfo[index]);
+              }),
+        ),
+      ],
     );
   }
 }

@@ -26,7 +26,7 @@ class _ItemConfirmScreenState extends State<ItemConfirmScreen> {
     return Scaffold(
       body: Container(
         /*13*/
-        
+
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
@@ -39,10 +39,16 @@ class _ItemConfirmScreenState extends State<ItemConfirmScreen> {
         ),
         child: Column(
           children: [
-            Padding(padding: EdgeInsets.all(5),),
-            Text("ยอดจองสินค้า" , style: TextStyle(
-              color: Colors.white,fontFamily: "SukhumvitSet-SemiBold", fontSize: 22
-            ),),
+            Padding(
+              padding: EdgeInsets.all(5),
+            ),
+            Text(
+              "ยอดจองสินค้า",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: "SukhumvitSet-SemiBold",
+                  fontSize: 22),
+            ),
             Expanded(
               child: ListView.builder(
                   itemCount: data.length,

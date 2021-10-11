@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:shopder/MainScreen/post/postwrite.dart';
+import 'package:shopder/MainScreen/subScreen/PostWriteScreen.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 
 class CreatePost extends StatefulWidget {
@@ -73,7 +74,7 @@ class _CreatePostState extends State<CreatePost> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (BuildContext context) => PostWrite()));
+                  builder: (BuildContext context) => PostWriteScreen()));
         },
       ),
     );
@@ -93,45 +94,8 @@ class _CreatePostState extends State<CreatePost> {
               flex: 2,
               child: Row(
                 children: [
-// <<<<<<< HEAD
-                  // Expanded(
-                  //     flex: 1,
-                  //     child: Container(
-                  //       height: double.infinity,
-                  //       width: double.infinity,
-                  //       margin: EdgeInsets.all(10),
-                  //       decoration: BoxDecoration(
-                  //           shape: BoxShape.circle,
-                  //           image: DecorationImage(
-                  //               image: image_shop_profile_byte != null
-                  //                   ? MemoryImage(
-                  //                       image_shop_profile_byte,
-                  //                     )
-                  //                   : NetworkImage(
-                  //                       "https://static.wikia.nocookie.net/doraemon/images/c/c7/2005Doraemon.png/revision/latest?cb=20201017162935&path-prefix=en"),
-                  //               fit: BoxFit.cover)),
-                  //     )),
-//                   Expanded(
-//                       flex: 3,
-//                       child: Container(
-//                         width: double.infinity,
-//                         height: double.infinity,
-//                         margin: EdgeInsets.all(10),
-//                         alignment: Alignment(-1, 0),
-//                         decoration: BoxDecoration(
-//                             // color: Colors.blue,
-//                             borderRadius: BorderRadius.circular(20)),
-//                         child: Text(
-//                           "วันนี้ขายอะไรดี?",
-//                           style: TextStyle(
-//                             fontFamily: 'Sukhumvit-Bold',
-//                             fontSize: 30),
-//                         ),
-//                       ))
-// =======
                   Expanded(child: ImageShop),
                   Expanded(flex: 3, child: TextGuild)
-// >>>>>>> 9dce3e4643556c3037ec753e2738d2f30571b6df
                 ],
               )),
           Expanded(child: CreatePost)

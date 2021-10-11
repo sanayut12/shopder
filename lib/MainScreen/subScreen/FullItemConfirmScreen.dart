@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shopder/MainScreen/subScreen/sebFullItemConfirmScreen/FullItemConfirmPost_ListBillComponent.dart';
 import 'package:shopder/MainScreen/subScreen/sebFullItemConfirmScreen/FullItemConfirmPost_ListMenuComponent.dart';
 import 'package:shopder/MainScreen/subScreen/sebFullItemConfirmScreen/FullItemConfirmPost_TableComponent.dart';
 import 'package:shopder/MainScreen/subScreen/sebFullItemConfirmScreen/FullItemConfirmPostListBill_BillComponent.dart';
@@ -76,14 +75,14 @@ class _FullItemConfirmScreenState extends State<FullItemConfirmScreen> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              padding: EdgeInsets.only(top: 30,bottom: 5),
+              padding: EdgeInsets.only(top: 30, bottom: 5),
               icon: Icon(Icons.arrow_back_ios_rounded)),
-           Expanded(
+          Expanded(
               child: Container(
             margin: EdgeInsets.only(top: 30, bottom: 5, right: 30),
             alignment: Alignment.center,
             child: Text("รับออเดอร์ลูกค้า",
-            style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           ))
         ],
       ),
@@ -101,38 +100,34 @@ class _FullItemConfirmScreenState extends State<FullItemConfirmScreen> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        
-        decoration: BoxDecoration( 
-         gradient: LinearGradient(
-          colors:[Color(0xFFFFC9C3),Colors.white],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          stops: [
-                0.0,
-               0.3,
-              ],
-              ), 
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFFFFC9C3), Colors.white],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: [
+              0.0,
+              0.3,
+            ],
+          ),
         ),
-
         child: Column(
           children: [
             TitleBar,
             ShowDetail,
             Expanded(
                 child: Container(
-                  decoration: BoxDecoration( 
-          gradient: LinearGradient(
-          colors:[Color(0xFFFFC9C3),Colors.white],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          stops: [
-                0.0,
-                20,
-              ],
-              
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Color(0xFFFFC9C3), Colors.white],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [
+                    0.0,
+                    20,
+                  ],
+                ),
               ),
-        ),
-
               child: ListView(children: buffer),
             ))
           ],

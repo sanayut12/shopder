@@ -1,10 +1,11 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ImageMenuDisplayComponent extends StatefulWidget {
-  final List<String> listImage;
+  final List<Uint8List> listImage;
   ImageMenuDisplayComponent({@required this.listImage});
   @override
   _ImageMenuDisplayComponentState createState() =>
@@ -12,11 +13,11 @@ class ImageMenuDisplayComponent extends StatefulWidget {
 }
 
 class _ImageMenuDisplayComponentState extends State<ImageMenuDisplayComponent> {
-  Widget imageDisplay(String _image) => Container(
+  Widget imageDisplay(Uint8List _image) => Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(
-            image: DecorationImage(image: MemoryImage(base64Decode(_image)))),
+        decoration:
+            BoxDecoration(image: DecorationImage(image: MemoryImage(_image))),
       );
   Widget delete({@required int index}) => Container(
         height: double.infinity,
@@ -32,16 +33,17 @@ class _ImageMenuDisplayComponentState extends State<ImageMenuDisplayComponent> {
             });
           },
           child: Icon(
-            Icons.delete,color:Colors.grey[400],
+            Icons.delete,
+            color: Colors.grey[400],
             size: 50,
           ),
         ),
       );
-  Widget CardImage(String _image, int index) => Container(
+  Widget CardImage(Uint8List _image, int index) => Container(
         height: double.infinity,
         width: MediaQuery.of(context).size.width - (10.0 * 4),
         decoration:
-            BoxDecoration(border: Border.all( color: Colors.white,width: 5)),
+            BoxDecoration(border: Border.all(color: Colors.white, width: 5)),
         child: Stack(
           children: [
             Expanded(child: imageDisplay(_image)),

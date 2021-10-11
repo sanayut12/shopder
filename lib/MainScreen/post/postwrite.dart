@@ -5,7 +5,6 @@ import 'package:shopder/MainScreen/post/component/postscreen/HowSendComponent.da
 import 'package:shopder/MainScreen/post/component/postscreen/PostSetting.dart';
 import 'package:shopder/MainScreen/post/addMenuItemScreen.dart';
 import 'package:shopder/MainScreen/post/component/postscreen/MenuListDisplayComponent.dart';
-import 'package:shopder/MainScreen/post/component/postscreen/listFoodCardComponent.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/dataManagement/dataWriteFoodPost.dart';
 import 'package:shopder/function/dataManagement/dateBox.dart';
@@ -22,7 +21,6 @@ class _PostWriteState extends State<PostWrite> {
   int sendCost = 0;
   DateBox dateClose;
   DateBox dateSend;
-  String sendtype = "1";
   // FoodPostInfo bufferFoodPostInfo;
   // var  = <ItemFoodInfo>[];
   List<ItemFoodInfo> bufferItemFoodInfo = [];
@@ -52,10 +50,9 @@ class _PostWriteState extends State<PostWrite> {
     //////////////////////////////////////////cccc//////////////////////////////////
 
     Widget DescriptionInput = TextField(
+      // controller: ,
       onChanged: (e) {
-        setState(() {
-          detail = e;
-        });
+        detail = e;
       },
       decoration: InputDecoration(
           border: InputBorder.none,
@@ -188,16 +185,6 @@ class _PostWriteState extends State<PostWrite> {
           PostSetting(
             callBack: setPostsetting,
           ),
-          // GestureDetector(
-          //   onTap: () {
-          //     print("${how_send} ${over_order} ${confirm_order}");
-          //   },
-          //   child: Container(
-          //     height: 100,
-          //     width: 100,
-          //     color: Colors.red,
-          //   ),
-          // )
         ],
       )),
     );
@@ -248,31 +235,6 @@ class _PostWriteState extends State<PostWrite> {
       ),
     );
 
-    //   return Scaffold(
-    //     appBar: AppBar(
-    //       title: Text("สร้างโพสต์"),
-    //       // backgroundColor: Colors.white,
-    //       actions: [
-    //         GestureDetector(
-    //           onTap: () {
-    //             OnPost();
-    //           },
-    //           child: Container(
-    //             height: double.infinity,
-    //             width: 80,
-    //             color: Colors.red,
-    //             margin: EdgeInsets.all(10),
-    //             alignment: Alignment.center,
-    //             child: Text("โพสต์"),
-    //           ),
-    //         )
-    //       ],
-    //     ),
-    //     body: PostForm,
-    //     backgroundColor: Colors.grey[100],
-    //     // resizeToAvoidBottomInset: false,
-    //   );
-    // }
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -315,18 +277,6 @@ class _PostWriteState extends State<PostWrite> {
       confirm_order = confirmOrder;
     });
   }
-
-  // Future<void> UpdateFoodCard() {
-  //   listFoodCard = [];
-  //   int index = 0;
-  //   setState(() {
-  //     bufferItemFoodInfo.forEach((element) {
-  //       print(index);
-  //       listFoodCard.add(FoodCard(index: index, itemFoodInfo: element));
-  //       index += 1;
-  //     });
-  //   });
-  // }
 
   Future<void> OnPost() async {
     PostWriteInfo bufferPostWriteInfo = PostWriteInfo(

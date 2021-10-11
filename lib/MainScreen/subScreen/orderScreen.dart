@@ -24,6 +24,14 @@ class _OrderScreenState extends State<OrderScreen> {
   Widget build(BuildContext context) {
     // print(bufferPostOrder.length);
     return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end:
+              Alignment(0.8, 1.0), // 10% of the width, so there are ten blinds.
+          colors: <Color>[Color(0xffFA897B), Color(0xfffffff)],
+        ),
+      ),
       child: ListView.builder(
           itemCount: bufferPostOrder.length,
           itemBuilder: (BuildContext context, int index) {

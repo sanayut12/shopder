@@ -37,7 +37,7 @@ class PostWriteInfo {
 class ItemFoodInfo {
   final String name;
   final String type;
-  final List<String> listImage;
+  final List<Uint8List> listImage;
   final String detail;
   final int quantity;
   final int cost;

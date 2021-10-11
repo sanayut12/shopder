@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shopder/MainScreen/subScreen/ChatListScreen.dart';
 import 'package:shopder/MainScreen/subScreen/ChatScreen.dart';
 
 class ChatAppBarComponent extends StatefulWidget {
@@ -17,7 +18,7 @@ class _ChatAppBarComponentState extends State<ChatAppBarComponent> {
       child: IconButton(
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => ChatScreen()));
+                builder: (BuildContext context) => ChatListScreen()));
           },
           icon: Icon(
             Icons.chat_outlined,

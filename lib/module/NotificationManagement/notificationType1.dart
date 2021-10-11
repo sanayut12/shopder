@@ -39,6 +39,8 @@ Future<void> NotificationBuy(
   String post_id = bufferNotificationPostShopBuyResponse.post_shop.post_id;
   String dataToFront = json.encode({"page": "1", "post_id": "${post_id}"});
   NotificationPostShopBuy(_id, name, message, status, dataToFront);
+
+  flutterLocalNotificationsPlugin.cancelAll();
 }
 
 Future<void> NotificationPostShopBuy(int _id, String name, String _message,
