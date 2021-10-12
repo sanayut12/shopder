@@ -24,7 +24,6 @@ class _PostWriteOption_DatePickerComponentState
 
   @override
   Widget build(BuildContext context) {
-    print("datedatedatedatedatedatedatedatedatedatedatedatedate");
     if (this.widget.date.datetime() == null) {
       return Container();
     } else {
@@ -37,9 +36,9 @@ class _PostWriteOption_DatePickerComponentState
         icon: Icon(Icons.event),
         dateLabelText: 'วันที่',
         timeLabelText: "เวลา",
-        onChanged: (val) async {
-          DateBox dateBox = await DateStringTransformInt(dateString: val);
-
+        onChanged: (val) {
+          DateBox dateBox = DateStringTransformIntNoSec(dateString: val);
+          // print(val);
           this.widget.fun(dateBox);
         },
         validator: (val) {

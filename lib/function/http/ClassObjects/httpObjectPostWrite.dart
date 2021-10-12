@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:shopder/function/dataManagement/dataWriteFoodPost.dart';
 
 class PostWriteRequest {
@@ -6,17 +8,22 @@ class PostWriteRequest {
   PostWriteRequest({this.postWriteInfo, this.shop_id});
 
   Future<Map<String, dynamic>> formatJSON() async {
-    var items = {};
+    var items = [];
     int index = 0;
+
     postWriteInfo.items.forEach((element) {
-      items["$index"] = {
+      List<String> image = [];
+      element.listImage.forEach((element) {
+        image.add(base64Encode(element));
+      });
+      items.add({
         "name": element.name,
         "type": element.type,
-        "image": element.listImage,
+        "image": image,
         "detail": element.detail,
         "quantity": element.quantity,
         "cost": element.cost
-      };
+      });
 
       index += 1;
     });

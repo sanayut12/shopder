@@ -113,26 +113,6 @@ class _PostWriteScreenState extends State<PostWriteScreen> {
                               fun: SetOption);
                         } else {
                           return Container();
-                          // return Container(
-                          //   height: 1000,
-                          //   width: double.infinity,
-                          //   child: Column(
-                          //     children: [
-                          //       GestureDetector(
-                          //         onTap: () {
-                          //           print("${dateClose.ToString()}");
-                          //           print(
-                          //               "${how_send} ${over_order} ${confirm_order}");
-                          //         },
-                          //         child: Container(
-                          //           height: 100,
-                          //           width: 100,
-                          //           color: Colors.red,
-                          //         ),
-                          //       )
-                          //     ],
-                          //   ),
-                          // );
                         }
                       })),
             ),

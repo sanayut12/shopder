@@ -77,6 +77,7 @@ class _Chat_BottomComponentState extends State<Chat_BottomComponent> {
     );
   }
 
+  Future<void> InitTrack() {}
   Future<void> SetMessage(String _message) {
     message = _message;
     // print(message);

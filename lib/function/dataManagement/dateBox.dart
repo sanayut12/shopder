@@ -69,6 +69,21 @@ DateBox DateStringTransformInt({String dateString}) {
       sec: secInt);
 }
 
+DateBox DateStringTransformIntNoSec({String dateString}) {
+  String yearString = dateString.substring(0, 4);
+  String monthString = dateString.substring(5, 7);
+  String dayString = dateString.substring(8, 10);
+  String hourString = dateString.substring(11, 13);
+  String minString = dateString.substring(14, 16);
+  int yearInt = int.parse(yearString);
+  int monthInt = int.parse(monthString);
+  int dayInt = int.parse(dayString);
+  int hourInt = int.parse(hourString);
+  int minInt = int.parse(minString);
+  return DateBox(
+      year: yearInt, month: monthInt, day: dayInt, hour: hourInt, min: minInt);
+}
+
 Future<DateBox> StringToDateBox({@required String string}) async {
   Map date = json.decode(string);
 

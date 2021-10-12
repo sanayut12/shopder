@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:shopder/MainScreen/subScreen/BillSendScreen.dart';
 import 'package:shopder/MainScreen/subScreen/subItemBillScreen/ItemBillPostShopBill/ItemBillPostShopBill_ListMenuComponent.dart';
@@ -13,29 +12,25 @@ class ItemBill_PostShopBillComponent extends StatefulWidget {
   @override
   _ItemBill_PostShopBillComponentState createState() =>
       _ItemBill_PostShopBillComponentState();
-
-
 }
-
-
 
 class _ItemBill_PostShopBillComponentState
     extends State<ItemBill_PostShopBillComponent> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-    onTap: (){
-      OpenBillSendScreen();
-    },
-  
-      child: Container( /*11*/
-        margin: EdgeInsets.only(top: 5, bottom: 3,right: 10,left: 10),
-        padding: EdgeInsets.only(left: 12,top: 10,bottom: 12),
+      onTap: () {
+        OpenBillSendScreen();
+      },
+      child: Container(
+        /*11*/
+        margin: EdgeInsets.only(top: 5, bottom: 3, right: 10, left: 10),
+        padding: EdgeInsets.only(left: 12, top: 10, bottom: 12),
         decoration: BoxDecoration(
           color: Colors.white,
-      /*    border: Border.all( 
+          /*    border: Border.all( 
           color: Color(0xFFFFC0B8), width: 1.0, style: BorderStyle.solid), */
-          borderRadius: BorderRadius.circular(15), 
+          borderRadius: BorderRadius.circular(15),
           // gradient: LinearGradient(
           // colors:[Color(0xFFFFB5AC),Colors.white],
           // begin: Alignment.topCenter,
@@ -45,7 +40,7 @@ class _ItemBill_PostShopBillComponentState
           //       0.50,
           //     ],
         ),
-        
+
         // boxShadow: [
         //   BoxShadow(
         //     color: Colors.grey.withOpacity(0.2),
@@ -55,9 +50,7 @@ class _ItemBill_PostShopBillComponentState
         //   )
         // ]),
         child: Column(
-          
           children: [
-            
             ItemBillPostShopBill_StatusComponent(
                 post_shop: this.widget.data.post_info),
             ItemBillPostShopBill_TableComponent(),
@@ -66,7 +59,6 @@ class _ItemBill_PostShopBillComponentState
         ),
       ),
     );
-
   }
 
   Future<void> OpenBillSendScreen() async {

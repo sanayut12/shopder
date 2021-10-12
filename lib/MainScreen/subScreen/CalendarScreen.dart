@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:shopder/MainScreen/subScreen/subCalendar/Calendar_AppBarComponent.dart';
 import 'package:shopder/MainScreen/subScreen/subCalendar/Calendar_BarComponent.dart';
 import 'package:shopder/MainScreen/subScreen/subCalendar/Calendar_CalendarTableComponent.dart';
+import 'package:shopder/MainScreen/subScreen/subCalendar/Calendar_ListEventComponent.dart';
 import 'package:shopder/MainScreen/subScreen/subCalendar/Calender_TableComponent.dart';
+import 'package:shopder/function/dataManagement/dataCalendar.dart';
+import 'package:shopder/function/dataManagement/dataShopInfo.dart';
+import 'package:shopder/function/dataManagement/dateBox.dart';
+import 'package:shopder/function/http/ClassObjects/httpObjectGetPostCalendar.dart';
+import 'package:shopder/function/http/httpGetPostCalendar.dart';
 
 class CalendarScreen extends StatefulWidget {
   @override
@@ -11,15 +17,19 @@ class CalendarScreen extends StatefulWidget {
 }
 
 class _CalendarScreenState extends State<CalendarScreen> {
-  List<int> bufferNumberInCalendar = [];
+  List<int> bufferNumberInCalendar = []; //จำนวน 42 ตัว
+  List<int> bufferEvent = []; //ใส่วันที่ ที่มีเหตุการณ์
   int year = 0;
   int month = 0;
   int day = 0;
   int day_select = 0;
+  Map<String, PostCalendar> bufferPost = {};
+  Map<String, PostCalendar> bufferPostEventSelectDay = {};
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    GetPost();
     InitCalendar();
   }
 
@@ -63,7 +73,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                 ? Calendar_CalendarTableComponent(
                                     bufferNumberInCalendar:
                                         bufferNumberInCalendar,
-                                    select: day_select)
+                                    bufferEvent: bufferEvent,
+                                    select: day_select,
+                                    SelectDay: SelectDay,
+                                  )
                                 : Container()
                           ],
                         ),
@@ -71,6 +84,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     ],
                   ),
                   ///////////////////////////////////////////////////////////////////////
+                  Calendar_ListEventComponent(
+                      bufferPostEventSelectDay: bufferPostEventSelectDay),
                   SizedBox(
                     height: 500,
                   )
@@ -83,11 +98,30 @@ class _CalendarScreenState extends State<CalendarScreen> {
     ));
   }
 
-  Future<void> InitCalendar() async {
-    for (int i = 0; i < 42; i++) {
-      bufferNumberInCalendar.add(0);
-    }
+  Future<void> SelectDay(int index) {
+    setState(() {
+      day_select = index;
+    });
+    SetPostEvent();
+  }
 
+  Future<void> GetPost() async {
+    String shop_id = ShopInfoMamagement().GetShop_id();
+    GetPostCalendarRequest bufferGetPostCalendarRequest =
+        GetPostCalendarRequest(shop_id: shop_id);
+    GetPostCalendarResponse bufferGetPostCalendarResponse =
+        await HttpGetPostCalendar(
+            bufferGetPostCalendarRequest: bufferGetPostCalendarRequest);
+    bufferPost = bufferGetPostCalendarResponse.bufferPost;
+    SetEvent();
+  }
+
+  Future<void> InitCalendar() async {
+    List<int> _bufferNumberInCalendar = [];
+    for (int i = 0; i < 42; i++) {
+      _bufferNumberInCalendar.add(0);
+    }
+    bufferNumberInCalendar = _bufferNumberInCalendar;
     DateTime now = DateTime.now();
     int _year = now.year;
     int _month = now.month;
@@ -149,6 +183,42 @@ class _CalendarScreenState extends State<CalendarScreen> {
         bufferNumberInCalendar[date.weekday + i - 1] = i;
       }
     }
+    SetEvent();
+
     setState(() {});
+  }
+
+  Future<void> SetEvent() {
+    print("object");
+    bufferEvent = [];
+    bufferPost.forEach((key, value) {
+      print(value);
+      DateBox date_send = value.send;
+      int _year = date_send.year;
+      int _month = date_send.month;
+      print("${year} ${_year} = ${year == _year}");
+      print("${month} ${_month} ${month == _month}");
+      if (_year == year && _month == month) {
+        setState(() {
+          bufferEvent.add(date_send.day);
+        });
+      }
+    });
+    print(bufferEvent);
+  }
+
+  Future<void> SetPostEvent() {
+    bufferPostEventSelectDay = {};
+    bufferPost.forEach((key, value) {
+      DateBox date_send = value.send;
+      if (year == date_send.year &&
+          month == date_send.month &&
+          day_select == date_send.day) {
+        setState(() {
+          bufferPostEventSelectDay[key] = value;
+        });
+      }
+    });
+    print("ddd${bufferPostEventSelectDay.length}");
   }
 }
