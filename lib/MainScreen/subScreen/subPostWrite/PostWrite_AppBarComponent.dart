@@ -25,8 +25,10 @@ class _PostWrite_AppBarComponentState extends State<PostWrite_AppBarComponent> {
             size: 40,
           )),
     );
-    Widget Title = Text("สร้างโพสต์");
+    Widget Title = Text("สร้างโพสต์",
+        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold));
     return Container(
+      alignment: Alignment.center,
       height: 65,
       width: double.infinity,
       color: Color(0xFFFA897B),
@@ -61,7 +63,7 @@ class _ButtonModelState extends State<ButtonModel> {
     return GestureDetector(
         onTap: () async {
           setState(() {
-            color = Colors.white;
+            //  color = Colors.white;
           });
           await Future.delayed(Duration(milliseconds: 50));
           setState(() {
@@ -70,11 +72,19 @@ class _ButtonModelState extends State<ButtonModel> {
           this.widget.fun();
         },
         child: Container(
-          padding: EdgeInsets.all(10),
+          margin: EdgeInsets.only(top: 10, right: 10),
+          padding: EdgeInsets.only(top: 10, bottom: 10, right: 15, left: 15),
           decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey[200]),
-              color: color,
-              borderRadius: BorderRadius.circular(10)),
+              color: Color(0xFFFFFFFF),
+              // boxShadow: [
+              //         BoxShadow(
+              //           color: Color(0xFFFA897B),
+              //           spreadRadius: 3,
+              //           blurRadius: 2,
+              //           offset: Offset(0, 3),),],
+              border: Border.all(color: Colors.grey[400]),
+              // color: color,
+              borderRadius: BorderRadius.circular(20)),
           child: Text("${this.widget.text}"),
         ));
   }

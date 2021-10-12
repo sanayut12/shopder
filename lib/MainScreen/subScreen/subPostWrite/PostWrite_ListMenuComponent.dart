@@ -32,7 +32,7 @@ class _PostWrite_ListMenuComponentState
                     item: this.widget.bufferItemFoodInfo[index]);
               }),
         ),
-        ButtonModel(text: "เพิ่มสินค้า", fun: this.widget.AddMenu)
+        ButtonModel(text: "เพิ่มสินค้า", fun: this.widget.AddMenu),
       ],
     );
   }
@@ -64,11 +64,12 @@ class _ButtonModelState extends State<ButtonModel> {
         },
         child: Container(
           margin: EdgeInsets.only(right: 15, top: 10),
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.only(top: 10,bottom: 10,right: 15,left: 15),
           decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey[200]),
-              color: color,
-              borderRadius: BorderRadius.circular(10)),
+            color: Color(0xFFFFFFFF),
+              border: Border.all(color: Colors.grey[400]),
+            // color: color,
+              borderRadius: BorderRadius.circular(20)),
           child: Text("${this.widget.text}"),
         ));
   }

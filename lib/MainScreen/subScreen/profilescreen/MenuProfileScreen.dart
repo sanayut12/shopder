@@ -39,7 +39,8 @@ class _MenuProfileScreenState extends State<MenuProfileScreen> {
     Widget ShowImage = Container(
       height: MediaQuery.of(context).size.width * 0.6,
       width: double.infinity,
-      color: Colors.amber,
+      color: Colors.transparent,
+    //  color: Colors.amber,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: 1 + listImage.length,
@@ -54,9 +55,18 @@ class _MenuProfileScreenState extends State<MenuProfileScreen> {
 
     return Scaffold(
       body: Container(
+       // decoration: BoxDecoration(
+                   //     color: Color(0xFFF2A490),
+               // borderRadius: new BorderRadius.only(
+               // topLeft: const Radius.circular(40.0),
+               // topRight: const Radius.circular(40.0),
+              //),
+                   // ),
         height: double.infinity,
         width: double.infinity,
-        color: Colors.red,
+        color: Color(0xFFE4DFD9),
+     //  color: Colors.green, 
+       
         child: ListView(
           children: [
             ShowImage,

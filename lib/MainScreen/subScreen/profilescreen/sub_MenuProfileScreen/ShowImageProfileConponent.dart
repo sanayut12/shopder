@@ -7,8 +7,8 @@ class ShowImageProfileComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.width * 0.6,
-      width: MediaQuery.of(context).size.width * 0.8,
+      height: MediaQuery.of(context).size.width * 1,
+      width: MediaQuery.of(context).size.width * 1,
       decoration: BoxDecoration(
           image: DecorationImage(
               fit: BoxFit.cover,

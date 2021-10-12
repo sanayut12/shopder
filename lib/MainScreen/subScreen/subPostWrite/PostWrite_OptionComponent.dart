@@ -29,6 +29,7 @@ class _PostWrite_OptionComponentState extends State<PostWrite_OptionComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(left: 15,right: 15),
       width: double.infinity,
       child: Column(
         children: [

@@ -26,7 +26,7 @@ class _PostWrite_DetailComponentState extends State<PostWrite_DetailComponent> {
       margin: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
       decoration: BoxDecoration(
           border: Border.all(color: Colors.grey[200]),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
           color: Colors.white),
       child: TextFormField(
         controller: TextEditingController(text: this.widget.text),
