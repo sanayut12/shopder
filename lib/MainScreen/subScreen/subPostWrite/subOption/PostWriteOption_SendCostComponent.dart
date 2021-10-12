@@ -24,6 +24,7 @@ class _PostWriteOption_SendCostComponentState
       },
     );
     return Container(
+    //  margin: EdgeInsets.only(left: 10),
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
