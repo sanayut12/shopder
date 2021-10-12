@@ -35,7 +35,7 @@ class MainFirstScreen extends StatelessWidget {
                 height: double.infinity,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                 // borderRadius: BorderRadius.circular(20),
+                 borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
                   border: Border(),
                   boxShadow: [

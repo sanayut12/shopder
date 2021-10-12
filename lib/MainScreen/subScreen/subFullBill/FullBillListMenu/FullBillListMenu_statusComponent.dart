@@ -15,7 +15,7 @@ class FullBillListMenu_statusComponent extends StatelessWidget {
     Widget ShowSendCost = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text("ค่าจัดส่ง"), Text("${this.sendCost} บาท" )],
+        children: [Text("ค่าจัดส่ง" ,), Text("${this.sendCost} บาท" )],
       ),
     );
     Widget ShowFreeCost = Container(

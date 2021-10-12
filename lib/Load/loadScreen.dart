@@ -50,7 +50,7 @@ class _LoadScreenState extends State<LoadScreen> {
           height: double.infinity,
           width: double.infinity,
           alignment: Alignment.center,
-          color: Colors.yellow,
+          color: Colors.white,
           child: Text("Loading"),
         ),
       ),

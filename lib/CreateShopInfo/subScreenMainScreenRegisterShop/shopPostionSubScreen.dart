@@ -81,7 +81,7 @@ class _ShopPositionSubScreenState extends State<ShopPositionSubScreen> {
         ? Container()
         : GoogleMap(
             cameraTargetBounds: CameraTargetBounds.unbounded,
-            mapType: MapType.hybrid,
+            mapType: MapType.satellite,
             onCameraMove: (position) => {PinMark(position: position)},
             markers: <Marker>[
               Marker(

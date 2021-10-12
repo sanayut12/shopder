@@ -68,7 +68,7 @@ class _DrawerAppState extends State<DrawerApp> {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
-          return AlertCardAsk(message: "ต้องการล๊อกเอ้าหรือไม่", func: Logout);
+          return AlertCardAsk(message: "ต้องการออกจากระบบหรือไม่", func: Logout);
         });
   }
 

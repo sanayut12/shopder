@@ -139,7 +139,7 @@ class _ShopAddressSubScreenState extends State<ShopAddressSubScreen> {
     return Stack(
       children: [
         Container(
-          margin: EdgeInsets.all(20),
+          margin: EdgeInsets.all(25),
           height: double.infinity,
           width: double.infinity,
           child: ListView(
@@ -155,11 +155,12 @@ class _ShopAddressSubScreenState extends State<ShopAddressSubScreen> {
                       child: Container(
                           width: 60,
                           alignment: Alignment.centerLeft,
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: 35,
-                          )),
+                          // child: Icon(
+                          //   Icons.arrow_back,
+                          //   color: Colors.white,
+                          //   size: 35,
+                          // )
+                          ),
                     ),
                     Container(
                       child: Text(
@@ -175,15 +176,15 @@ class _ShopAddressSubScreenState extends State<ShopAddressSubScreen> {
                 margin: EdgeInsets.only(bottom: 25),
               ),
 
-              Text("เพิ่มเติม"),
+              Text("ชื่อบ้าน/ชื่ออาคาร" ,style: TextStyle(fontFamily: "SukhumvitSet-SemiBold", fontSize:16 ),),
               InputAddress,
-              Text("เลขที่"),
+              Text("เลขที่" ,style: TextStyle(fontFamily: "SukhumvitSet-SemiBold", fontSize:16 ),),
               InputNo,
-              Text("หมู่ที่"),
+              Text("หมู่ที่" ,style: TextStyle(fontFamily: "SukhumvitSet-SemiBold", fontSize:16 ),),
               InputMoo,
-              Text("หมู่บ้าน"),
+              Text("หมู่บ้าน" ,style: TextStyle(fontFamily: "SukhumvitSet-SemiBold", fontSize:16 ),),
               InputBaan,
-              Text("ถนน"),
+              Text("ถนน",style: TextStyle(fontFamily: "SukhumvitSet-SemiBold", fontSize:16 ),),
               InputRoad,
               // Text("ซอย"),
               // InputSoy,

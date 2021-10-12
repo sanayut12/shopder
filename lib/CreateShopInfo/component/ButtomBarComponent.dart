@@ -22,10 +22,11 @@ class _ButtomBarComponentState extends State<ButtomBarComponent> {
     Widget Button(String text, int active) => Container(
           height: double.infinity,
           width: double.infinity,
+          // color: Colors.red,
           margin: EdgeInsets.all(10),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: active == 0 ? Colors.white : Colors.red),
+              borderRadius: BorderRadius.circular(20),
+              color: active == 0 ? Colors.grey[300] : Color(0xFFFA897B)),
           alignment: Alignment.center,
           child: Text("${text}"),
         );
@@ -49,10 +50,10 @@ class _ButtomBarComponentState extends State<ButtomBarComponent> {
     );
 
     return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
-      width: double.infinity,
+      height: MediaQuery.of(context).size.height * 0.09,
+      width: 400,
       child: Row(
-        children: [Expanded(child: Buttom1), Expanded(child: Buttom2)],
+        children: [Expanded(child: Buttom1),Expanded (child: SizedBox(width: 5,)) ,Expanded(child: Buttom2)],
       ),
     );
   }

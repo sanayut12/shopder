@@ -171,7 +171,7 @@ class _RegisterState extends State<Register> {
         context: context,
         builder: (BuildContext builder) {
           return AlertDialog(
-            title: Text("fail"),
+            title: Text("failed"),
             content: Text("${bufferRegisterResponse.message}"),
             actions: [
               TextButton(
@@ -232,7 +232,7 @@ class _RegisterState extends State<Register> {
         context: context,
         builder: (BuildContext builder) {
           return AlertDialog(
-            title: Text("success"),
+            // title: Text("success"),
             content: Text("ลงทะเบียนสำเร็จ"),
             actions: [
               TextButton(
@@ -251,7 +251,7 @@ class _RegisterState extends State<Register> {
         context: context,
         builder: (BuildContext builder) {
           return AlertDialog(
-            title: Text("fail"),
+            title: Text("failed"),
             content: Text("${bufferConfirmRegisterResponse.message}"),
             actions: [
               TextButton(

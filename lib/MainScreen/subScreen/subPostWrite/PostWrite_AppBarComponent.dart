@@ -34,7 +34,7 @@ class _PostWrite_AppBarComponentState extends State<PostWrite_AppBarComponent> {
         children: [
           BackButton,
           Title,
-          ButtonModel(text: "โพสต์", fun: this.widget.fun)
+          ButtonModel(text: "โพสต์", fun: this.widget.fun),
         ],
       ),
     );

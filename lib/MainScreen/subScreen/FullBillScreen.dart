@@ -31,20 +31,18 @@ class _FullBillScreenState extends State<FullBillScreen> {
           width: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
-                fit: BoxFit.fitWidth,
-                image:
-                    AssetImage("assets/image/background/bill2.png"),
-              ),
-              gradient: LinearGradient(
-                colors: [Color(0xFFFA897B), Colors.white],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [
-                  0.0,
-                  1.0,
-                ],
-                
-              ),
+              fit: BoxFit.fitWidth,
+              image: AssetImage("assets/image/background/bill2.png"),
+            ),
+            gradient: LinearGradient(
+              colors: [Color(0xFFFA897B), Colors.white],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [
+                0.0,
+                1.0,
+              ],
+            ),
           ),
           child: Column(
             children: [

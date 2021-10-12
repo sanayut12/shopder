@@ -33,10 +33,10 @@ class _RegisterSuccessSubScreenState extends State<RegisterSuccessSubScreen> {
         Navigator.of(context).pop(1);
       },
       child: Container(
-        height: 100,
-        width: 200,
+        height: 50,
+        width: 50,
         decoration: BoxDecoration(
-            color: Colors.red, borderRadius: BorderRadius.circular(20)),
+            color: Color(0xFFFA897B), borderRadius: BorderRadius.circular(20)),
         alignment: Alignment.center,
         child: Text("ตกลง"),
       ),
@@ -56,10 +56,14 @@ class _RegisterSuccessSubScreenState extends State<RegisterSuccessSubScreen> {
             },
             child: Container(
               height: 100,
-              width: 100,
-              color: active == 0 ? Colors.red : Colors.green,
+              width: 200,
+              margin: EdgeInsets.only(top: 245),
+              color: active == 0 ? Colors.grey[200] : Color(0xFFFA897B),
               alignment: Alignment.center,
-              child: Text("data"),
+              child: Text(
+                "ลงทะเบียนสำเร็จ",
+                style: TextStyle(fontSize: 20),
+              ),
             ),
           ),
           ButtonSuccesses

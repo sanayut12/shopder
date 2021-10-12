@@ -140,15 +140,16 @@ class _ShopDetailSubScreenState extends State<ShopDetailSubScreen> {
               Navigator.of(context).pop();
             },
             child: Container(
-                width: 80,
-                margin: EdgeInsets.only(top: 5),
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.only(left: 20),
-                child: Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
-                  size: 35,
-                )),
+              width: 80,
+              margin: EdgeInsets.only(top: 5),
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.only(left: 20),
+              child: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+                size: 35,
+              )
+            ),
           ),
           Container(
             child: Text(
@@ -163,77 +164,80 @@ class _ShopDetailSubScreenState extends State<ShopDetailSubScreen> {
       ),
     );
 
-    return Container(
-      // color: Colors.blue,
-      // margin: EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 30),
-      child: Column(
-        children: [
-          Expanded(child: appBar),
-          Expanded(
-            flex: 8,
-            child: ListView(
-              children: [
-                Stack(
-                  children: [
-                    Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 80,
-                          ),
-                          Container(
-                            padding:
-                                EdgeInsets.only(top: 120, left: 25, right: 25),
-                            // margin:
-                            //     EdgeInsets.only(left: 10, right: 10, top: 10),
-                            height: 400,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
-                                color: Colors.white),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                label_name,
-                                InputName,
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                label_Type,
-                                typeShopComponent(type: type, setType: setType),
-                              ],
+    return SafeArea(
+      child: Container(
+        // color: Colors.blue,
+        // margin: EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 30),
+        child: Column(
+          children: [
+            Expanded(child: appBar),
+            Expanded(
+              flex: 8,
+              child: ListView(
+                children: [
+                  Stack(
+                    children: [
+                      Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 80,
                             ),
-                          ),
-                        ],
+                            Container(
+                              padding: EdgeInsets.only(
+                                  top: 120, left: 25, right: 25),
+                              // margin:
+                              //     EdgeInsets.only(left: 10, right: 10, top: 10),
+                              height: 400,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: Colors.white),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  label_name,
+                                  InputName,
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  label_Type,
+                                  typeShopComponent(
+                                      type: type, setType: setType),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Container(
-                        width: double.infinity,
-                        alignment: Alignment.center,
-                        child: InputImage),
-                  ],
-                ),
-              ],
+                      Container(
+                          width: double.infinity,
+                          alignment: Alignment.center,
+                          child: InputImage),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-              child: Container(
-            height: double.infinity,
-            width: double.infinity,
-            // color: Colors.red,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ButtomBarComponent(
-                    textbuttom1: "ยกเลิก",
-                    func1: cancelButton,
-                    active1: 1,
-                    textbuttom2: "ถัดไป",
-                    func2: setdataShopDetail,
-                    active2: active)
-              ],
-            ),
-          )),
-        ],
+            Expanded(
+                child: Container(
+              height: double.infinity,
+              width: double.infinity,
+              // color: Colors.red,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ButtomBarComponent(
+                      textbuttom1: "ยกเลิก",
+                      func1: cancelButton,
+                      active1: 1,
+                      textbuttom2: "ถัดไป",
+                      func2: setdataShopDetail,
+                      active2: active)
+                ],
+              ),
+            )),
+          ],
+        ),
       ),
     );
   }

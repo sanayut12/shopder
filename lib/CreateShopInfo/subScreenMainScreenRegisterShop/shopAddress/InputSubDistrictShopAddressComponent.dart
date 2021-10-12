@@ -52,7 +52,7 @@ class _InputSubDistrictShopAddressComponentState
       hint: Text(
         "เลือกตำบล",
         style: TextStyle(
-            color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+            color: Colors.black,fontFamily: "SukhumvitSet-SemiBold", fontSize:17),
       ),
       onChanged: (e) {
         this.widget.setSubDistrict(e);

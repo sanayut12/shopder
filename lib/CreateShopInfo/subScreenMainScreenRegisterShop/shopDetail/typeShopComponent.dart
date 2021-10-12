@@ -13,7 +13,7 @@ class typeShopComponent extends StatefulWidget {
 class _typeShopComponentState extends State<typeShopComponent> {
   Map<String, String> list_type = {
     "1": "ร้านอาหารคาว Fishy restaurant",
-    "2": "ร้านอาหารหวาน Dessert restauran",
+    "2": "ร้านอาหารหวาน Dessert restaurant",
     "3": "ร้านขายเครื่องดื่ม refreshment shop",
     "4": "ร้านเบเกอรี่ bakery shop",
   };

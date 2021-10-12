@@ -306,7 +306,7 @@ class _PostWriteState extends State<PostWrite> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("โพสต์สำเร็จ"),
+            title: Text("โพสต์สำเร็จ" ,),
             actions: [
               GestureDetector(
                 onTap: () {
