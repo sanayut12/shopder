@@ -67,7 +67,7 @@ class _ButtonModelState extends State<ButtonModel> {
           padding: EdgeInsets.only(top: 10,bottom: 10,right: 15,left: 15),
           decoration: BoxDecoration(
             color: Color(0xFFFFFFFF),
-              border: Border.all(color: Colors.grey[400]),
+              border: Border.all(color: Colors.grey[300]),
             // color: color,
               borderRadius: BorderRadius.circular(20)),
           child: Text("${this.widget.text}"),

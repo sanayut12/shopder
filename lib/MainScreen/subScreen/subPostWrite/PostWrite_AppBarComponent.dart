@@ -21,18 +21,21 @@ class _PostWrite_AppBarComponentState extends State<PostWrite_AppBarComponent> {
           width: 65,
           alignment: Alignment.center,
           child: Icon(
+            
             Icons.arrow_back_ios,
+            color: Colors.white,
             size: 40,
           )),
     );
     Widget Title = Text("สร้างโพสต์",
-        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold));
+        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white));
     return Container(
       alignment: Alignment.center,
       height: 65,
       width: double.infinity,
       color: Color(0xFFFA897B),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           BackButton,
           Title,
@@ -82,7 +85,7 @@ class _ButtonModelState extends State<ButtonModel> {
               //           spreadRadius: 3,
               //           blurRadius: 2,
               //           offset: Offset(0, 3),),],
-              border: Border.all(color: Colors.grey[400]),
+              border: Border.all(color: Colors.grey[300]),
               // color: color,
               borderRadius: BorderRadius.circular(20)),
           child: Text("${this.widget.text}"),

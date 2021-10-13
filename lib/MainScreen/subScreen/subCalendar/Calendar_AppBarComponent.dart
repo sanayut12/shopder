@@ -18,7 +18,10 @@ class _Calendar_AppBarComponentState extends State<Calendar_AppBarComponent> {
         height: 65,
         width: 65,
         alignment: Alignment.center,
-        child: Icon(Icons.arrow_back_ios),
+        child: Icon(
+          Icons.arrow_back_ios,
+          color: Colors.white,
+        ),
       ),
     );
     return Container(
@@ -26,7 +29,14 @@ class _Calendar_AppBarComponentState extends State<Calendar_AppBarComponent> {
       width: double.infinity,
       color: Color(0xfffa897b),
       child: Row(
-        children: [ButtonBack, Text("ปฏิทิน")],
+        children: [
+          ButtonBack,
+          Text(
+            "ปฏิทิน",
+            style: TextStyle(
+                fontSize: 23, fontWeight: FontWeight.bold, color: Colors.white),
+          )
+        ],
       ),
     );
   }

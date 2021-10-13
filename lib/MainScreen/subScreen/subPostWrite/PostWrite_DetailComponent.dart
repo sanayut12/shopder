@@ -22,18 +22,19 @@ class _PostWrite_DetailComponentState extends State<PostWrite_DetailComponent> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(3),
       margin: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey[200]),
+          border: Border.all(color: Colors.grey[100]),
           borderRadius: BorderRadius.circular(15),
-          color: Colors.white),
+          color: Colors.grey[200]),
       child: TextFormField(
         controller: TextEditingController(text: this.widget.text),
         decoration: InputDecoration(
             border: InputBorder.none,
             filled: true,
             labelText: "เพิ่มรายละเอียดของโพสต์"),
+            
         maxLines: 5,
         onChanged: (e) {
           this.widget.fun1(e);

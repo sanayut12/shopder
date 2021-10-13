@@ -17,10 +17,12 @@ class ShowDetailComponent extends StatefulWidget {
 
 class _ShowDetailComponentState extends State<ShowDetailComponent> {
   Map<String, String> foodtype = {
-    "1": "อาหารอีสาน",
+    "1": "อาหารคาว",
     "2": "อาหารหวาน",
-    "3": "เครื่องดื่ม",
-    "4": "ของทอด"
+    "3": "อาหารอีสาน",
+    "4": "เครื่องดื่ม",
+    "5": "ของทอด",
+    "6": "อาหารว่าง"
   };
   @override
   Widget build(BuildContext context) {

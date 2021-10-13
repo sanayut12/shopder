@@ -37,7 +37,7 @@ class _PostWrite_MenuComponentState extends State<PostWrite_MenuComponent> {
       child: Text("${name}"),
     );
     return Container(
-      height: 300,
+      height: 200,
       width: 150,
       margin: EdgeInsets.only(left: 5, right: 5),
       decoration: BoxDecoration(
@@ -48,7 +48,7 @@ class _PostWrite_MenuComponentState extends State<PostWrite_MenuComponent> {
         children: [
           Image,
           NameMenu,
-          Text("จำนวน ${quantity}"),
+          Text("จำนวน ${quantity} ชิ้น" ),
           Text("ราคา ${cost} บาท")
         ],
       ),

@@ -16,9 +16,10 @@ class _AppBar2ShopderState extends State<AppBar2Shopder> {
       width: double.infinity,
       color: Color(0xfffa897b),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          ButtonModel(icon: Icons.chat, fun: OpenChatListScreen),
-          ButtonModel(icon: Icons.calendar_today, fun: OpenCalendarScreen)
+          ButtonModel(icon: Icons.calendar_today, fun: OpenCalendarScreen),
+          ButtonModel(icon: Icons.question_answer ,fun: OpenChatListScreen)
         ],
       ),
     );
@@ -59,10 +60,11 @@ class _ButtonModelState extends State<ButtonModel> {
         this.widget.fun();
       },
       child: Container(
-        height: 65,
-        width: 65,
+        margin: EdgeInsets.only(right: 5),
+        height: 50,
+        width: 50,
         alignment: Alignment.center,
-        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        decoration: BoxDecoration(color: Colors.white70, shape: BoxShape.circle),
         child: Icon(this.widget.icon),
       ),
     );
