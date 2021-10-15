@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shopder/MainScreen/subScreen/orderscreen/OrderPostComponent.dart';
 import 'package:shopder/MainScreen/subScreen/profilescreen/sub_PostBoxProfileComponent/DetailPostComponent.dart';
 import 'package:shopder/MainScreen/subScreen/profilescreen/sub_PostBoxProfileComponent/MenuListPostProfileComponent.dart';
 import 'package:shopder/MainScreen/subScreen/profilescreen/sub_PostBoxProfileComponent/datePostAndSendCost.dart';
 import 'package:shopder/MainScreen/subScreen/profilescreen/sub_PostBoxProfileComponent/miniProfileShop.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPostShopData.dart';
-import 'package:shopder/function/http/httpGetPostShopData.dart';
 
 class PostBoxProfileComponent extends StatefulWidget {
   GetPostShopDataResponse data;

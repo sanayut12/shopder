@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 
 Future<List<Uint8List>> ChangeListXFileToListByte(
@@ -22,4 +23,8 @@ Future<List<String>> ChangeListByteToBase64(List<Uint8List> bufferImage) async {
     _bufferImage.add(image);
   }
   return _bufferImage;
+}
+
+List<String> TextImageToListImageString({@required String textimage}) {
+  return textimage.split(',');
 }

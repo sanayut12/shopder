@@ -34,15 +34,25 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    Widget PhoneInput = TextFormField(
-      controller: _phone,
-      onChanged: (e) {
-        setState(() {
-          phone = e;
-        });
-      },
-      decoration: InputDecoration(
-          hintText: "Phone", hintStyle: TextStyle(color: Colors.black38)),
+    double weight_screen = MediaQuery.of(context).size.width;
+    Widget PhoneInput = Container(
+      child: TextFormField(
+        controller: _phone,
+        keyboardType: TextInputType.number,
+        onChanged: (e) {
+          setState(() {
+            phone = e;
+          });
+        },
+        decoration: InputDecoration(
+            prefixIcon: Icon(Icons.person),
+            border: UnderlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(10)),
+            hintText: "Phone",
+            hintStyle: TextStyle(
+                fontSize: weight_screen * 0.035, color: Colors.black38)),
+      ),
     );
 
     Widget PasswordInput = TextFormField(
@@ -52,8 +62,15 @@ class _LoginState extends State<Login> {
           password = e;
         });
       },
+      focusNode: FocusNode(),
       decoration: InputDecoration(
-          hintText: "Password", hintStyle: TextStyle(color: Colors.black38)),
+          prefixIcon: Icon(Icons.password),
+          border: UnderlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(10)),
+          hintText: "Password",
+          hintStyle: TextStyle(
+              fontSize: weight_screen * 0.035, color: Colors.black38)),
     );
 
     Widget ButtonLogin = GestureDetector(
@@ -62,13 +79,13 @@ class _LoginState extends State<Login> {
       },
       child: Container(
         alignment: Alignment.center,
-        height: 45,
-        width: 207,
+        height: weight_screen * 0.1,
+        width: weight_screen * 0.35,
         margin: EdgeInsets.only(top: 80, bottom: 20),
         child: Text(
           "Login",
           style: TextStyle(
-            fontSize: 18,
+            fontSize: weight_screen * 0.05,
             color: Colors.white,
           ),
         ),
@@ -81,11 +98,6 @@ class _LoginState extends State<Login> {
     Widget FacebookLogin = FacebookAuthButton(
       onPressed: () {
         print("object");
-        // showDialog(
-        //     context: context,
-        //     builder: (BuildContext context) {
-        //       // return AlertCard();
-        //     });
       },
       style: AuthButtonStyle.icon,
       borderRadius: 100,

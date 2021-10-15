@@ -96,3 +96,19 @@ Future<DateBox> StringToDateBox({@required String string}) async {
   return DateBox(
       year: year, month: month, day: day, hour: hour, min: min, sec: sec);
 }
+
+DateBox MapDataToDateBox({@required Map data}) {
+  int year = data['year'];
+  int month = data['month'];
+  int day = data['day'];
+  int hour = data['hour'];
+  int min = data['min'];
+  int sec = data['sec'];
+
+  if (sec == null) {
+    return DateBox(year: year, month: month, day: day, hour: hour, min: min);
+  } else {
+    return DateBox(
+        year: year, month: month, day: day, hour: hour, min: min, sec: sec);
+  }
+}

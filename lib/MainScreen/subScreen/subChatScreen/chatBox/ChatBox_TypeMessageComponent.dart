@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shopder/MainScreen/subScreen/subChatScreen/chatBox/messagetype/ChatBox_BillBox.dart';
 import 'package:shopder/MainScreen/subScreen/subChatScreen/chatBox/messagetype/ChatBox_ImageBox.dart';
+import 'package:shopder/MainScreen/subScreen/subChatScreen/chatBox/messagetype/ChatBox_MenuBox.dart';
 import 'package:shopder/MainScreen/subScreen/subChatScreen/chatBox/messagetype/ChatBox_MessageBox.dart';
+import 'package:shopder/MainScreen/subScreen/subChatScreen/chatBox/messagetype/ChatBox_PostBox.dart';
 import 'package:shopder/function/dataManagement/dataChatBox.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/dataManagement/dateBox.dart';
@@ -73,6 +76,54 @@ class _ChatBox_TypeMessageComponentState
             ],
           ),
         ),
+      );
+    } else if (type_chat == "6") {
+      return Container(
+        width: weight_screen * 0.8,
+        child: Container(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: positionmessage,
+            children: [
+              shop_id != chatBox.sender_id ? Container() : ShowDate,
+              ChatBox_BillBox(chatBox: chatBox),
+              shop_id == chatBox.sender_id ? Container() : ShowDate,
+            ],
+          ),
+        ),
+        // child: ,
+      );
+    } else if (type_chat == "4") {
+      return Container(
+        width: weight_screen * 0.8,
+        child: Container(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: positionmessage,
+            children: [
+              shop_id != chatBox.sender_id ? Container() : ShowDate,
+              ChatBox_MenuBox(chatBox: chatBox),
+              shop_id == chatBox.sender_id ? Container() : ShowDate,
+            ],
+          ),
+        ),
+        // child: ,
+      );
+    } else if (type_chat == "5") {
+      return Container(
+        width: weight_screen * 0.8,
+        child: Container(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: positionmessage,
+            children: [
+              shop_id != chatBox.sender_id ? Container() : ShowDate,
+              ChatBox_PostBox(chatBox: chatBox),
+              shop_id == chatBox.sender_id ? Container() : ShowDate,
+            ],
+          ),
+        ),
+        // child: ,
       );
     } else {
       return Container(

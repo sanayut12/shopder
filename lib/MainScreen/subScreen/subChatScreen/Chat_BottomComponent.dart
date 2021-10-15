@@ -133,7 +133,7 @@ class _Chat_BottomComponentState extends State<Chat_BottomComponent> {
       });
       ChatCenterRequest dataSend = ChatCenterRequest(
           chatmanager_id: chatmanager_id,
-          sender_id: user_id,
+          sender_id: shop_id,
           user_id: user_id,
           shop_id: shop_id,
           message: _message,

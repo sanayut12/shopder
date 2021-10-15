@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shopder/MainScreen/subScreen/profilescreen/sub_MenuProfileScreen/ShowDetailComponent.dart';
-import 'package:shopder/MainScreen/subScreen/profilescreen/sub_MenuProfileScreen/ShowImageProfileConponent.dart';
+import 'package:shopder/MainScreen/subScreen/sub_MenuProfileScreen/ShowDetailComponent.dart';
+import 'package:shopder/MainScreen/subScreen/sub_MenuProfileScreen/ShowImageProfileConponent.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPathImageMenu.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPostShopData.dart';
 import 'package:shopder/function/http/httpGetPathImageMenu.dart';

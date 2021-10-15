@@ -1,54 +1,89 @@
 import 'package:flutter/material.dart';
 import 'package:shopder/FirstScreen/login.dart';
 import 'package:shopder/FirstScreen/register.dart';
-import 'package:shopder/function/dataManagement/Readhostname.dart';
-import 'package:shopder/function/dataManagement/readJsonAddress.dart';
-import 'package:shopder/function/http/httpGetPostShopInit.dart';
 
 class MainFirstScreen extends StatelessWidget {
   static String routeName = "/first";
   @override
   Widget build(BuildContext context) {
+    double weight_screen = MediaQuery.of(context).size.width;
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        // backgroundColor: Colors.grey[200],
-
-        body: Stack(
-          children: [
-            Container(
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          color: Colors.red,
+          child: SafeArea(
+            child: Container(
               height: double.infinity,
               width: double.infinity,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                fit: BoxFit.cover,
-                image:
-                    AssetImage("assets/image/background/backgroundFirst1.png"),
-              )),
-            ),
-            Container(
-                margin: EdgeInsets.fromLTRB(
-                  20,
-                  80,
-                  20,
-                  80,
-                ),
-                height: double.infinity,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                 // borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                  border: Border(),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
+              color: Color(0xFFE8E8E8),
+              child: Stack(
+                children: [
+                  ///////////////////////////////stack1/////////////////////
+                  Container(
+                    height: double.infinity,
+                    width: double.infinity,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: weight_screen,
+                          height: weight_screen,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                            fit: BoxFit.fitWidth,
+                            image: AssetImage(
+                                "assets/image/background/FirstTopImage.png"),
+                          )),
+                        ),
+                        Container(
+                          width: weight_screen,
+                          height: weight_screen * 0.5,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                            fit: BoxFit.fitWidth,
+                            image: AssetImage(
+                                "assets/image/background/vegetables-basket.png"),
+                          )),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                child: SubFirst()),
-          ],
+                  ),
+                  //////////////////////////stack2/////////////////////////////////////
+                  Container(
+                    height: double.infinity,
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                            height: weight_screen * 1.3,
+                            width: weight_screen * 0.9,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.circular(weight_screen * 0.1),
+                              color: Colors.white,
+                              border: Border(),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 5,
+                                  blurRadius: 7,
+                                  offset: Offset(
+                                      0, 3), // changes position of shadow
+                                ),
+                              ],
+                            ),
+                            child: SubFirst()),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ));
   }
 }
@@ -82,13 +117,12 @@ class _SubFirstState extends State<SubFirst> {
 
   @override
   Widget build(BuildContext context) {
-    // double width = MediaQuery.of(context).size.width;
-    // double height = MediaQuery.of(context).size.height;
+    double weight_screen = MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(
-          height: 20.0,
+          height: weight_screen * 0.035,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

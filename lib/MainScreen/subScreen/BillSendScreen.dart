@@ -17,7 +17,8 @@ class _BillSendScreenState extends State<BillSendScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print("==========${this.widget.data.bufferBill.length}");
+    print(
+        "==========${this.widget.data.bufferBill.length}=======================");
   }
 
   @override

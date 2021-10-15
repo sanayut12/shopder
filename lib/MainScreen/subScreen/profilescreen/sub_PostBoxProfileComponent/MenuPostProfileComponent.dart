@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shopder/MainScreen/subScreen/profilescreen/MenuProfileScreen.dart';
+import 'package:shopder/MainScreen/subScreen/MenuProfileScreen.dart';
 import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPostShopData.dart';
 
