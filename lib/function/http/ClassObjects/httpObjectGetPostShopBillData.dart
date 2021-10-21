@@ -65,13 +65,14 @@ class PostShopBill_Menu {
 }
 
 class PostShopBill_Bill {
-  String address_user_id, how_send, how_pay, pay_status, status;
+  String address_user_id, how_send, how_pay, comment, pay_status, status;
   final DateBox date, date_confirm;
   PostShopBill_Bill(
       {@required this.address_user_id,
       @required this.date,
       @required this.how_send,
       @required this.how_pay,
+      @required this.comment,
       @required this.pay_status,
       @required this.date_confirm,
       @required this.status});

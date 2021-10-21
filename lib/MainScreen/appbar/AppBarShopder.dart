@@ -55,7 +55,7 @@ AppBar AppbarShopder(Function fun1, double heigth) => AppBar(
           margin: EdgeInsets.only(left: 1, right: 2, top: 5, bottom: 5),
           padding: EdgeInsets.all(2),
           decoration:
-              BoxDecoration(color: Colors.transparent, shape: BoxShape.circle),
+              BoxDecoration(color: Colors.white, shape: BoxShape.circle),
           child: IconButton(
               onPressed: () {},
               icon: Icon(

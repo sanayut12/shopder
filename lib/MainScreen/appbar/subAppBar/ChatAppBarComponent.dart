@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shopder/MainScreen/subScreen/ChatListScreen.dart';
-import 'package:shopder/MainScreen/subScreen/ChatScreen.dart';
+import 'package:shopder/MainScreen/subScreen/Secondary/ChatListScreen.dart';
 
 class ChatAppBarComponent extends StatefulWidget {
   @override

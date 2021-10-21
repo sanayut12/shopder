@@ -18,8 +18,9 @@ class _ShowImageUsersProfileState extends State<ShowImageUsersProfile> {
           shape: BoxShape.circle,
           image: DecorationImage(
               fit: BoxFit.cover,
-              image: NetworkImage(
-                  "${HostName()}/image/ImageUsers/${this.widget.image}"))),
+              image: NetworkImage(this.widget.image == null
+                  ? ""
+                  : "${HostName()}/image/ImageUsers/${this.widget.image}"))),
     );
   }
 }

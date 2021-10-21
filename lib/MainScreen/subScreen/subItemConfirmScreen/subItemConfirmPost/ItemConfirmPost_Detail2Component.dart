@@ -18,7 +18,7 @@ class ItemConfirmPost_Detail2Component extends StatelessWidget {
           Text(
               "วิธีการจัดส่ง ${this.post_info.how_send == '1' ? 'ส่งถึงที่' : ''}${this.post_info.how_send == '2' ? 'รับที่ร้าน' : ''}${this.post_info.how_send == '3' ? 'ส่งถึงที่/รับที่ร้าน' : ''}"),
           Text(
-              "การรับออเดอร์เกิน ${this.post_info.over_order == '1' ? 'ใช่' : 'ไม่'}"),
+              "การรับออเดอร์เกิน ${this.post_info.over_order == '2' ? 'ใช่' : 'ไม่'}"),
           this.post_info.confirm_order == "1"
               ? Text("วิธีการรับออเดอร์ ยืนยันอัตโนมัติ")
               : this.post_info.confirm_order == "2"

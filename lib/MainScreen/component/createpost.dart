@@ -2,8 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:shopder/MainScreen/post/postwrite.dart';
-import 'package:shopder/MainScreen/subScreen/PostWriteScreen.dart';
+import 'package:shopder/MainScreen/subScreen/Secondary/PostWriteScreen.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 
 class CreatePost extends StatefulWidget {

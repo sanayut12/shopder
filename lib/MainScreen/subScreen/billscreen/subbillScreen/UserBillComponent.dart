@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shopder/MainScreen/subScreen/billScreen.dart';
+import 'package:shopder/MainScreen/subScreen/Secondary/billScreen.dart';
 import 'package:shopder/MainScreen/subScreen/billscreen/subbillScreen/billScreen/billScreen.dart';
 import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/dataManagement/dataOrderPost.dart';

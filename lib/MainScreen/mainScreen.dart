@@ -75,7 +75,9 @@ class _MainScreenState extends State<MainScreen> {
               width: double.infinity,
               child: Column(
                 children: [
-                  AppBar2Shopder(),
+                  AppBar2Shopder(
+                    page: bottomBarIndex,
+                  ),
                   Expanded(
                     child: Container(
                       child: Column(

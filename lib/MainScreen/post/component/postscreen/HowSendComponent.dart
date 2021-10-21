@@ -40,7 +40,7 @@ class _HowSendComponentState extends State<HowSendComponent> {
         width: double.infinity,
         child: Row(
           children: [
-            Text("สามารถรับที่ร้าน"),
+            Text("สามารถรับที่ร้าxน"),
             Checkbox(
                 value: shop,
                 onChanged: (e) {
@@ -59,7 +59,7 @@ class _HowSendComponentState extends State<HowSendComponent> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Text("การรับสินค้า"),
+            child: Text("วิธีการจัดส่ง"),
           ),
           Expanded(
               child: Row(

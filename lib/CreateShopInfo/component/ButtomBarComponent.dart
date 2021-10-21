@@ -19,13 +19,24 @@ class ButtomBarComponent extends StatefulWidget {
 class _ButtomBarComponentState extends State<ButtomBarComponent> {
   @override
   Widget build(BuildContext context) {
-    Widget Button(String text, int active) => Container(
+    Widget ButtonA(String text, int active) => Container(
           height: double.infinity,
           width: double.infinity,
+          // color: Colors.red,
           margin: EdgeInsets.all(10),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: active == 0 ? Colors.white : Colors.red),
+              borderRadius: BorderRadius.circular(20), color: Colors.grey[300]),
+          alignment: Alignment.center,
+          child: Text("${text}"),
+        );
+    Widget ButtonB(String text, int active) => Container(
+          height: double.infinity,
+          width: double.infinity,
+          // color: Colors.red,
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0xFFFA897B).withOpacity(0.7)),
           alignment: Alignment.center,
           child: Text("${text}"),
         );
@@ -36,7 +47,7 @@ class _ButtomBarComponentState extends State<ButtomBarComponent> {
           print("${this.widget.textbuttom1}");
         }
       },
-      child: Button("${this.widget.textbuttom1}", this.widget.active1),
+      child: ButtonA("${this.widget.textbuttom1}", this.widget.active1),
     );
     Widget Buttom2 = GestureDetector(
       onTap: () {
@@ -45,14 +56,21 @@ class _ButtomBarComponentState extends State<ButtomBarComponent> {
           print("${this.widget.textbuttom2}");
         }
       },
-      child: Button("${this.widget.textbuttom2}", this.widget.active2),
+      child: ButtonB("${this.widget.textbuttom2}", this.widget.active2),
     );
 
     return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
-      width: double.infinity,
+      height: MediaQuery.of(context).size.height * 0.09,
+      width: 400,
       child: Row(
-        children: [Expanded(child: Buttom1), Expanded(child: Buttom2)],
+        children: [
+          Expanded(child: Buttom1), //
+          Expanded(
+              child: SizedBox(
+            width: 5,
+          )),
+          Expanded(child: Buttom2)
+        ],
       ),
     );
   }

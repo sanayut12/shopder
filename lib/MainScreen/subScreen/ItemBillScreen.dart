@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shopder/MainScreen/subScreen/subItemBillScreen/ItemBill_PostShopBillComponent.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPostShopBillData.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPostShopBillInit.dart';
 import 'package:shopder/function/http/httpGetPostShopBillData.dart';
 import 'package:shopder/function/http/httpGetPostShopBillInit.dart';
+import 'package:shopder/provider/DataSendItemManagerProvider.dart';
 
 class ItemBillScreen extends StatefulWidget {
   @override
@@ -24,9 +26,38 @@ class _ItemBillScreenState extends State<ItemBillScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-      /*4*/
+    // return Container(
+    //   height: double.infinity,
+    //   width: double.infinity,
+    //   decoration: BoxDecoration(
+    //     gradient: LinearGradient(
+    //       colors: [Color(0xFFFFC9C3), Colors.white],
+    //       begin: Alignment.topCenter,
+    //       end: Alignment.bottomCenter,
+    //       stops: [
+    //         0.0,
+    //         2.0,
+    //       ],
+    //     ),
+    //   ),
+    //   child: Consumer(builder:
+    //       (context, DataSendItemManagerProvider provider, Widget child) {
+    //     Map<String, GetPostShopBillDataResposne> data = provider.data;
+    //     return Container(
+    //       height: double.infinity,
+    //       width: double.infinity,
+    //       child: ListView.builder(
+    //         itemCount: data.length,
+    //         itemBuilder: (BuildContext context, int index) {
+    //           String post_id = data.keys.toList()[index];
+    //           return ItemBill_PostShopBillComponent(data: data[post_id]);
+    //         },
+    //       ),
+    //     );
+    //   }),
+    // );
+
+    return Container(
       height: double.infinity,
       width: double.infinity,
       decoration: BoxDecoration(
@@ -40,30 +71,18 @@ class _ItemBillScreenState extends State<ItemBillScreen> {
           ],
         ),
       ),
-      child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(5),
-          ),
-          Text(
-            "สินค้าที่ต้องจัดส่ง",
-            style: TextStyle(
-                fontFamily: "SukhumvitSet-SemiBold",
-                fontSize: 22,
-                color: Colors.white),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: bufferPost_id.length,
-              itemBuilder: (BuildContext context, int index) {
-                String post_id = bufferPost_id[index];
-                return ItemBill_PostShopBillComponent(data: data[post_id]);
-              },
-            ),
-          ),
-        ],
+      child: Container(
+        height: double.infinity,
+        width: double.infinity,
+        child: ListView.builder(
+          itemCount: data.length,
+          itemBuilder: (BuildContext context, int index) {
+            String post_id = data.keys.toList()[index];
+            return ItemBill_PostShopBillComponent(data: data[post_id]);
+          },
+        ),
       ),
-    ));
+    );
   }
 
   Future<void> GetPostShopBill() async {

@@ -103,6 +103,7 @@ Future<GetPostShopBillDataResposne> HttpGetPostShopBillData(
           date: date_bill,
           how_send: value['how_send'],
           how_pay: value['how_pay'],
+          comment: value['comment'],
           pay_status: value['pay_status'],
           date_confirm: null,
           status: value['status']);

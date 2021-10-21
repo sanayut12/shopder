@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopder/FirstScreen/login.dart';
 import 'package:shopder/FirstScreen/register.dart';
+import 'package:shopder/FirstScreen/subMainFirst/MainFirst_SelectBarComponent.dart';
 
 class MainFirstScreen extends StatelessWidget {
   static String routeName = "/first";
@@ -94,26 +95,12 @@ class SubFirst extends StatefulWidget {
 }
 
 class _SubFirstState extends State<SubFirst> {
-  int page;
+  bool active = true;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    this.page = 0;
-    // LoadDataFormLocal();
   }
-
-  Function changeFromRegistered() {
-    setState(() {
-      this.page = 0;
-    });
-    // print("hello world");
-  }
-
-  // void LoadDataFormLocal() async {
-  //   await initLoadHostName();
-  //   await AddressThailand().init();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -121,61 +108,8 @@ class _SubFirstState extends State<SubFirst> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        SizedBox(
-          height: weight_screen * 0.035,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GestureDetector(
-              child: Container(
-                width: 141,
-                height: 34,
-                margin: EdgeInsets.only(top: 15),
-                child: Text(
-                  "Login",
-                  style: TextStyle(
-                    color: this.page == 1 ? Color(0xFFFA897B) : Colors.white,
-                  ),
-                ),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(35)),
-                  color: this.page == 0 ? Color(0xFFFA897B) : Colors.white,
-                ),
-              ),
-              onTap: () {
-                setState(() {
-                  this.page = 0;
-                });
-              },
-            ),
-            GestureDetector(
-              child: Container(
-                width: 141,
-                height: 34,
-                margin: EdgeInsets.only(top: 15),
-                child: Text(
-                  "Register",
-                  style: TextStyle(
-                    color: this.page == 0 ? Color(0xFFFA897B) : Colors.white,
-                  ),
-                ),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(35)),
-                  color: this.page == 1 ? Color(0xFFFA897B) : Colors.white,
-                ),
-              ),
-              onTap: () {
-                setState(() {
-                  this.page = 1;
-                });
-              },
-            ),
-          ],
-        ),
-        this.page == 0
+        MainFirst_SelectBarComponent(fun: changeFromRegistered, active: active),
+        active
             ? Login()
             : Register(
                 rePage: changeFromRegistered,
@@ -183,4 +117,61 @@ class _SubFirstState extends State<SubFirst> {
       ],
     );
   }
+
+  Future<void> changeFromRegistered(bool _active) {
+    setState(() {
+      active = _active;
+    });
+  }
 }
+//  Row(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             GestureDetector(
+//               child: Container(
+//                 width: 141,
+//                 height: 34,
+//                 margin: EdgeInsets.only(top: 15),
+//                 child: Text(
+//                   "Login",
+//                   style: TextStyle(
+//                     color: this.page == 1 ? Color(0xFFFA897B) : Colors.white,
+//                   ),
+//                 ),
+//                 alignment: Alignment.center,
+//                 decoration: BoxDecoration(
+//                   borderRadius: BorderRadius.all(Radius.circular(35)),
+//                   color: this.page == 0 ? Color(0xFFFA897B) : Colors.white,
+//                 ),
+//               ),
+//               onTap: () {
+//                 setState(() {
+//                   this.page = 0;
+//                 });
+//               },
+//             ),
+//             GestureDetector(
+//               child: Container(
+//                 width: 141,
+//                 height: 34,
+//                 margin: EdgeInsets.only(top: 15),
+//                 child: Text(
+//                   "Register",
+//                   style: TextStyle(
+//                     color: this.page == 0 ? Color(0xFFFA897B) : Colors.white,
+//                   ),
+//                 ),
+//                 alignment: Alignment.center,
+//                 decoration: BoxDecoration(
+//                   borderRadius: BorderRadius.all(Radius.circular(35)),
+//                   color: this.page == 1 ? Color(0xFFFA897B) : Colors.white,
+//                 ),
+//               ),
+//               onTap: () {
+//                 setState(() {
+//                   this.page = 1;
+//                 });
+//               },
+//             ),
+//           ],
+//         )

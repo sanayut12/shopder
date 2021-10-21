@@ -1,24 +1,48 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shopder/MainScreen/subScreen/CalendarScreen.dart';
-import 'package:shopder/MainScreen/subScreen/ChatListScreen.dart';
+import 'package:shopder/MainScreen/subScreen/Secondary/CalendarScreen.dart';
+import 'package:shopder/MainScreen/subScreen/Secondary/ChatListScreen.dart';
 
 class AppBar2Shopder extends StatefulWidget {
+  int page;
+  AppBar2Shopder({@required this.page});
   @override
   _AppBar2ShopderState createState() => _AppBar2ShopderState();
 }
 
 class _AppBar2ShopderState extends State<AppBar2Shopder> {
+  List<String> buffer = [
+    "",
+    "ยอดจองสินค้า",
+    "สินค้าที่ต้องจัดส่ง",
+    "แจ้งเตือน",
+    "โปรไฟล์",
+  ];
   @override
   Widget build(BuildContext context) {
+    TextStyle style = TextStyle(
+        fontSize: 20, color: Colors.white, fontFamily: "SukhumvitSet-SemiBold");
     return Container(
       height: 65,
       width: double.infinity,
       color: Color(0xfffa897b),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ButtonModel(icon: Icons.chat, fun: OpenChatListScreen),
-          ButtonModel(icon: Icons.calendar_today, fun: OpenCalendarScreen)
+          Container(
+            padding: EdgeInsets.only(left: 20),
+            child: Text(
+              "${buffer[this.widget.page]}",
+              style: style,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              ButtonModel(icon: Icons.calendar_today, fun: OpenCalendarScreen),
+              ButtonModel(icon: Icons.question_answer, fun: OpenChatListScreen)
+            ],
+          ),
         ],
       ),
     );
@@ -59,10 +83,12 @@ class _ButtonModelState extends State<ButtonModel> {
         this.widget.fun();
       },
       child: Container(
-        height: 65,
-        width: 65,
+        margin: EdgeInsets.only(right: 5),
+        height: 50,
+        width: 50,
         alignment: Alignment.center,
-        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        decoration:
+            BoxDecoration(color: Colors.white70, shape: BoxShape.circle),
         child: Icon(this.widget.icon),
       ),
     );

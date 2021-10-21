@@ -1,14 +1,18 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:provider/provider.dart';
 import 'package:shopder/FirstScreen/mainFirstScreen.dart';
 import 'package:shopder/Load/loadScreen.dart';
+import 'package:shopder/Load2/load2Screen.dart';
 import 'package:shopder/MainScreen/mainScreen.dart';
 import 'package:shopder/module/BackGroundService.dart';
+import 'package:shopder/provider/DataConfirmItemManagerProvider.dart';
+import 'package:shopder/provider/DataImageManagerProvider.dart';
 import 'package:shopder/provider/DataManagementProvider.dart';
+import 'package:shopder/provider/DataPostManagerProvider.dart';
+import 'package:shopder/provider/DataSendItemManagerProvider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +29,19 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) {
           return DataManagementProvider();
-        })
+        }),
+        ChangeNotifierProvider(create: (context) {
+          return DataPostManagementProvider();
+        }),
+        ChangeNotifierProvider(create: (context) {
+          return DataImageManagerProvider();
+        }),
+        ChangeNotifierProvider(create: (context) {
+          return DataConfirmItemManagerProvider();
+        }),
+        ChangeNotifierProvider(create: (context) {
+          return DataSendItemManagerProvider();
+        }),
       ],
       child: MaterialApp(
         title: 'shopder',
@@ -39,6 +55,7 @@ class MyApp extends StatelessWidget {
         initialRoute: LoadScreen.routeName,
         routes: <String, WidgetBuilder>{
           LoadScreen.routeName: (context) => LoadScreen(),
+          Load2Screen.routeName: (context) => Load2Screen(),
           MainFirstScreen.routeName: (context) => MainFirstScreen(),
           MainScreen.routeName: (context) => MainScreen()
         },

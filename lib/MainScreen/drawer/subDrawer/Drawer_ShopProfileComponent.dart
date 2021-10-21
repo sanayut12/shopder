@@ -24,6 +24,8 @@ class _Drawer_ShopProfileComponentState
 
     Widget NameShop = Container(
       margin: EdgeInsets.only(left: 10),
+      constraints:
+          BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.5),
       child: Text(
         "${ShopInfoMamagement().GetName()}",
         style: TextStyle(

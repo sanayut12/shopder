@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopder/function/dataManagement/dateBox.dart';
 
 class GetPostShopItemDataRequest {
-  final String post_id;
+  String post_id;
   GetPostShopItemDataRequest({@required this.post_id});
   Map<String, dynamic> value() {
     return {"post_id": this.post_id};
@@ -10,15 +10,14 @@ class GetPostShopItemDataRequest {
 }
 
 class GetPostShopItemDataResposne {
-  final PostShopItem_PostShop post_info;
-  final Map<String, PostShopItem_Inventory>
-      bufferInventory; //<inventory_id , data
-  final Map<String, PostShopItem_Menu> bufferMenu; // <menu_id , data
-  final Map<String, PostShopItem_Bill> bufferBill; //<bill_id , data
-  final Map<String, PostShopItem_Item> bufferItem; //<item_id , data
-  final Map<String, PostShopItem_Payment> bufferPayment; //<payment_id , data
-  final Map<String, PostShopItem_Users> bufferUsers; //<user_id ,data
-  final Map<String, PostShopItem_Address_user>
+  PostShopItem_PostShop post_info;
+  Map<String, PostShopItem_Inventory> bufferInventory; //<inventory_id , data
+  Map<String, PostShopItem_Menu> bufferMenu; // <menu_id , data
+  Map<String, PostShopItem_Bill> bufferBill; //<bill_id , data
+  Map<String, PostShopItem_Item> bufferItem; //<item_id , data
+  Map<String, PostShopItem_Payment> bufferPayment; //<payment_id , data
+  Map<String, PostShopItem_Users> bufferUsers; //<user_id ,data
+  Map<String, PostShopItem_Address_user>
       bufferAddressUser; //<address_user_id ,data
 
   GetPostShopItemDataResposne(
@@ -33,10 +32,10 @@ class GetPostShopItemDataResposne {
 }
 
 class PostShopItem_PostShop {
-  final String post_id, detail;
-  final String how_send, over_order, confirm_order;
-  final DateBox start, stop, send;
-  final int sendCost;
+  String post_id, detail;
+  String how_send, over_order, confirm_order;
+  DateBox start, stop, send;
+  int sendCost;
   PostShopItem_PostShop(
       {@required this.post_id,
       @required this.detail,
@@ -50,8 +49,8 @@ class PostShopItem_PostShop {
 }
 
 class PostShopItem_Inventory {
-  final String menu_id;
-  final int level, quantity, cost;
+  String menu_id;
+  int level, quantity, cost;
   PostShopItem_Inventory(
       {@required this.menu_id,
       @required this.level,
@@ -60,13 +59,13 @@ class PostShopItem_Inventory {
 }
 
 class PostShopItem_Menu {
-  final String name, path;
+  String name, path;
   PostShopItem_Menu({@required this.name, @required this.path});
 }
 
 class PostShopItem_Bill {
   String address_user_id, how_send, how_pay, pay_status, status;
-  final DateBox date, date_confirm;
+  DateBox date, date_confirm;
   PostShopItem_Bill(
       {@required this.address_user_id,
       @required this.date,
@@ -81,8 +80,8 @@ class PostShopItem_Bill {
 }
 
 class PostShopItem_Item {
-  final String bill_id, inventory_id, user_id, comment;
-  final int quantity;
+  String bill_id, inventory_id, user_id, comment;
+  int quantity;
   PostShopItem_Item(
       {@required this.bill_id,
       @required this.inventory_id,
@@ -92,9 +91,9 @@ class PostShopItem_Item {
 }
 
 class PostShopItem_Payment {
-  final String bill_id, ref, status;
-  final int cost;
-  final DateBox date;
+  String bill_id, ref, status;
+  int cost;
+  DateBox date;
   PostShopItem_Payment(
       {@required this.bill_id,
       @required this.ref,
@@ -104,12 +103,12 @@ class PostShopItem_Payment {
 }
 
 class PostShopItem_Users {
-  final String name, path;
+  String name, path;
   PostShopItem_Users({@required this.name, @required this.path});
 }
 
 class PostShopItem_Address_user {
-  final String user_id,
+  String user_id,
       name,
       phone,
       address,
@@ -121,7 +120,7 @@ class PostShopItem_Address_user {
       sub_district,
       district,
       province;
-  final double latitude, longtitude;
+  double latitude, longtitude;
   PostShopItem_Address_user(
       {@required this.user_id,
       @required this.name,

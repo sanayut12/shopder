@@ -1,26 +1,20 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopder/FirstScreen/mainFirstScreen.dart';
 import 'package:shopder/Load/navigator_notification/page1GotoFullItemConfirmScreen.dart';
-import 'package:shopder/Load/spaceScreen.dart';
+import 'package:shopder/Load2/load2Screen.dart';
 import 'package:shopder/MainScreen/mainScreen.dart';
-import 'package:shopder/MainScreen/subScreen/FullItemConfirmScreen.dart';
+import 'package:shopder/MainScreen/subScreen/Secondary/FullItemConfirmScreen.dart';
 import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/dataManagement/readJsonAddress.dart';
-
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shopder/function/http/ClassObjects/httpGetPostShopItemData.dart';
-// import 'package:rxdart/subjects.dart';
 import 'package:shopder/module/socketioManagerForgound.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
-
-// final BehaviorSubject<String> selectNotificationSubject =
-//     BehaviorSubject<String>();
 
 String selectedNotificationPayload;
 
@@ -50,7 +44,7 @@ class _LoadScreenState extends State<LoadScreen> {
           height: double.infinity,
           width: double.infinity,
           alignment: Alignment.center,
-          color: Colors.yellow,
+          color: Colors.white,
           child: Text("Loading"),
         ),
       ),
@@ -80,7 +74,8 @@ class _LoadScreenState extends State<LoadScreen> {
     } else {
       //เปิดจาก notification
       if (userinfo_check == true) {
-        Navigator.of(context).pushNamed("${MainScreen.routeName}");
+        Navigator.of(context).pushNamed("${Load2Screen.routeName}");
+        // print("ffffffffffffffffffssssssssssssssssssssssssssssssssss");
       } else {
         Navigator.of(context).pushNamed("${MainFirstScreen.routeName}");
       }
@@ -115,16 +110,7 @@ class _LoadScreenState extends State<LoadScreen> {
               builder: (BuildContext context) =>
                   FullItemConfirmScreen(data: data)));
         }
-        // await Navigator.of(context).push(MaterialPageRoute(
-        //     builder: (BuildContext context) => SpaceScreen()));
       }
     });
   }
-
-  // void _configureSelectNotificationSubject() {
-  //   selectNotificationSubject.stream.listen((String payload) async {
-  //     print("กด notification ตอนแอปเปิด ${payload}");
-  //     await Navigator.pushNamed(context, '/login');
-  //   });
-  // }
 }

@@ -11,7 +11,7 @@ class DatePostAndSendCost extends StatefulWidget {
 
 class _DatePostAndSendCostState extends State<DatePostAndSendCost> {
   Map<String, String> how_send_item = {
-    "1": "สั่งถึงที่",
+    "1": "ส่งถึงที่",
     "2": "รับที่ร้าน",
     "3": "ส่งถึงที่/รับที่ร้าน"
   };

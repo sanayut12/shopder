@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:auth_buttons/auth_buttons.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
+import 'package:shopder/FirstScreen/subLogin/Login_ButtonLoginComponent.dart';
+import 'package:shopder/FirstScreen/subLogin/Login_PasswordUsersInputComponent.dart';
+import 'package:shopder/FirstScreen/subLogin/Login_PhoneUsersInputComponent.dart';
+import 'package:shopder/Load2/load2Screen.dart';
 import 'package:shopder/MainScreen/mainScreen.dart';
 import 'package:shopder/CreateShopInfo/mainScreenRegisterShop.dart';
 import 'package:shopder/function/dataManagement/Readhostname.dart';
@@ -12,88 +16,23 @@ import 'package:shopder/function/http/httpGetShopInfo.dart';
 import 'package:shopder/module/AlertCard.dart';
 import '../function/http/httpLogin.dart';
 
-String phone = "0911111111";
-String password = "12345";
-
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController _phone, _password;
+  String phone, password;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
-    _phone = TextEditingController(text: phone);
-    _password = TextEditingController(text: password);
   }
 
   @override
   Widget build(BuildContext context) {
     double weight_screen = MediaQuery.of(context).size.width;
-    Widget PhoneInput = Container(
-      child: TextFormField(
-        controller: _phone,
-        keyboardType: TextInputType.number,
-        onChanged: (e) {
-          setState(() {
-            phone = e;
-          });
-        },
-        decoration: InputDecoration(
-            prefixIcon: Icon(Icons.person),
-            border: UnderlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(10)),
-            hintText: "Phone",
-            hintStyle: TextStyle(
-                fontSize: weight_screen * 0.035, color: Colors.black38)),
-      ),
-    );
-
-    Widget PasswordInput = TextFormField(
-      controller: _password,
-      onChanged: (e) {
-        setState(() {
-          password = e;
-        });
-      },
-      focusNode: FocusNode(),
-      decoration: InputDecoration(
-          prefixIcon: Icon(Icons.password),
-          border: UnderlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(10)),
-          hintText: "Password",
-          hintStyle: TextStyle(
-              fontSize: weight_screen * 0.035, color: Colors.black38)),
-    );
-
-    Widget ButtonLogin = GestureDetector(
-      onTap: () {
-        OnpressLogin();
-      },
-      child: Container(
-        alignment: Alignment.center,
-        height: weight_screen * 0.1,
-        width: weight_screen * 0.35,
-        margin: EdgeInsets.only(top: 80, bottom: 20),
-        child: Text(
-          "Login",
-          style: TextStyle(
-            fontSize: weight_screen * 0.05,
-            color: Colors.white,
-          ),
-        ),
-        decoration: BoxDecoration(
-            color: Color(0xFFFA897B),
-            borderRadius: BorderRadius.all(Radius.circular(35))),
-      ),
-    );
 
     Widget FacebookLogin = FacebookAuthButton(
       onPressed: () {
@@ -108,41 +47,41 @@ class _LoginState extends State<Login> {
       iconStyle: AuthIconStyle.secondary,
       borderRadius: 35,
     );
-    Widget LoginFrom = Form(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Container(
-          child: Column(
-            children: [PhoneInput, PasswordInput, ButtonLogin],
-          ),
-        ),
-        Container(
-          height: 100,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  FacebookLogin,
-                  SizedBox(
-                    width: 20,
-                  ),
-                  GoogleLogin
-                ],
-              )
-            ],
-          ),
-        ),
-      ],
-    ));
+
     return Container(
-        height: 400,
+        height: weight_screen,
+        width: weight_screen * 0.8,
         margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
-        child: LoginFrom);
+        child: Form(
+            autovalidate: true,
+            child: Column(
+              children: [
+                Login_PhoneUsersInputComponent(phone: phone, fun: SetPhone),
+                Login_PasswordUsersInputComponent(
+                    password: password, fun: SetPassword),
+                Expanded(
+                    child: Container(
+                        alignment: Alignment.center,
+                        child: Login_ButtonLoginComponent(fun: OnpressLogin)))
+              ],
+            )));
+  }
+
+  Future<void> SetPhone(String _phone) {
+    setState(() {
+      phone = _phone;
+    });
+  }
+
+  Future<void> SetPassword(String _password) {
+    print(_password);
+    setState(() {
+      password = _password;
+    });
   }
 
   Future OnpressLogin() {
+    print("object");
     LoginHttp();
   }
 
@@ -175,7 +114,7 @@ class _LoginState extends State<Login> {
         builder: (BuildContext builder) {
           return AlertDialog(
             title: Text('แจ้งเตือน'),
-            content: Text("Phone or password incorrect"),
+            content: Text("เบอร์โทรศัพท์ หรือ รหัสผ่านไม่ถูกต้อง"),
             actions: [
               TextButton(
                   onPressed: () {
@@ -205,29 +144,28 @@ class _LoginState extends State<Login> {
         "event": "start_service_push_notification",
         "shop_id": "${bufferGetShopInfoResponse.shopInfo.shop_id}"
       });
-      Navigator.push(context,
-          MaterialPageRoute(builder: (BuildContext context) => MainScreen()));
+      Navigator.of(context).pushNamed(Load2Screen.routeName);
+      // Navigator.push(context,
+      //     MaterialPageRoute(builder: (BuildContext context) => MainScreen()));
     } else {
       int response = await Navigator.push(
           context,
           MaterialPageRoute(
               builder: (BuildContext context) => MainScreenRegisterShop()));
       if (response == 1) {
-        Navigator.of(context).pushNamed("/main");
+        GetShopInfoRequest bufferGetShopInfoRequest =
+            GetShopInfoRequest(user_id: bufferLoginResponse.userInfo.user_id);
+        //ทำการสส่ง user_id ไปเช็คข้อมมูลร้านค้าว่ามีไหมถ้ามีก็ขอข้อมมูลมา
+        GetShopInfoResponse bufferGetShopInfoResponse = await HttpGetShopInfo(
+            bufferGetShopInfoRequest: bufferGetShopInfoRequest);
+        CheckShopCreateANDCreatedGoToMainScreen(
+            bufferGetShopInfoResponse: bufferGetShopInfoResponse,
+            bufferLoginResponse: bufferLoginResponse);
+        Navigator.of(context).pushNamed(Load2Screen.routeName);
+        // Navigator.of(context).pushNamed("/main");
         // Navigator.push(context,
         //     MaterialPageRoute(builder: (BuildContext context) => MainScreen()));
       }
     }
   }
 }
-
-//###### how to userinfo string to json#####
-// var data = await json.decode(await userinfostring);
-// print('data user info string to json');
-// DataUserInfo userinfo = new DataUserInfo(
-//     user_id: data['user_id'],
-//     name: data['name'],
-//     phone: data['phone'],
-//     email: data['email']);
-// print(userinfo.user_id);
-//############end################

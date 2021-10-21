@@ -37,27 +37,7 @@ class _AddMenuItemScreenState extends State<AddMenuItemScreen> {
       onTap: () async {
         await PushItemFoodInfo();
       },
-      // child: Container(
-      //   height: double.infinity,
-      //   width: 100,
-      //   color: Colors.red,
-      //   alignment: Alignment.center,
-      //   child: Text("ยืนยัน"),
-      // ),
     );
-
-    // Widget CancelButton = GestureDetector(
-    //   onTap: () {
-    //     Navigator.of(context).pop(null);
-    //   },
-    //   child: Container(
-    //     height: double.infinity,
-    //     width: 100,
-    //     color: Colors.red,
-    //     alignment: Alignment.center,
-    //     child: Text("ยกเลิก"),
-    //   ),
-    // );
 
     Widget ChoiceBar = Container(
       margin: EdgeInsets.only(top: 10),
@@ -215,50 +195,52 @@ class _AddMenuItemScreenState extends State<AddMenuItemScreen> {
           child: const Icon(Icons.done),
           backgroundColor: Color(0xFFFA897B),
         ),
-        body: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment(
-                  0.0, 0.0), // 10% of the width, so there are ten blinds.
-              colors: <Color>[
-                Color(0xffFA897B),
-                Color(0xfffffff)
-              ], // red to yellow
-              //tileMode: TileMode.repeated, // repeats the gradient over the canvas
+        body: SafeArea(
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment(
+                    0.0, 0.0), // 10% of the width, so there are ten blinds.
+                colors: <Color>[
+                  Color(0xffFA897B),
+                  Color(0xfffffff)
+                ], // red to yellow
+                //tileMode: TileMode.repeated, // repeats the gradient over the canvas
+              ),
+              //image: DecorationImage(fit: BoxFit.cover,image: AssetImage('assets/image/background/backgroundp.png') )
             ),
-            //image: DecorationImage(fit: BoxFit.cover,image: AssetImage('assets/image/background/backgroundp.png') )
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                  child: Row(
-                children: [
-                  SizedBox(
-                    height: 70,
-                  ),
-                  Container(
-                      child: TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                          ))),
-                  Container(
-                      child: Text(
-                    'สร้างรายการอาหาร',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontFamily: "SukhumvitSet-SemiBold"),
-                  ))
-                ],
-              )),
-              Expanded(child: AddFoodForm),
-            ],
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                    child: Row(
+                  children: [
+                    SizedBox(
+                      height: 70,
+                    ),
+                    Container(
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                            ))),
+                    Container(
+                        child: Text(
+                      'สร้างรายการอาหาร',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontFamily: "SukhumvitSet-SemiBold"),
+                    ))
+                  ],
+                )),
+                Expanded(child: AddFoodForm),
+              ],
+            ),
           ),
         )
 

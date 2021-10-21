@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shopder/MainScreen/component/createpost.dart';
-import 'package:shopder/MainScreen/post/postbox.dart';
 import 'package:shopder/MainScreen/subScreen/subFeed/PostUsersComponent.dart';
 import 'package:shopder/function/dataManagement/dataShopInfo.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPostUsers_Data.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPostUsers_Init.dart';
 import 'package:shopder/function/http/httpGetPostUsers_Data.dart';
 import 'package:shopder/function/http/httpGetPostUsers_Init.dart';
+import 'package:shopder/provider/DataPostManagerProvider.dart';
 
 class FeedScreen extends StatefulWidget {
   @override
@@ -24,26 +25,58 @@ class _FeedScreenState extends State<FeedScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // return Container(
+    //   height: double.infinity,
+    //   width: double.infinity,
+    //   decoration: BoxDecoration(
+    //       gradient: LinearGradient(
+    //           begin: Alignment.topCenter,
+    //           end: Alignment.bottomCenter,
+    //           colors: [Color(0xfffa897b), Colors.white])),
+    //   child: Consumer(builder:
+    //       (context, DataPostManagementProvider provider, Widget child) {
+    //     Map<String, GetPostUsersDataResponse> data = provider.data;
+    //     return Container(
+    //       height: double.infinity,
+    //       width: double.infinity,
+    //       child: ListView.builder(
+    //           itemCount: data.length + 1,
+    //           itemBuilder: (BuildContext context, int index) {
+    //             // return CreatePost();
+    //             if (index == 0) {
+    //               return CreatePost();
+    //             } else {
+    //               String post_users_id = data.keys.toList()[index - 1];
+    //               return PostUsersComponent(data: data[post_users_id]);
+    //             }
+    //           }),
+    //     );
+    //   }),
+    // );
+
     return Container(
-      height: double.infinity,
-      width: double.infinity,
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Color(0xfffa897b), Colors.white])),
-      child: ListView.builder(
-          itemCount: data.length,
-          itemBuilder: (BuildContext context, int index) {
-            // return CreatePost();
-            if (index == 0) {
-              return CreatePost();
-            } else {
-              String post_users_id = data.keys.toList()[index - 1];
-              return PostUsersComponent(data: data[post_users_id]);
-            }
-          }),
-    );
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xfffa897b), Colors.white])),
+        child: Container(
+          height: double.infinity,
+          width: double.infinity,
+          child: ListView.builder(
+              itemCount: data.length + 1,
+              itemBuilder: (BuildContext context, int index) {
+                // return CreatePost();
+                if (index == 0) {
+                  return CreatePost();
+                } else {
+                  String post_users_id = data.keys.toList()[index - 1];
+                  return PostUsersComponent(data: data[post_users_id]);
+                }
+              }),
+        ));
   }
 
   Future<void> GetPost() async {

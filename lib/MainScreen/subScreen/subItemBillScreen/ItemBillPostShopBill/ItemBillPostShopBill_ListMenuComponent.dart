@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/dataManagement/readJsonAddress.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPostShopBillData.dart';
@@ -15,12 +16,12 @@ class _ItemBillPostShopBill_ListMenuComponentState
     extends State<ItemBillPostShopBill_ListMenuComponent> {
   @override
   Widget build(BuildContext context) {
+    double weight_screen = MediaQuery.of(context).size.width;
+    TextStyle style = TextStyle(fontSize: 12, fontWeight: FontWeight.w500);
     Widget ShowImage(String image) => Container(
-          margin: EdgeInsets.fromLTRB(4, 5, 8 ,3),
           height: MediaQuery.of(context).size.width * 0.1,
           width: MediaQuery.of(context).size.width * 0.1,
           decoration: BoxDecoration(
-            
               borderRadius: BorderRadius.circular(2),
               image: DecorationImage(
                   fit: BoxFit.cover,
@@ -28,21 +29,31 @@ class _ItemBillPostShopBill_ListMenuComponentState
                       NetworkImage("${HostName()}/image/menuImage/${image}"))),
         );
     Widget CardModel(String name, String image, int quantity) => Container(
-          height: MediaQuery.of(context).size.width * 0.1,
+          // height: MediaQuery.of(context).size.width * 0.1,
           child: Row(
             children: [
-              Expanded(
-                  flex: 2,
-                  child: Container(
-                    child: Row(
-                      children: [ShowImage(image), Text("${name}")],
-                    ),
-                  )),
-              Expanded(
-                  child: Container(
+              Container(
+                width: weight_screen * 0.6,
+                child: Row(
+                  children: [
+                    ShowImage(image),
+                    Container(
+                        width: weight_screen * 0.5,
+                        child: Text(
+                          "${name}",
+                          style: style,
+                        ))
+                  ],
+                ),
+              ),
+              Container(
+                width: weight_screen * 0.3,
                 alignment: Alignment.center,
-                child: Text("${quantity}"),
-              ))
+                child: Text(
+                  "${quantity}",
+                  style: style,
+                ),
+              )
             ],
           ),
         );

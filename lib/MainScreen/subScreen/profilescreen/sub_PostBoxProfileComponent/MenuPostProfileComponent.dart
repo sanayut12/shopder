@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shopder/MainScreen/subScreen/MenuProfileScreen.dart';
+import 'package:shopder/MainScreen/subScreen/Secondary/MenuProfileScreen.dart';
 import 'package:shopder/function/dataManagement/Readhostname.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectGetPostShopData.dart';
 
@@ -44,7 +44,8 @@ class _MenuPostProfileComponentState extends State<MenuPostProfileComponent> {
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.pink, //ข้างในรูป
+          color: Color(0xFFFF9190),
+          //color: Colors.pink, //ข้างในรูป
           image: DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage("${HostName()}/image/menuImage/${image}"))),
@@ -53,37 +54,25 @@ class _MenuPostProfileComponentState extends State<MenuPostProfileComponent> {
 
     Widget Name = Text("${name}",
         style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-            shadows: [
+          fontSize: 15,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+          /*shadows: [
               Shadow(
                   offset: Offset(2.0, 2.0),
                   blurRadius: 5.0,
                   color: Colors.black.withOpacity(0.6)),
-            ]));
+            ]*/
+        ));
     Widget Quantity = Text("จำนวน ${quantity}",
         style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-            shadows: [
-              Shadow(
-                  offset: Offset(2.0, 2.0),
-                  blurRadius: 5.0,
-                  color: Colors.black.withOpacity(0.6)),
-            ]));
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ));
     Widget Cost = Text("ราคา ${cost} บาท",
         style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-            shadows: [
-              Shadow(
-                  offset: Offset(2.0, 2.0),
-                  blurRadius: 5.0,
-                  color: Colors.black.withOpacity(0.6)),
-            ]));
+            fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black));
 
     return Container(
       height: 300,

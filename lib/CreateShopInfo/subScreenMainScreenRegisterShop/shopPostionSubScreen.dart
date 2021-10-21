@@ -81,7 +81,7 @@ class _ShopPositionSubScreenState extends State<ShopPositionSubScreen> {
         ? Container()
         : GoogleMap(
             cameraTargetBounds: CameraTargetBounds.unbounded,
-            mapType: MapType.hybrid,
+            mapType: MapType.normal,
             onCameraMove: (position) => {PinMark(position: position)},
             markers: <Marker>[
               Marker(
@@ -93,36 +93,38 @@ class _ShopPositionSubScreenState extends State<ShopPositionSubScreen> {
             initialCameraPosition: CameraPosition(
                 target: LatLng(latitude, longtitude), zoom: 17.5));
 
-    return Container(
-      height: double.infinity,
-      width: double.infinity,
-      child: Column(
-        children: [
-          Expanded(
-            child: Container(
-                padding: EdgeInsets.all(10),
-                height: double.infinity,
-                width: double.infinity,
-                // color: Colors.amber,
-                child: Stack(
-                  alignment: Alignment.bottomLeft,
-                  children: [
-                    Container(child: ShowMap),
-                  ],
-                )),
-          ),
-          ButtomBarComponent(
-              textbuttom1: "กลับ",
-              func1: () {
-                backSetdataShopPosition();
-              },
-              active1: 1,
-              textbuttom2: "สำเร็จ",
-              func2: () {
-                setdataShopPosition();
-              },
-              active2: 1)
-        ],
+    return SafeArea(
+      child: Container(
+        height: double.infinity,
+        width: double.infinity,
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                  padding: EdgeInsets.all(10),
+                  height: double.infinity,
+                  width: double.infinity,
+                  // color: Colors.amber,
+                  child: Stack(
+                    alignment: Alignment.bottomLeft,
+                    children: [
+                      Container(child: ShowMap),
+                    ],
+                  )),
+            ),
+            ButtomBarComponent(
+                textbuttom1: "กลับ",
+                func1: () {
+                  backSetdataShopPosition();
+                },
+                active1: 1,
+                textbuttom2: "สำเร็จ",
+                func2: () {
+                  setdataShopPosition();
+                },
+                active2: 1)
+          ],
+        ),
       ),
     );
   }

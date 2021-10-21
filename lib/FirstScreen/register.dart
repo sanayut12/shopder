@@ -2,11 +2,16 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:shopder/FirstScreen/subRegister/Register_AlertDialogComponent.dart';
+import 'package:shopder/FirstScreen/subRegister/Register_ButtonComponent.dart';
+import 'package:shopder/FirstScreen/subRegister/Register_ConfirmPasswordComponent.dart';
+import 'package:shopder/FirstScreen/subRegister/Register_EmailComponent.dart';
+import 'package:shopder/FirstScreen/subRegister/Register_NameComponent.dart';
+import 'package:shopder/FirstScreen/subRegister/Register_PasswordComponent.dart';
+import 'package:shopder/FirstScreen/subRegister/Register_PhoneComponent.dart';
 import 'package:shopder/function/http/ClassObjects/httpObjectRegister.dart';
 import 'package:shopder/function/http/httpRegister.dart';
 // import '../function/http/httpRegister.dart';
-
-String name, password, confirmpassword, phone, email;
 
 class Register extends StatefulWidget {
   final Function rePage;
@@ -18,17 +23,12 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  TextEditingController _name, _password, _confirmpassword, _phone, _email;
+  String name, password, confirmpassword, phone, email;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _name = TextEditingController(text: name);
-    _password = TextEditingController(text: password);
-    _confirmpassword = TextEditingController(text: confirmpassword);
-    _phone = TextEditingController(text: phone);
-    _email = TextEditingController(text: email);
   }
 
   void resetInput() {
@@ -43,95 +43,60 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    Widget NameInput = TextFormField(
-      onChanged: (e) {
-        setState(() {
-          name = e;
-        });
-      },
-      controller: _name,
-      decoration: InputDecoration(
-          hintText: "Name", hintStyle: TextStyle(color: Colors.black38)),
-    );
+    double weight_screen = MediaQuery.of(context).size.width;
 
-    Widget PhoneInput = TextFormField(
-      onChanged: (e) {
-        setState(() {
-          phone = e;
-        });
-      },
-      controller: _phone,
-      decoration: InputDecoration(
-          hintText: "Phone", hintStyle: TextStyle(color: Colors.black38)),
-    );
-
-    Widget EmailInput = TextFormField(
-      onChanged: (e) {
-        setState(() {
-          email = e;
-        });
-      },
-      controller: _email,
-      decoration: InputDecoration(
-          hintText: "Email", hintStyle: TextStyle(color: Colors.black38)),
-    );
-
-    Widget PasswordInput = TextFormField(
-      onChanged: (e) {
-        setState(() {
-          password = e;
-        });
-      },
-      controller: _password,
-      decoration: InputDecoration(
-          hintText: "Password", hintStyle: TextStyle(color: Colors.black38)),
-    );
-
-    Widget ConfirmPasswordInput = TextFormField(
-      onChanged: (e) {
-        setState(() {
-          confirmpassword = e;
-        });
-      },
-      controller: _confirmpassword,
-      decoration: InputDecoration(
-          hintText: "comfirm Password",
-          hintStyle: TextStyle(color: Colors.black38)),
-    );
-
-    Widget RegisterButton = GestureDetector(
-      onTap: () async {
-        await registerOnPress();
-      },
-      child: Container(
-        child: Text(
-          "Register",
-          style: TextStyle(fontSize: 18.0, color: Colors.white),
-        ),
-        height: 45,
-        width: 207,
-        margin: EdgeInsets.only(top: 70 , bottom: 20),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-            color: Color(0xFFFA897B),
-            borderRadius: BorderRadius.all(Radius.circular(35))),
-      ),
-    );
-
-    Widget RegisterForm = Form(
-        child: Column(
-      children: [
-        NameInput,
-        PhoneInput,
-        EmailInput,
-        PasswordInput,
-        ConfirmPasswordInput,
-        RegisterButton
-      ],
-    ));
     return Container(
-        height: 400,
-        margin: EdgeInsets.fromLTRB(20, 0, 20, 0), child: RegisterForm);
+        height: weight_screen,
+        width: weight_screen * 0.8,
+        margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+        child: Form(
+            child: Column(
+          children: [
+            Register_NameComponent(name: name, fun: SetName),
+            Register_PhoneComponent(phone: phone, fun: SetPhone),
+            Register_EmailComponent(email: email, fun: SetEmail),
+            Register_PasswordComponent(password: password, fun: SetPassword),
+            Register_ConfirmPasswordComponent(
+                password: password,
+                confirmpassword: confirmpassword,
+                fun: SetConfirmPassword),
+            Expanded(
+                child: Container(
+              alignment: Alignment.center,
+              child: Register_ButtonComponent(fun: registerOnPress),
+            )),
+          ],
+        )));
+  }
+
+  Future<void> SetName(String _name) {
+    setState(() {
+      name = _name;
+    });
+  }
+
+  Future<void> SetPhone(String _phone) {
+    setState(() {
+      phone = _phone;
+    });
+  }
+
+  Future<void> SetEmail(String _email) {
+    setState(() {
+      email = _email;
+    });
+  }
+
+  Future<void> SetPassword(String _password) {
+    setState(() {
+      password = _password;
+    });
+  }
+
+  Future<void> SetConfirmPassword(String _confirmpassword) {
+    setState(() {
+      confirmpassword = _confirmpassword;
+    });
   }
 
   //เมื่อเรากดที่จะ register
@@ -148,9 +113,15 @@ class _RegisterState extends State<Register> {
       if (bufferConfirmRegisterResponse.code == 20200) {
         await ShowAlertdialogRegisterSuccesses();
         resetInput();
-        this.widget.rePage();
+        this.widget.rePage(true);
       } else {
-        ShowAlertdialogConfirmRegisterFail(bufferConfirmRegisterResponse);
+        if (bufferConfirmRegisterResponse.code == 10001) {
+          ShowAlertdialogConfirmRegisterFail("เบอร์โทรศัพท์ถูกใช้ไปแล้ว");
+        } else if (bufferConfirmRegisterResponse.code == 10003) {
+          ShowAlertdialogConfirmRegisterFail("OTP หมดเวลา");
+        } else if (bufferConfirmRegisterResponse.code == 10004) {
+          ShowAlertdialogConfirmRegisterFail("รหัส OTP ไม่ถูกต้อง");
+        }
       }
     } else if (bufferRegisterResponse.code == 10001) {
       ShowAlertdialogFail(bufferRegisterResponse);
@@ -171,7 +142,7 @@ class _RegisterState extends State<Register> {
         context: context,
         builder: (BuildContext builder) {
           return AlertDialog(
-            title: Text("fail"),
+            title: Text("เกิดข้อผิดพลาด"),
             content: Text("${bufferRegisterResponse.message}"),
             actions: [
               TextButton(
@@ -232,7 +203,7 @@ class _RegisterState extends State<Register> {
         context: context,
         builder: (BuildContext builder) {
           return AlertDialog(
-            title: Text("success"),
+            // title: Text("success"),
             content: Text("ลงทะเบียนสำเร็จ"),
             actions: [
               TextButton(
@@ -245,14 +216,13 @@ class _RegisterState extends State<Register> {
         });
   }
 
-  Future ShowAlertdialogConfirmRegisterFail(
-      ConfirmRegisterResponse bufferConfirmRegisterResponse) {
+  Future ShowAlertdialogConfirmRegisterFail(String message) {
     return showDialog(
         context: context,
         builder: (BuildContext builder) {
           return AlertDialog(
-            title: Text("fail"),
-            content: Text("${bufferConfirmRegisterResponse.message}"),
+            title: Text("เกิดข้อผิดพลาด"),
+            content: Text("${message}"),
             actions: [
               TextButton(
                   onPressed: () {

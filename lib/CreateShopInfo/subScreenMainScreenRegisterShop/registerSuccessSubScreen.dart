@@ -18,7 +18,7 @@ class RegisterSuccessSubScreen extends StatefulWidget {
 }
 
 class _RegisterSuccessSubScreenState extends State<RegisterSuccessSubScreen> {
-  int active = 0;
+  bool active = false;
   @override
   void initState() {
     // TODO: implement initState
@@ -29,50 +29,61 @@ class _RegisterSuccessSubScreenState extends State<RegisterSuccessSubScreen> {
   @override
   Widget build(BuildContext context) {
     Widget ButtonSuccesses = GestureDetector(
-      onTap: () {
-        Navigator.of(context).pop(1);
-      },
+      onTap: () {},
       child: Container(
-        height: 100,
-        width: 200,
+        height: 50,
+        width: 50,
         decoration: BoxDecoration(
-            color: Colors.red, borderRadius: BorderRadius.circular(20)),
+            color: Color(0xFFFA897B), borderRadius: BorderRadius.circular(20)),
         alignment: Alignment.center,
         child: Text("ตกลง"),
       ),
     );
     // return ;
     return Container(
-      height: double.infinity,
-      width: double.infinity,
-      padding: EdgeInsets.all(50),
-      child: Column(
-        children: [
-          GestureDetector(
-            onTap: () {
-              print(
-                  "${this.widget.dataShopPosition.latitude} ${this.widget.dataShopPosition.longtitude}");
-              // PPrint();
-            },
-            child: Container(
-              height: 100,
-              width: 100,
-              color: active == 0 ? Colors.red : Colors.green,
-              alignment: Alignment.center,
-              child: Text("data"),
-            ),
-          ),
-          ButtonSuccesses
-        ],
-      ),
-    );
+        height: double.infinity,
+        width: double.infinity,
+        padding: EdgeInsets.all(50),
+        alignment: Alignment.center,
+        child: active
+            ? Container(
+                height: 100,
+                width: 100,
+                alignment: Alignment.center,
+                child: Text("ลงทะเบียนสำเร็จ"),
+              )
+            : CircularProgressIndicator());
   }
 
-  Future<void> PPrint() {
-    print("${this.widget.dataShopAddress.road}");
-    print("${this.widget.dataShopDetail.name}");
-    print("${this.widget.dataShopPosition.latitude}");
-  }
+  // Column(
+  //       children: [
+  //         // GestureDetector(
+  //         //   onTap: () {
+  //         //     print(
+  //         //         "${this.widget.dataShopPosition.latitude} ${this.widget.dataShopPosition.longtitude}");
+  //         //     // PPrint();
+  //         //   },
+  //         //   child: Container(
+  //         //     height: 100,
+  //         //     width: 200,
+  //         //     margin: EdgeInsets.only(top: 245),
+  //         //     color: active == 0 ? Colors.grey[200] : Color(0xFFFA897B),
+  //         //     alignment: Alignment.center,
+  //         //     child: Text(
+  //         //       "ลงทะเบียนสำเร็จ",
+  //         //       style: TextStyle(fontSize: 20),
+  //         //     ),
+  //         //   ),
+  //         // ),
+  //         // ButtonSuccesses
+  //       ],
+  //     ),
+
+  // Future<void> PPrint() {
+  //   print("${this.widget.dataShopAddress.road}");
+  //   print("${this.widget.dataShopDetail.name}");
+  //   print("${this.widget.dataShopPosition.latitude}");
+  // }
 
   Future<void> UploadData() async {
     String user_id = UserInfoManagement().User_id();
@@ -83,7 +94,10 @@ class _RegisterSuccessSubScreenState extends State<RegisterSuccessSubScreen> {
         dataShopPosition: this.widget.dataShopPosition);
     await HttpCreateShopInfo(bufferShopInfoCreateRequest);
     setState(() {
-      active = 1;
+      active = true;
     });
+
+    await Future.delayed(Duration(seconds: 2));
+    Navigator.of(context).pop(1);
   }
 }
